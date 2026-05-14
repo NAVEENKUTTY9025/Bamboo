@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Bamboo Essence Client Dashboard - Track orders, manage eco-profile, view sustainability impact">
+    <title>Bamboo Essence | Client Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== BAMBOO ESSENCE COLOR THEME (from index.html - exact match) ===== */
+        :root {
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F5F7F0;
+            --bg-card: #FFFFFF;
+            --bg-nav: #0D2E24;
+            --text-primary: #1A2E24;
+            --text-secondary: #3A5E4C;
+            --text-muted: #6B8E7A;
+            --border-color: #DCE8D5;
+            --electric-blue: #2A9D8F;
+            --electric-blue-light: #52B4A6;
+            --electric-blue-dark: #1E7A6E;
+            --shadow: 0 10px 30px rgba(0,0,0,0.06);
+            --nav-text: #F0F7E6;
+            --footer-text: #F0F7E6;
+            --footer-text-muted: #C2D9C2;
+            --footer-bg: #0D2E24;
+            --accent-soft: rgba(42, 157, 143, 0.12);
+            --badge-approved-bg: #E0F2EA;
+            --badge-approved-text: #1E7A6E;
+            --badge-pending-bg: #FEF3E2;
+            --badge-pending-text: #B45309;
+            --badge-active-bg: #E0F2EA;
+            --badge-active-text: #0A5C44;
+            --message-bg: #F5F7F0;
+            --stat-card-bg: #FFFFFF;
+            --gradient-leaf: linear-gradient(135deg, #0D2E24 0%, #2A9D8F 100%);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #121E18;
+            --bg-secondary: #0A1812;
+            --bg-card: #1B2E26;
+            --bg-nav: #071610;
+            --text-primary: #E6F0EA;
+            --text-secondary: #BED9CE;
+            --text-muted: #8EAD9E;
+            --border-color: #2D463A;
+            --electric-blue: #3AAFA0;
+            --electric-blue-dark: #2C8E82;
+            --shadow: 0 10px 30px rgba(0,0,0,0.4);
+            --nav-text: #E6F0EA;
+            --footer-text: #E6F0EA;
+            --footer-text-muted: #BED9CE;
+            --footer-bg: #071610;
+            --accent-soft: rgba(58, 175, 160, 0.15);
+            --badge-approved-bg: #1A3A2E;
+            --badge-approved-text: #5EEAD4;
+            --badge-pending-bg: #3A2E1A;
+            --badge-pending-text: #FBBF24;
+            --badge-active-bg: #1A3A2E;
+            --badge-active-text: #34D399;
+            --message-bg: #1A2A24;
+            --stat-card-bg: #1B2E26;
+            --gradient-leaf: linear-gradient(135deg, #0D2E24 0%, #2A9D8F 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .font-serif {
+            font-family: 'Merriweather', serif;
+        }
+        
+        .text-accent {
+            color: var(--electric-blue);
+        }
+        
+        .bg-gradient-leaf {
+            background: var(--gradient-leaf);
+        }
+        
+        /* Cards & Dashboard Components */
+        .dashboard-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 28px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+        
+        .dashboard-card:hover {
+            border-color: var(--electric-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        /* Badges */
+        .badge-approved {
+            background: var(--badge-approved-bg);
+            color: var(--badge-approved-text);
+            padding: 0.3rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: inline-block;
+        }
+        
+        .badge-pending {
+            background: var(--badge-pending-bg);
+            color: var(--badge-pending-text);
+            padding: 0.3rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+        
+        .badge-active {
+            background: var(--badge-active-bg);
+            color: var(--badge-active-text);
+            padding: 0.3rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+        
+        /* Sidebar Links */
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem 1rem;
+            border-radius: 14px;
+            color: var(--text-primary);
+            transition: all 0.25s ease;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .sidebar-link i {
+            width: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--electric-blue);
+        }
+        
+        .sidebar-link:hover,
+        .sidebar-link.active {
+            background: var(--accent-soft);
+            color: var(--electric-blue);
+        }
+        
+        /* Navbar - EXACT SAME AS INDEX.HTML */
+        .navbar {
+            background: var(--bg-nav);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 28px;
+        }
+        
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        
+        /* EXACT LOGO STYLES FROM INDEX.HTML */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .nav-logo-text {
+            font-size: 1.8rem !important;
+            font-weight: 700 !important;
+            color: var(--nav-text);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            display: inline-block;
+            line-height: 1;
+        }
+        
+        .nav-logo-text span {
+            color: var(--electric-blue);
+            font-style: italic;
+            font-family: 'Merriweather', serif;
+        }
+        
+        /* Keep icon for mobile consistency */
+        .logo-icon {
+            display: none;
+        }
+        
+        @media (max-width: 640px) {
+            .nav-logo-text { font-size: 1.4rem !important; }
+        }
+        
+        .icon-btn {
+            width: 42px;
+            height: 42px;
+            background: rgba(42, 157, 143, 0.2);
+            border: none;
+            border-radius: 40px;
+            color: var(--nav-text);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .icon-btn:hover {
+            background: var(--electric-blue);
+            color: #0D2E24;
+        }
+        
+        .user-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-left: 16px;
+            border-left: 1px solid rgba(42, 157, 143, 0.3);
+        }
+        
+        .avatar-initials {
+            width: 44px;
+            height: 44px;
+            background: var(--electric-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: white;
+        }
+        
+        /* Sidebar Desktop */
+        .sidebar-desktop {
+            width: 300px;
+            flex-shrink: 0;
+        }
+        
+        .sidebar-sticky {
+            position: sticky;
+            top: 100px;
+            background: var(--bg-card);
+            border-radius: 28px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+        
+        /* Mobile Drawer */
+        .drawer-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+        
+        .drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .sidebar-drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 300px;
+            background: var(--bg-nav);
+            z-index: 1050;
+            transform: translateX(-100%);
+            transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+        
+        .sidebar-drawer.open {
+            transform: translateX(0);
+        }
+        
+        .drawer-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(42,157,143,0.2);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+            font-size: 1.2rem;
+            color: var(--nav-text);
+            cursor: pointer;
+        }
+        
+        .menu-toggle {
+            display: none;
+        }
+        
+        @media (max-width: 1024px) {
+            .menu-toggle { display: flex; }
+            .sidebar-desktop { display: none !important; }
+        }
+        
+        @media (min-width: 1025px) {
+            .menu-toggle { display: none; }
+            .sidebar-desktop { display: block !important; }
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 640px) {
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+        
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .flex-start {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .ml-auto {
+            margin-left: auto;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .btn-primary {
+            background: var(--electric-blue);
+            color: white;
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.85rem;
+        }
+        
+        .btn-primary:hover {
+            background: var(--electric-blue-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline-small {
+            background: transparent;
+            border: 1px solid var(--electric-blue);
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            color: var(--electric-blue);
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .btn-outline-small:hover {
+            background: var(--accent-soft);
+        }
+        
+        .product-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        
+        .product-item strong {
+            color: var(--text-primary);
+        }
+        
+        .stat-card {
+            background: var(--stat-card-bg);
+        }
+        
+        .stat-label {
+            color: var(--electric-blue);
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .stat-value {
+            color: var(--text-primary);
+            font-size: 2.2rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin: 0.5rem 0 0.25rem;
+        }
+        
+        .stat-sub {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .order-item {
+            padding: 1rem;
+            background: var(--message-bg);
+            border-radius: 20px;
+            margin-bottom: 0.75rem;
+            border-left: 3px solid var(--electric-blue);
+        }
+        
+        .footer-text {
+            color: var(--footer-text-muted);
+        }
+        
+        .footer-link {
+            color: var(--footer-text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .footer-link:hover {
+            color: var(--electric-blue);
+        }
+        
+        .sidebar-section-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--electric-blue);
+            font-weight: 700;
+            padding-left: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        /* RTL Support */
+        [dir="rtl"] .sidebar-link {
+            flex-direction: row-reverse;
+        }
+        
+        [dir="rtl"] .ml-auto {
+            margin-right: auto;
+            margin-left: 0;
+        }
+        
+        [dir="rtl"] .order-item {
+            border-left: none;
+            border-right: 3px solid var(--electric-blue);
+        }
+        
+        table {
+            width: 100%;
+            font-size: 0.85rem;
+            border-collapse: collapse;
+        }
+        
+        th {
+            padding: 1rem 0.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 1rem 0.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+        
+        .impact-meter {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 1.5rem;
+        }
+        
+        /* Welcome banner - ensure ALL text is visible in light mode */
+        .welcome-banner {
+            background: linear-gradient(135deg, #0D2E24 0%, #2A9D8F 100%);
+        }
+        
+        .welcome-banner h1,
+        .welcome-banner p,
+        .welcome-banner .font-serif,
+        .welcome-banner span {
+            color: #FFFFFF !important;
+        }
+        
+        [data-theme="dark"] .welcome-banner h1,
+        [data-theme="dark"] .welcome-banner p {
+            color: #FFFFFF !important;
+        }
+        
+        /* Ensure sidebar drawer text in dark mode is readable */
+        .sidebar-drawer .sidebar-link {
+            color: var(--nav-text);
+        }
+        
+        .sidebar-drawer .sidebar-link i {
+            color: var(--electric-blue);
+        }
+        
+        .sidebar-drawer .sidebar-link:hover {
+            background: rgba(42, 157, 143, 0.2);
+        }
+        
+        /* Additional contrast fix for user info */
+        .user-info-desk p {
+            color: var(--nav-text);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR - EXACT SAME LOGO STYLE AS INDEX.HTML -->
+    <nav class="navbar">
+        <div class="container nav-flex">
+            <div class="flex-start">
+                <button id="mobile-menu-toggle-btn" class="icon-btn menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <!-- EXACT SAME LOGO AS INDEX.HTML -->
+                <a href="index.html" class="nav-logo-text"><span>Bamboo Essence</span></a>
+            </div>
+            <div class="flex-start">
+                <button id="rtl-toggle" class="icon-btn" title="RTL">
+                    <i class="fas fa-exchange-alt"></i>
+                </button>
+                <button id="theme-toggle" class="icon-btn" title="Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="user-badge">
+                    <div class="avatar-initials">EM</div>
+                    <div class="user-info-desk">
+                        <p style="font-weight: 600; color: var(--nav-text); font-size: 0.85rem;">Emma Chen</p>
+                        <p style="font-size: 0.7rem; color: var(--electric-blue);">Eco-Member since 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Sidebar Drawer -->
+    <div id="drawer-overlay" class="drawer-overlay"></div>
+    <aside id="sidebar-drawer" class="sidebar-drawer">
+        <button id="close-drawer" class="drawer-close"><i class="fas fa-times"></i></button>
+        <div class="flex-start" style="margin-bottom: 1.5rem; border-bottom: 1px solid rgba(42,157,143,0.3); padding-bottom: 1rem;">
+            <div class="avatar-initials" style="width: 48px; height: 48px;">EM</div>
+            <div><p class="font-serif font-bold" style="color: var(--nav-text);">Emma Chen</p><p style="font-size: 0.7rem; color: var(--electric-blue);">emma@bambooessence.com</p></div>
+        </div>
+        <nav style="display: flex; flex-direction: column; gap: 0.25rem;">
+            <p class="sidebar-section-title">Client Portal</p>
+            <a href="#" data-section="overview" class="sidebar-link active"><i class="fas fa-chart-line"></i> <span>Dashboard</span></a>
+            <a href="#" data-section="orders" class="sidebar-link"><i class="fas fa-shopping-bag"></i> <span>My Orders</span></a>
+            <a href="#" data-section="impact" class="sidebar-link"><i class="fas fa-seedling"></i> <span>Sustainability Impact</span></a>
+            <a href="#" data-section="subscription" class="sidebar-link"><i class="fas fa-calendar-alt"></i> <span>Eco-Subscription</span></a>
+            <a href="#" data-section="wishlist" class="sidebar-link"><i class="fas fa-heart"></i> <span>Wishlist</span></a>
+            <a href="#" data-section="profile" class="sidebar-link"><i class="fas fa-user-circle"></i> <span>My Profile</span></a>
+            <a href="#" data-section="messages" class="sidebar-link"><i class="fas fa-envelope"></i> <span>Messages</span><span class="ml-auto" style="background: var(--electric-blue); color: white; font-size: 0.7rem; padding: 0.125rem 0.5rem; border-radius: 40px;">2</span></a>
+            <a href="#" data-section="returns" class="sidebar-link"><i class="fas fa-undo-alt"></i> <span>Returns & Exchanges</span></a>
+            <a href="#" data-section="logout" class="sidebar-link"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+        </nav>
+    </aside>
+
+    <!-- MAIN DASHBOARD LAYOUT -->
+    <main style="max-width: 1400px; margin: 100px auto 0; padding: 1.5rem;">
+        <div style="display: flex; gap: 1.8rem; flex-direction: row;">
+
+            <!-- DESKTOP SIDEBAR -->
+            <aside class="sidebar-desktop">
+                <div class="sidebar-sticky">
+                    <div class="flex-start" style="margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                        <div class="avatar-initials" style="width: 52px; height: 52px;">EM</div>
+                        <div><h4 class="font-serif" style="font-size: 1.1rem; color: var(--text-primary);">Emma Chen</h4><p style="font-size: 0.7rem; color: var(--electric-blue);">Eco-Conscious Member</p></div>
+                    </div>
+                    <nav style="display: flex; flex-direction: column; gap: 0.25rem;">
+                        <p class="sidebar-section-title">Client Portal</p>
+                        <a href="#" data-section="overview" class="sidebar-link active"><i class="fas fa-chart-line"></i> <span>Dashboard</span></a>
+                        <a href="#" data-section="orders" class="sidebar-link"><i class="fas fa-shopping-bag"></i> <span>My Orders</span></a>
+                        <a href="#" data-section="impact" class="sidebar-link"><i class="fas fa-seedling"></i> <span>Sustainability Impact</span></a>
+                        <a href="#" data-section="subscription" class="sidebar-link"><i class="fas fa-calendar-alt"></i> <span>Eco-Subscription</span></a>
+                        <a href="#" data-section="wishlist" class="sidebar-link"><i class="fas fa-heart"></i> <span>Wishlist</span></a>
+                        <a href="#" data-section="profile" class="sidebar-link"><i class="fas fa-user-circle"></i> <span>My Profile</span></a>
+                        <a href="#" data-section="messages" class="sidebar-link"><i class="fas fa-envelope"></i> <span>Messages</span><span class="ml-auto" style="background: var(--electric-blue); color: white; font-size: 0.7rem; padding: 0.125rem 0.5rem; border-radius: 40px;">2</span></a>
+                        <a href="#" data-section="returns" class="sidebar-link"><i class="fas fa-undo-alt"></i> <span>Returns & Exchanges</span></a>
+                        <a href="#" data-section="logout" class="sidebar-link"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- RIGHT CONTENT -->
+            <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1.8rem;">
+                
+                <!-- OVERVIEW SECTION - WELCOME BANNER WITH FIXED VISIBILITY -->
+                <div id="overview" class="user-section">
+                    <div class="dashboard-card welcome-banner reveal" style="padding: 1.8rem;">
+                        <h1 class="font-serif" style="font-size: 1.8rem; color: white !important;">Welcome back, Emma! 🎋</h1>
+                        <p style="opacity: 1; color: white !important; font-size: 1rem; margin-top: 0.5rem;">Your sustainable journey with Bamboo Essence — track orders, reduce your footprint, and explore eco-friendly collections.</p>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="dashboard-card reveal stat-card" style="padding: 1.5rem;">
+                            <p class="stat-label"><i class="fas fa-leaf"></i> CARBON SAVED</p>
+                            <p class="stat-value">48 kg</p>
+                            <p class="stat-sub">CO₂ avoided vs. cotton</p>
+                        </div>
+                        <div class="dashboard-card reveal stat-card" style="padding: 1.5rem;">
+                            <p class="stat-label"><i class="fas fa-tshirt"></i> TOTAL ORDERS</p>
+                            <p class="stat-value">12</p>
+                            <p class="stat-sub">6 this year</p>
+                        </div>
+                        <div class="dashboard-card reveal stat-card" style="padding: 1.5rem;">
+                            <p class="stat-label"><i class="fas fa-tint"></i> WATER SAVED</p>
+                            <p class="stat-value">1,240 L</p>
+                            <p class="stat-sub">compared to conventional</p>
+                        </div>
+                        <div class="dashboard-card reveal stat-card" style="padding: 1.5rem;">
+                            <p class="stat-label"><i class="fas fa-star"></i> LOYALTY POINTS</p>
+                            <p class="stat-value">2,450</p>
+                            <p class="stat-sub">≈ $24.50 credit</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Orders -->
+                    <div class="dashboard-card reveal" style="padding: 1.5rem;">
+                        <div class="flex-between">
+                            <h2 class="font-serif" style="font-size: 1.3rem; color: var(--text-primary);"><span class="text-accent">Recent</span> Bamboo Orders</h2>
+                            <button data-section="orders" class="btn-outline-small" style="cursor: pointer;">View all →</button>
+                        </div>
+                        <div class="overflow-x-auto" style="margin-top: 1rem;">
+                            <table>
+                                <thead>
+                                    <tr><th>Order #</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>#BE-4382</td><td>May 5, 2026</td><td>Bamboo Tee + Socks Set</td><td>$78.50</td><td><span class="badge-approved">Delivered</span></td></tr>
+                                    <tr><td>#BE-4291</td><td>Apr 18, 2026</td><td>Eco Sunglasses + Tote</td><td>$54.00</td><td><span class="badge-approved">Delivered</span></td></tr>
+                                    <tr><td>#BE-4156</td><td>Mar 2, 2026</td><td>Bamboo Hoodie (Moss)</td><td>$89.00</td><td><span class="badge-pending">Processing</span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Eco-Impact Summary -->
+                    <div class="dashboard-card reveal" style="padding: 1.5rem;">
+                        <h2 class="font-serif" style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--text-primary);"><span class="text-accent">Your Green</span> Footprint</h2>
+                        <div class="impact-meter">
+                            <div class="flex-between" style="margin-bottom: 12px;"><span><i class="fas fa-recycle text-accent"></i> Plastic bottles avoided</span><strong>18</strong></div>
+                            <div class="flex-between" style="margin-bottom: 12px;"><span><i class="fas fa-tree text-accent"></i> Trees supported (reforestation)</span><strong>3</strong></div>
+                            <div class="flex-between"><span><i class="fas fa-shipping-fast text-accent"></i> Carbon-neutral shipments</span><strong>12</strong></div>
+                        </div>
+                        <p class="stat-sub" style="margin-top: 1rem;">🎋 You've helped plant 3 trees through our 1% for the Planet initiative.</p>
+                    </div>
+                    
+                    <!-- Eco-Subscription Highlight -->
+                    <div class="dashboard-card reveal" style="padding: 1.5rem;">
+                        <div class="flex-between">
+                            <h2 class="font-serif" style="font-size: 1.3rem; color: var(--text-primary);"><span class="text-accent">Eco-Subscription</span> Status</h2>
+                            <span class="badge-active">Active · Renews Jun 20</span>
+                        </div>
+                        <p style="margin-top: 0.75rem; color: var(--text-secondary);">Your monthly bamboo essentials box includes: 1 Bamboo Tee, 2 pairs of Eco Socks, and surprise accessory. Next delivery: June 25, 2026.</p>
+                        <button class="btn-outline-small mt-3" style="margin-top: 1rem;">Manage Subscription</button>
+                    </div>
+                </div>
+
+                <!-- ORDERS SECTION -->
+                <div id="orders" class="user-section hidden">
+                    <div class="dashboard-card" style="padding: 1.8rem;">
+                        <h2 class="font-serif" style="color: var(--text-primary);"><span class="text-accent">Order</span> History</h2>
+                        <div class="order-item"><div class="flex-between"><div><strong>Order #BE-4382</strong><br><span class="stat-sub">May 5, 2026 · Bamboo Tee + Socks Set</span></div><span class="badge-approved">Delivered</span></div><button class="btn-outline-small mt-3" style="margin-top: 0.5rem;">Reorder</button></div>
+                        <div class="order-item"><div class="flex-between"><div><strong>Order #BE-4291</strong><br><span class="stat-sub">Apr 18, 2026 · Eco Sunglasses + Tote</span></div><span class="badge-approved">Delivered</span></div></div>
+                        <div class="order-item"><div class="flex-between"><div><strong>Order #BE-4156</strong><br><span class="stat-sub">Mar 2, 2026 · Bamboo Hoodie (Moss Green)</span></div><span class="badge-pending">Processing</span></div></div>
+                    </div>
+                </div>
+                
+                <!-- IMPACT SECTION -->
+                <div id="impact" class="user-section hidden">
+                    <div class="dashboard-card" style="padding: 1.8rem;">
+                        <h2 class="font-serif" style="color: var(--text-primary);"><span class="text-accent">Sustainability</span> Impact Report</h2>
+                        <div style="margin-top: 1rem;">
+                            <p><i class="fas fa-water text-accent"></i> <strong>Water saved:</strong> 1,240 liters (equivalent to 8 bathtubs)</p>
+                            <p><i class="fas fa-cloud-sun text-accent"></i> <strong>Carbon footprint:</strong> 48 kg CO₂ avoided</p>
+                            <p><i class="fas fa-seedling text-accent"></i> <strong>Trees planted via partnership:</strong> 3 native saplings</p>
+                            <p><i class="fas fa-box-open text-accent"></i> <strong>Plastic-free packaging:</strong> All orders shipped in compostable mailers</p>
+                        </div>
+                        <div class="impact-meter mt-4" style="margin-top: 1.5rem;">
+                            <p class="font-serif"><i class="fas fa-charging-station"></i> Your next milestone: Save 100kg CO₂ to earn a free bamboo tote!</p>
+                            <div style="background: var(--border-color); border-radius: 20px; margin-top: 0.8rem; height: 8px;"><div style="background: var(--electric-blue); width: 48%; height: 8px; border-radius: 20px;"></div></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SUBSCRIPTION SECTION -->
+                <div id="subscription" class="user-section hidden">
+                    <div class="dashboard-card" style="padding: 1.8rem;">
+                        <h2 class="font-serif" style="color: var(--text-primary);"><span class="text-accent">Eco-Subscription</span> Plan</h2>
+                        <p><strong>Current Plan:</strong> Bamboo Essentials — $39/month</p>
+                        <p><strong>Next Billing:</strong> June 20, 2026</p>
+                        <p><strong>Includes:</strong> 1 bamboo garment + 2 accessories + surprise zero-waste gift</p>
+                        <button class="btn-primary mt-4" style="margin-top: 1.5rem;">Skip a month</button>
+                        <button class="btn-outline-small mt-3" style="margin-left: 1rem;">Upgrade to Deluxe</button>
+                    </div>
+                </div>
+                
+                <!-- WISHLIST SECTION -->
+                <div id="wishlist" class="user-section hidden">
+                    <div class="dashboard-card" style="padding: 1.8rem;">
+                        <h2 class="font-serif" style="color: var(--text-primary);"><span class="text-accent">My Wishlist</span></h2>
+                        <div class="product-item"><div><i class="fas fa-tshirt text-accent"></i> <strong>Women's Bamboo Lounge Set</strong><br><span class="stat-sub">$89.00 · Organic bamboo-cotton</span></div><button class="btn-outline-small">Add to Cart</button></div>
+                        <div class="product-item"><div><i class="fas fa-glasses text-accent"></i> <strong>Bamboo Polarized Sunglasses</strong><br><span class="stat-sub">$45.00 · UV400 protection</span></div><button class="btn-outline-small">Add to Cart</button></div>
+                    </div>
+                </div>
+                
+                <!-- PROFILE SECTION -->
+                <div id="profile" class="user-section hidden">
+                    <div class="dashboard-card" style="padding: 1.8rem;">
+                        <h2 class="font-serif" style="color: var(--text-primary);"><span class="text-accent">My Profile</span></h2>
+                        <p><strong>Name:</strong> Emma Chen</p>
+                        <p><strong>Email:</strong> emma@bambooessence.com</p>
+                        <p><strong>Member since:</strong> March 2024</p>
+                        <p><strong>Shipping default:</strong> 123 Greenway Ave, Portland, OR</p>
+                        <button class="btn-primary mt-4">Edit Profile</button>
+                    </div>
+                </div>
+                
+                <!-- MESSAGES SECTION -->
+                <div id="messages" class="user-section hidden">
+                    <div class="dashboard-card" style="padding: 1.8rem;">
+                        <h2 class="font-serif" style="color: var(--text-primary);"><span class="text-accent">Messages</span></h2>
+                        <div class="order-item"><p class="font-bold">Bamboo Essence Team</p><p style="color: var(--text-secondary);">Your subscription renewal is coming up on June 20! You'll receive a special bamboo surprise.</p><span class="stat-sub">2 days ago</span></div>
+                        <div class="order-item mt-3"><p class="font-bold">Support</p><p style="color: var(--text-secondary);">We've processed your return for order #BE-4291. Refund initiated.</p><span class="stat-sub">5 days ago</span></div>
+                    </div>
+                </div>
+                
+                <!-- RETURNS SECTION -->
+                <div id="returns" class="user-section hidden">
+                    <div class="dashboard-card" style="padding: 1.8rem;">
+                        <h2 class="font-serif" style="color: var(--text-primary);"><span class="text-accent">Returns & Exchanges</span></h2>
+                        <p>Eligible items can be returned within 30 days. Start a return request below.</p>
+                        <button class="btn-primary mt-4">Request New Return</button>
+                        <p class="stat-sub mt-4">Previously returned: Order #BE-4156 (refunded Mar 15)</p>
+                    </div>
+                </div>
+                
+                <!-- LOGOUT SECTION -->
+                <div id="logout" class="user-section hidden">
+                    <div class="dashboard-card" style="padding: 2.5rem; max-width: 500px; margin: 0 auto; text-align: center;">
+                        <div style="background: var(--accent-soft); width: 70px; height: 70px; border-radius: 50%; display: flex; margin: 0 auto 1rem; align-items: center; justify-content: center;"><i class="fas fa-sign-out-alt" style="font-size: 2rem; color: var(--electric-blue);"></i></div>
+                        <h3 class="font-serif" style="color: var(--text-primary);">Ready to leave?</h3>
+                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">You'll be signed out of your Bamboo Essence client portal.</p>
+                        <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem;">
+                            <button id="confirmLogoutBtn" style="background: #dc2626; color: white; padding: 0.6rem 1.8rem; border-radius: 40px; border: none; cursor: pointer; font-weight: 600;">Sign Out</button>
+                            <button id="cancelLogoutBtn" style="background: transparent; border: 1px solid var(--electric-blue); padding: 0.6rem 1.8rem; border-radius: 40px; cursor: pointer; color: var(--electric-blue); font-weight: 600;">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <footer style="text-align: center; font-size: 0.7rem; border-top: 1px solid var(--border-color); padding: 2rem 0 1rem;">
+                    <p class="footer-text">© 2026 Bamboo Essence — Sustainable Bamboo Apparel & Accessories. Client Dashboard.</p>
+                    <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 0.5rem;">
+                        <a href="#" class="footer-link">Privacy Policy</a>
+                        <a href="#" class="footer-link">Sustainability Pledge</a>
+                        <a href="#" class="footer-link">Help Center</a>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            const htmlEl = document.documentElement;
+            const themeToggle = document.getElementById('theme-toggle');
+            function setTheme(theme) { 
+                htmlEl.setAttribute('data-theme', theme); 
+                localStorage.setItem('bamboo-theme', theme);
+                const icon = themeToggle?.querySelector('i');
+                if(icon) icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+            const savedTheme = localStorage.getItem('bamboo-theme') || 'light';
+            setTheme(savedTheme);
+            if(themeToggle) themeToggle.addEventListener('click', () => setTheme(htmlEl.getAttribute('data-theme') === 'light' ? 'dark' : 'light'));
+            
+            const rtlToggle = document.getElementById('rtl-toggle');
+            function setDir(dir) { htmlEl.setAttribute('dir', dir); localStorage.setItem('bamboo-dir', dir); }
+            const savedDir = localStorage.getItem('bamboo-dir') || 'ltr';
+            setDir(savedDir);
+            if(rtlToggle) rtlToggle.addEventListener('click', () => setDir(htmlEl.getAttribute('dir') === 'ltr' ? 'rtl' : 'ltr'));
+            
+            const drawer = document.getElementById('sidebar-drawer');
+            const overlay = document.getElementById('drawer-overlay');
+            const openBtn = document.getElementById('mobile-menu-toggle-btn');
+            const closeDrawerBtn = document.getElementById('close-drawer');
+            function openDrawer() { drawer.classList.add('open'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+            function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
+            if(openBtn) openBtn.addEventListener('click', openDrawer);
+            if(closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeDrawer);
+            overlay.addEventListener('click', closeDrawer);
+            
+            const sections = ['overview', 'orders', 'impact', 'subscription', 'wishlist', 'profile', 'messages', 'returns', 'logout'];
+            function activateSection(sectionId) {
+                sections.forEach(id => { const el = document.getElementById(id); if(el) el.classList.add('hidden'); });
+                const activeSection = document.getElementById(sectionId);
+                if(activeSection) activeSection.classList.remove('hidden');
+                document.querySelectorAll('.sidebar-link').forEach(link => {
+                    link.classList.remove('active');
+                    if(link.getAttribute('data-section') === sectionId) link.classList.add('active');
+                });
+                closeDrawer();
+            }
+            window.activateSection = activateSection;
+            
+            document.querySelectorAll('.sidebar-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const section = link.getAttribute('data-section');
+                    if(section) activateSection(section);
+                });
+            });
+            
+            const confirmBtn = document.getElementById('confirmLogoutBtn');
+            const cancelBtn = document.getElementById('cancelLogoutBtn');
+            if(confirmBtn) confirmBtn.addEventListener('click', () => { alert('You have been signed out. Thank you for choosing sustainable fashion!'); activateSection('overview'); });
+            if(cancelBtn) cancelBtn.addEventListener('click', () => activateSection('overview'));
+            
+            const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }); }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        })();
+    </script>
+</body>
+</html>

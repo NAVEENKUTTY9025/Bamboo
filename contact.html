@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Contact | Bamboo Essence — Get in Touch with Our Sustainable Team</title>
+  <meta name="description" content="Connect with Bamboo Essence. Customer support, wholesale inquiries, Blog partnerships, and eco-consultation. We'd love to hear from you.">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F5F7F0;
+      --bg-card: #FFFFFF;
+      --bg-nav: #0D2E24;
+      --text-primary: #1A2E24;
+      --text-secondary: #3A5E4C;
+      --text-muted: #6B8E7A;
+      --border-color: #DCE8D5;
+      --electric-blue: #2A9D8F;
+      --electric-blue-light: #52B4A6;
+      --electric-blue-dark: #1E7A6E;
+      --shadow: 0 10px 30px rgba(0,0,0,0.06);
+      --nav-text: #F0F7E6;
+      --footer-text: #F0F7E6;
+      --footer-text-muted: #C2D9C2;
+      --footer-bg: #0D2E24;
+    }
+
+    body.dark {
+      --bg-primary: #121E18;
+      --bg-secondary: #0A1812;
+      --bg-card: #1B2E26;
+      --bg-nav: #071610;
+      --text-primary: #E6F0EA;
+      --text-secondary: #BED9CE;
+      --text-muted: #8EAD9E;
+      --border-color: #2D463A;
+      --electric-blue: #3AAFA0;
+      --electric-blue-dark: #2C8E82;
+      --shadow: 0 10px 30px rgba(0,0,0,0.4);
+      --nav-text: #E6F0EA;
+      --footer-text: #E6F0EA;
+      --footer-text-muted: #BED9CE;
+      --footer-bg: #071610;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      scroll-behavior: smooth;
+      line-height: 1.5;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .font-serif { font-family: 'Merriweather', serif; }
+    .blue-text { color: var(--electric-blue); }
+    
+    .btn-blue {
+      background: var(--electric-blue);
+      color: #FFFFFF;
+      font-weight: 600;
+      padding: 0.85rem 2rem;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--electric-blue);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-blue:hover { background: transparent; color: var(--electric-blue); }
+    .btn-outline-blue {
+      background: transparent;
+      border: 1px solid var(--electric-blue);
+      color: var(--electric-blue);
+      padding: 0.75rem 1.8rem;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-outline-blue:hover { background: var(--electric-blue); color: #FFFFFF; }
+
+    /* NAVBAR */
+    .navbar {
+      background: var(--bg-nav);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
+    .flex-nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+    .nav-logo-text { font-size: 1.8rem; font-weight: 700; color: var(--nav-text); text-decoration: none; letter-spacing: -0.5px; display: inline-block; line-height: 1; }
+    .nav-logo-text span { color: var(--electric-blue); font-style: italic; font-family: 'Merriweather', serif; }
+    .nav-menu-container { display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 2rem; }
+    .nav-links-group { display: flex; align-items: center; gap: 0.25rem; flex-wrap: wrap; }
+    .nav-link { color: var(--nav-text); font-weight: 500; transition: color 0.3s; padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.9rem; text-decoration: none; white-space: nowrap; }
+    .nav-link:hover, .nav-link.active { color: var(--electric-blue); background: rgba(42,157,143,0.2); }
+    .dropdown-container { position: relative; display: inline-block; }
+    .dropdown-btn { background: none; border: none; color: var(--nav-text); font-weight: 500; display: flex; align-items: center; gap: 6px; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer; font-size: 0.9rem; transition: all 0.3s; white-space: nowrap; }
+    .dropdown-btn:hover { color: var(--electric-blue); background: rgba(42,157,143,0.2); }
+    .dropdown-menu { position: absolute; left: 0; margin-top: 0.5rem; width: 220px; background: var(--bg-card); border-radius: 0.75rem; box-shadow: var(--shadow); opacity: 0; visibility: hidden; transition: all 0.3s; transform: translateY(10px); z-index: 60; border: 1px solid var(--border-color); }
+    .dropdown-container:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown-menu a { display: block; padding: 0.75rem 1.2rem; color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; }
+    .dropdown-menu a:hover { background: rgba(42,157,143,0.1); color: var(--electric-blue); }
+    .nav-buttons { display: flex; align-items: center; gap: 0.75rem; }
+    .icon-btn { width: 40px; height: 40px; border-radius: 999px; background: rgba(42,157,143,0.2); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; color: var(--nav-text); border: none; }
+    .icon-btn:hover { background: var(--electric-blue); color: #0D2E24; }
+    .login-btn { background: var(--electric-blue); color: #FFFFFF; padding: 0.5rem 1.5rem; border-radius: 999px; font-weight: 600; text-decoration: none; font-size: 0.85rem; transition: 0.3s; white-space: nowrap; }
+    .login-btn:hover { background: var(--electric-blue-light); transform: scale(1.02); }
+    
+    .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 10px; z-index: 1001; }
+    .hamburger-icon, .close-icon { font-size: 1.8rem; color: var(--nav-text); transition: all 0.3s ease; }
+    .close-icon { display: none; }
+    .mobile-menu-btn.active .hamburger-icon { display: none; }
+    .mobile-menu-btn.active .close-icon { display: block; }
+    .mobile-menu-panel { position: fixed; top: 80px; left: 0; right: 0; background: var(--bg-nav); max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; z-index: 999; box-shadow: 0 20px 30px rgba(0,0,0,0.3); }
+    .mobile-menu-panel.show { max-height: calc(100vh - 80px); overflow-y: auto; }
+    .mobile-menu-inner { padding: 0.5rem 0; }
+    .mobile-nav-item { border-bottom: 1px solid rgba(42,157,143,0.15); }
+    .mobile-nav-link { color: var(--nav-text); text-decoration: none; display: block; padding: 1rem 1.5rem; font-weight: 500; }
+    .mobile-nav-link:hover, .mobile-nav-link.active { color: var(--electric-blue); background: rgba(42,157,143,0.1); }
+    .mobile-dropdown-item { border-bottom: 1px solid rgba(42,157,143,0.15); }
+    .mobile-dropdown-btn { width: 100%; background: none; border: none; color: var(--nav-text); display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; font-size: 1rem; text-align: left; cursor: pointer; font-weight: 500; }
+    .mobile-dropdown-btn:hover { color: var(--electric-blue); background: rgba(42,157,143,0.1); }
+    .mobile-dropdown-icon { transition: transform 0.3s ease; }
+    .mobile-dropdown-icon.rotated { transform: rotate(180deg); }
+    .mobile-submenu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: rgba(0,0,0,0.2); }
+    .mobile-submenu.show { max-height: 300px; }
+    .mobile-submenu a { display: block; padding: 0.75rem 1rem 0.75rem 2.5rem; color: var(--nav-text); text-decoration: none; opacity: 0.8; font-size: 0.9rem; }
+    .mobile-submenu a:hover { color: var(--electric-blue); opacity: 1; background: rgba(42,157,143,0.05); }
+    .mobile-login-btn { display: inline-block; margin: 1rem 1.5rem; background: var(--electric-blue); color: #FFFFFF; padding: 0.75rem 1.5rem; border-radius: 999px; text-decoration: none; font-weight: 600; text-align: center; }
+    .mobile-theme-rtl { display: flex; gap: 1rem; padding: 1rem 1.5rem; border-top: 1px solid rgba(42,157,143,0.15); flex-wrap: wrap; }
+    .mobile-icon-btn { background: rgba(42,157,143,0.2); border: none; padding: 0.6rem 1rem; border-radius: 999px; color: var(--nav-text); cursor: pointer; }
+    .mobile-icon-btn:hover { background: var(--electric-blue); color: #0D2E24; }
+
+    /* Page Header */
+    .page-header { background: var(--bg-secondary); padding: 160px 0 80px; text-align: center; border-bottom: 1px solid var(--border-color); }
+    .page-header h1 { font-size: 3.5rem; font-family: 'Merriweather', serif; margin-bottom: 1rem; }
+    .breadcrumb { color: var(--text-muted); font-size: 0.9rem; }
+    .breadcrumb a { color: var(--electric-blue); text-decoration: none; }
+    
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 80px 0; border-bottom: 1px solid var(--border-color); }
+    .section-title { font-size: 2.5rem; font-family: 'Merriweather', serif; margin-bottom: 1rem; color: var(--text-primary); }
+    .section-sub { color: var(--text-secondary); max-width: 700px; }
+    .blue-divider { width: 70px; height: 2px; background: var(--electric-blue); margin: 1rem 0 2rem; }
+    
+    /* Contact Form */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-primary); }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.9rem 1rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; color: var(--text-primary); font-family: inherit; transition: 0.3s; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--electric-blue); }
+    .contact-info-card { background: var(--bg-card); padding: 2rem; border-radius: 24px; border: 1px solid var(--border-color); }
+    .contact-detail { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start; }
+    .contact-detail i { font-size: 1.3rem; color: var(--electric-blue); min-width: 30px; margin-top: 3px; }
+    
+    /* Section 2: Store Location Map */
+    .map-container { border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); height: 400px; }
+    .map-container iframe { width: 100%; height: 100%; border: 0; }
+    
+    /* Section 3: Blog Inquiries Cards */
+    .inquiry-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
+    .inquiry-card { background: var(--bg-card); padding: 2rem; text-align: center; border-radius: 20px; border: 1px solid var(--border-color); transition: all 0.3s; }
+    .inquiry-card:hover { border-color: var(--electric-blue); transform: translateY(-5px); }
+    .inquiry-icon { font-size: 2.5rem; color: var(--electric-blue); margin-bottom: 1rem; }
+    
+    /* Section 4: Bamboo Showroom Gallery */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    .gallery-item { border-radius: 20px; overflow: hidden; height: 280px; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .gallery-item:hover img { transform: scale(1.05); }
+    
+    /* Section 5: FAQ Contact Quick Answers */
+    .faq-contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .faq-contact-item { background: var(--bg-card); padding: 1.5rem; border-radius: 16px; border-left: 3px solid var(--electric-blue); }
+    
+    /* Section 6: Join Our Newsletter & Community */
+    .newsletter-banner { background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card)); border-radius: 32px; padding: 3rem; text-align: center; border: 1px solid var(--electric-blue); }
+    .newsletter-form { display: flex; max-width: 500px; margin: 1.5rem auto 0; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .newsletter-form input { flex: 1; padding: 0.9rem 1.2rem; border: 1px solid var(--border-color); border-radius: 60px; background: var(--bg-primary); color: var(--text-primary); }
+    
+    /* Footer */
+    footer { background: var(--footer-bg); padding-top: 80px; padding-bottom: 40px; border-top: 1px solid rgba(42,157,143,0.3); }
+    .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-bottom: 3rem; }
+    .footer-col h4 { font-size: 1.2rem; margin-bottom: 1.2rem; font-weight: 700; color: #FFFFFF; }
+    .footer-col a { display: block; color: #CCE3D4; text-decoration: none; margin-bottom: 0.6rem; transition: 0.2s; font-size: 0.85rem; }
+    .footer-col a:hover { color: var(--electric-blue); }
+    .footer-col p { color: #CCE3D4; line-height: 1.6; font-size: 0.85rem; }
+    .footer-logo { font-size: 1.8rem; font-weight: 700; color: #FFFFFF; text-decoration: none; letter-spacing: -0.5px; display: inline-block; margin-bottom: 1rem; }
+    .footer-logo span { color: var(--electric-blue); font-style: italic; font-family: 'Merriweather', serif; }
+    .social-icons a { display: inline-block; margin-right: 1rem; font-size: 1.2rem; color: #CCE3D4; transition: 0.2s; }
+    .social-icons a:hover { color: var(--electric-blue); }
+    .footer-contact-item { display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start; }
+    .footer-contact-item i { color: var(--electric-blue); margin-top: 2px; min-width: 18px; }
+    .footer-contact-item span, .footer-contact-item a { color: #CCE3D4; text-decoration: none; font-size: 0.85rem; }
+    .footer-copyright { border-top: 1px solid rgba(42,157,143,0.3); padding-top: 2rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; color: #AAC3B5; font-size: 0.8rem; }
+    .footer-copyright a { color: #CCE3D4; text-decoration: none; margin-left: 1rem; transition: 0.2s; }
+    .footer-copyright a:hover { color: var(--electric-blue); }
+    
+    @media (max-width: 1180px) { .nav-menu-container, .nav-buttons { display: none; } .mobile-menu-btn { display: block; } }
+    @media (max-width: 1024px) { .contact-grid, .inquiry-grid, .faq-contact-grid { grid-template-columns: 1fr; } .gallery-grid { grid-template-columns: repeat(2,1fr); } .footer-grid { grid-template-columns: repeat(2,1fr); } .section-title { font-size: 2rem; } }
+    @media (max-width: 768px) { .gallery-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; } .page-header h1 { font-size: 2.5rem; } section { padding: 60px 0; } .newsletter-form { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="flex-nav">
+      <a href="index.html" class="nav-logo-text"><span>Bamboo Essence</span></a>
+      <div class="nav-menu-container">
+        <div class="nav-links-group">
+          <div class="dropdown-container"><button class="dropdown-btn">Home <i class="fas fa-chevron-down"></i></button><div class="dropdown-menu"><a href="index.html">Home 1 </a><a href="home2.html">Home 2</a></div></div>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="service.html" class="nav-link">Service</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+         
+          <a href="faq.html" class="nav-link">FAQ</a>
+          <a href="contact.html" class="nav-link active">Contact</a>
+          <div class="dropdown-container"><button class="dropdown-btn">Dashboard <i class="fas fa-chevron-down"></i></button><div class="dropdown-menu"><a href="admin.html">Admin Dashboard</a><a href="client.html">Client Dashboard</a></div></div>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <a href="login.html" class="login-btn"> Sign In</a>
+        <a href="register.html" class="login-btn"> Sign up</a>
+        <button id="rtl-toggle" class="icon-btn" title="RTL"><i class="fas fa-exchange-alt"></i></button>
+        <button id="theme-toggle" class="icon-btn" title="Theme"><i class="fas fa-moon"></i></button>
+      </div>
+      <button id="mobile-menu-btn" class="mobile-menu-btn"><i class="fas fa-bars hamburger-icon"></i><i class="fas fa-times close-icon"></i></button>
+    </div>
+  </div>
+  <div id="mobile-menu-panel" class="mobile-menu-panel">
+    <div class="mobile-menu-inner">
+      <div class="mobile-dropdown-item"><button class="mobile-dropdown-btn" data-dropdown="mobile-home">Home <i class="fas fa-chevron-down mobile-dropdown-icon"></i></button><div class="mobile-submenu"><a href="index.html">Home 1</a><a href="home2.html">Home 2</a></div></div>
+      <div class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></div>
+      <div class="mobile-nav-item"><a href="service.html" class="mobile-nav-link">Service</a></div>
+      <div class="mobile-nav-item"><a href="blog.html" class="mobile-nav-link">Blog</a></div>
+      <div class="mobile-nav-item"><a href="faq.html" class="mobile-nav-link">Faq</a></div>
+      <div class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link active">Contact</a></div>
+      <div class="mobile-dropdown-item"><button class="mobile-dropdown-btn" data-dropdown="mobile-Dashboard">Dashboard <i class="fas fa-chevron-down mobile-dropdown-icon"></i></button><div class="mobile-submenu"><a href="admin.html">Admin Dashboard</a><a href="client.html">Client Dashboard</a></div></div>
+      <div class="mobile-nav-item"><a href="login.html" class="mobile-login-btn"> Sign In</a></div>
+      <div class="mobile-nav-item"><a href="register.html" class="mobile-login-btn"> Sign up</a></div>
+      <div class="mobile-theme-rtl"><button id="mobile-theme-toggle" class="mobile-icon-btn"><i class="fas fa-moon"></i> Theme</button><button id="mobile-rtl-toggle" class="mobile-icon-btn"><i class="fas fa-exchange-alt"></i> RTL</button></div>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Contact Us</div>
+    <h1>Let's Grow <span class="blue-text">Together</span></h1>
+    <p class="section-sub" style="margin: 1rem auto 0;">Have questions about bamboo apparel, wholesale, or Blog? Reach out — our eco-team is here to help.</p>
+  </div>
+</div>
+
+<!-- SECTION 1: Contact Form + Info -->
+<section>
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <span class="blue-text" style="letter-spacing: 2px;">GET IN TOUCH</span>
+        <h2 class="section-title">Send Us a <span class="blue-text">Bamboo Message</span></h2>
+        <div class="blue-divider"></div>
+        <form id="contactForm">
+          <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your name" required></div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="hello@example.com" required></div>
+          <div class="form-group"><label>Inquiry Type</label><select><option>Customer Support</option><option>Wholesale / Bulk Admin Dashboard</option><option>Blog Partnership</option><option>Media & Press</option><option>Other</option></select></div>
+          <div class="form-group"><label>Message</label><textarea rows="5" placeholder="Tell us how we can help..."></textarea></div>
+          <button type="submit" class="btn-blue"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </form>
+      </div>
+      <div class="contact-info-card">
+        <h3><i class="fas fa-map-pin blue-text"></i> Our Eco-Hub</h3>
+        <div class="contact-detail"><i class="fas fa-location-dot"></i><div><strong>Bamboo Essence Headquarters</strong><br>245 Greenway Ave, Suite 200<br>Portland, OR 97204</div></div>
+        <div class="contact-detail"><i class="fas fa-phone-alt"></i><div><strong>Support Hotline</strong><br><a href="tel:+18885551234" style="color:var(--electric-blue);">+1 (888) 555-1234</a><br>Mon-Fri 9am-6pm PST</div></div>
+        <div class="contact-detail"><i class="fas fa-envelope"></i><div><strong>Email Us</strong><br><a href="mailto:hello@bambooessence.com" style="color:var(--electric-blue);">hello@bambooessence.com</a><br><a href="mailto:wholesale@bambooessence.com" style="color:var(--electric-blue);">wholesale@bambooessence.com</a></div></div>
+        <div class="contact-detail"><i class="fas fa-clock"></i><div><strong>Showroom Hours</strong><br>Tuesday – Saturday: 10am – 6pm<br>Sunday & Monday: Closed (Online only)</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: Flagship Store Map + Bamboo Grove -->
+<section style="background: var(--bg-secondary);">
+  <div class="container">
+    <div style="text-align: center;">
+      <span class="blue-text" style="letter-spacing: 2px;">VISIT OUR FLAGSHIP</span>
+      <h2 class="section-title">Experience <span class="blue-text">Bamboo Firsthand</span></h2>
+      <div class="blue-divider" style="margin: 1rem auto;"></div>
+      <p class="section-sub" style="margin: 0 auto 2rem;">Come feel the softness, explore our sustainable collection, and meet our team at the Portland Eco-Hub.</p>
+    </div>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.129258764354!2d-122.676594884457!3d45.52306427910138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54950b0b7da97427%3A0x1c36b9e6f6d1851c!2sPortland%2C%20OR!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: Blog & Business Inquiries (Cards) -->
+<section>
+  <div class="container">
+    <div style="text-align: center;">
+      <span class="blue-text" style="letter-spacing: 2px;">PARTNER WITH US</span>
+      <h2 class="section-title">Let’s Build a <span class="blue-text">Greener Future</span></h2>
+      <div class="blue-divider" style="margin: 1rem auto;"></div>
+    </div>
+    <div class="inquiry-grid">
+      <div class="inquiry-card"><div class="inquiry-icon"><i class="fas fa-handshake"></i></div><h3>Wholesale & Bulk</h3><p>Stock Bamboo Essence in your retail store or eco-boutique. Minimum order discounts and custom branding available.</p><a href="#" class="btn-outline-blue" style="margin-top:1rem;">Inquire Now</a></div>
+      <div class="inquiry-card"><div class="inquiry-icon"><i class="fas fa-seedling"></i></div><h3>Blog Alliance</h3><p>Join our reforestation program or become a B Corp partner. We collaborate with like-minded organizations.</p><a href="#" class="btn-outline-blue" style="margin-top:1rem;">Partner With Us</a></div>
+      <div class="inquiry-card"><div class="inquiry-icon"><i class="fas fa-newspaper"></i></div><h3>Press & Media</h3><p>For interview requests, product samples, or press kits — our media team responds within 24h.</p><a href="#" class="btn-outline-blue" style="margin-top:1rem;">Media Contact</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: Bamboo Showroom & Product Gallery HD Images -->
+
+
+<!-- SECTION 5: Quick Answers / Contact FAQ -->
+<section>
+  <div class="container">
+    <div style="text-align: center;">
+      <span class="blue-text" style="letter-spacing: 2px;">FAST SUPPORT</span>
+      <h2 class="section-title">Common <span class="blue-text">Questions</span> — Answered</h2>
+      <div class="blue-divider" style="margin: 1rem auto;"></div>
+    </div>
+    <div class="faq-contact-grid">
+      <div class="faq-contact-item"><i class="fas fa-shipping-fast blue-text" style="font-size:1.5rem; margin-bottom:0.5rem; display:block;"></i><h3>Shipping & Returns?</h3><p>Free carbon-neutral shipping on Admin Dashboard $50+. 30-day easy returns — see our refund policy.</p><a href="#" class="blue-text" style="text-decoration:none;">Learn more →</a></div>
+      <div class="faq-contact-item"><i class="fas fa-t-shirt blue-text" style="font-size:1.5rem; margin-bottom:0.5rem; display:block;"></i><h3>Bamboo Size Guide?</h3><p>Our bamboo tees run true to size with a relaxed fit. Check the interactive size chart online.</p><a href="#" class="blue-text" style="text-decoration:none;">View sizing →</a></div>
+      <div class="faq-contact-item"><i class="fas fa-leaf blue-text" style="font-size:1.5rem; margin-bottom:0.5rem; display:block;"></i><h3>Is bamboo really sustainable?</h3><p>Yes — bamboo regenerates quickly, needs no pesticides, and uses 70% less water than cotton.</p><a href="#" class="blue-text" style="text-decoration:none;">Our impact report →</a></div>
+      <div class="faq-contact-item"><i class="fas fa-building blue-text" style="font-size:1.5rem; margin-bottom:0.5rem; display:block;"></i><h3>Wholesale Dashboard?</h3><p>Retailers & brands — apply for wholesale pricing and exclusive bulk collections.</p><a href="#" class="blue-text" style="text-decoration:none;">Become a partner →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: Join the Movement Newsletter + Community -->
+<section style="background: var(--bg-secondary);">
+  <div class="container">
+    <div class="newsletter-banner">
+      <i class="fas fa-envelope-open-text" style="font-size: 3rem; color: var(--electric-blue); margin-bottom: 1rem; display: inline-block;"></i>
+      <h2 style="font-size: 2rem;">Join the <span class="blue-text">Bamboo Community</span></h2>
+      <p style="margin-top: 0.5rem; color: var(--text-secondary);">Get 15% off your first order, plus sustainable living tips and early access to new collections.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Your email address">
+        <button class="btn-blue">Subscribe <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <p style="font-size: 0.8rem; margin-top: 1rem;"><i class="fas fa-lock"></i> No spam, just bamboo goodness. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col"><a href="index.html" class="footer-logo"><span>Bamboo Essence</span></a><p>Redefining sustainable fashion with bamboo-based apparel, accessories, and eco-home goods.</p><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-pinterest"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a></div></div>
+      <div class="footer-col"><h4>Service</h4><a href="#">Women's Bamboo</a><a href="#">Men's Collection</a><a href="#">Accessories</a><a href="#">Eco Home</a><a href="#">Gift Cards</a></div>
+      <div class="footer-col"><h4>Impact</h4><a href="#">Blog Report</a><a href="#">Carbon Offsetting</a><a href="#">Fair Trade Policy</a><a href="#">Bamboo Farming</a><a href="#">Circularity Program</a></div>
+      <div class="footer-col"><h4>Connect</h4><div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>Portland, OR — Eco Hub</span></div><div class="footer-contact-item"><i class="fas fa-phone-alt"></i><a href="tel:+18885551234">+1 (888) 555-1234</a></div><div class="footer-contact-item"><i class="fas fa-envelope"></i><a href="mailto:hello@bambooessence.com">hello@bambooessence.com</a></div><div class="footer-contact-item"><i class="fas fa-clock"></i><span>Mon-Fri 9am-6pm PST</span></div></div>
+    </div>
+    <div class="footer-copyright"><p>© 2026 Bamboo Essence — Ethical & Sustainable Apparel. All rights reserved.</p><div><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Returns</a></div></div>
+  </div>
+</footer>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+  const body = document.body;
+  function updateThemeIcon(isDark) { if(themeToggle) themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>'; if(mobileThemeToggle) mobileThemeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i> Theme' : '<i class="fas fa-moon"></i> Theme'; }
+  function toggleTheme() { if(body.classList.contains('dark')) { body.classList.remove('dark'); localStorage.setItem('theme', 'light'); updateThemeIcon(false); } else { body.classList.add('dark'); localStorage.setItem('theme', 'dark'); updateThemeIcon(true); } }
+  if(localStorage.getItem('theme') === 'dark') { body.classList.add('dark'); updateThemeIcon(true); } else updateThemeIcon(false);
+  if(themeToggle) themeToggle.addEventListener('click', toggleTheme);
+  if(mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+  
+  const rtlToggle = document.getElementById('rtl-toggle');
+  const mobileRtlToggle = document.getElementById('mobile-rtl-toggle');
+  const htmlEl = document.documentElement;
+  function toggleRTL() { if(htmlEl.getAttribute('dir') === 'rtl') { htmlEl.removeAttribute('dir'); localStorage.setItem('direction', 'ltr'); } else { htmlEl.setAttribute('dir', 'rtl'); localStorage.setItem('direction', 'rtl'); } }
+  if(rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+  if(mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+  if(localStorage.getItem('direction') === 'rtl') htmlEl.setAttribute('dir', 'rtl');
+  
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobilePanel = document.getElementById('mobile-menu-panel');
+  function toggleMobile() { mobilePanel.classList.toggle('show'); mobileBtn.classList.toggle('active'); document.body.style.overflow = mobilePanel.classList.contains('show') ? 'hidden' : ''; }
+  if(mobileBtn) mobileBtn.addEventListener('click', toggleMobile);
+  document.querySelectorAll('.mobile-nav-link, .mobile-login-btn').forEach(link => { link.addEventListener('click', () => { if(mobilePanel.classList.contains('show')) toggleMobile(); }); });
+  document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => { btn.addEventListener('click', function(e) { e.stopPropagation(); const submenu = this.nextElementSibling; const icon = this.querySelector('.mobile-dropdown-icon'); document.querySelectorAll('.mobile-submenu').forEach(menu => { if(menu !== submenu) menu.classList.remove('show'); }); document.querySelectorAll('.mobile-dropdown-icon').forEach(i => { if(i !== icon) i.classList.remove('rotated'); }); submenu.classList.toggle('show'); icon.classList.toggle('rotated'); }); });
+  window.addEventListener('resize', () => { if(window.innerWidth > 1180 && mobilePanel?.classList.contains('show')) toggleMobile(); });
+  
+  const form = document.getElementById('contactForm');
+  if(form) form.addEventListener('submit', (e) => { e.preventDefault(); alert('Thanks for reaching out! Our bamboo team will reply within 24 hours.'); form.reset(); });
+</script>
+</body>
+</html>

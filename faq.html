@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>FAQ | Bamboo Essence — Answers About Sustainable Bamboo Apparel</title>
+  <meta name="description" content="Frequently asked questions about bamboo clothing, sustainability, sizing, shipping, returns, and ethical production. Get all answers about Bamboo Essence.">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F5F7F0;
+      --bg-card: #FFFFFF;
+      --bg-nav: #0D2E24;
+      --text-primary: #1A2E24;
+      --text-secondary: #3A5E4C;
+      --text-muted: #6B8E7A;
+      --border-color: #DCE8D5;
+      --electric-blue: #2A9D8F;
+      --electric-blue-light: #52B4A6;
+      --electric-blue-dark: #1E7A6E;
+      --shadow: 0 10px 30px rgba(0,0,0,0.06);
+      --nav-text: #F0F7E6;
+      --footer-text: #F0F7E6;
+      --footer-text-muted: #C2D9C2;
+      --footer-bg: #0D2E24;
+    }
+
+    body.dark {
+      --bg-primary: #121E18;
+      --bg-secondary: #0A1812;
+      --bg-card: #1B2E26;
+      --bg-nav: #071610;
+      --text-primary: #E6F0EA;
+      --text-secondary: #BED9CE;
+      --text-muted: #8EAD9E;
+      --border-color: #2D463A;
+      --electric-blue: #3AAFA0;
+      --electric-blue-dark: #2C8E82;
+      --shadow: 0 10px 30px rgba(0,0,0,0.4);
+      --nav-text: #E6F0EA;
+      --footer-text: #E6F0EA;
+      --footer-text-muted: #BED9CE;
+      --footer-bg: #071610;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      scroll-behavior: smooth;
+      line-height: 1.5;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .font-serif { font-family: 'Merriweather', serif; }
+    .blue-text { color: var(--electric-blue); }
+    
+    .btn-blue {
+      background: var(--electric-blue);
+      color: #FFFFFF;
+      font-weight: 600;
+      padding: 0.85rem 2rem;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--electric-blue);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-blue:hover { background: transparent; color: var(--electric-blue); }
+    .btn-outline-blue {
+      background: transparent;
+      border: 1px solid var(--electric-blue);
+      color: var(--electric-blue);
+      padding: 0.75rem 1.8rem;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-outline-blue:hover { background: var(--electric-blue); color: #FFFFFF; }
+
+    /* NAVBAR */
+    .navbar {
+      background: var(--bg-nav);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
+    .flex-nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+    .nav-logo-text { font-size: 1.8rem; font-weight: 700; color: var(--nav-text); text-decoration: none; letter-spacing: -0.5px; display: inline-block; line-height: 1; }
+    .nav-logo-text span { color: var(--electric-blue); font-style: italic; font-family: 'Merriweather', serif; }
+    .nav-menu-container { display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 2rem; }
+    .nav-links-group { display: flex; align-items: center; gap: 0.25rem; flex-wrap: wrap; }
+    .nav-link { color: var(--nav-text); font-weight: 500; transition: color 0.3s; padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.9rem; text-decoration: none; white-space: nowrap; }
+    .nav-link:hover, .nav-link.active { color: var(--electric-blue); background: rgba(42,157,143,0.2); }
+    .dropdown-container { position: relative; display: inline-block; }
+    .dropdown-btn { background: none; border: none; color: var(--nav-text); font-weight: 500; display: flex; align-items: center; gap: 6px; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer; font-size: 0.9rem; transition: all 0.3s; white-space: nowrap; }
+    .dropdown-btn:hover { color: var(--electric-blue); background: rgba(42,157,143,0.2); }
+    .dropdown-menu { position: absolute; left: 0; margin-top: 0.5rem; width: 220px; background: var(--bg-card); border-radius: 0.75rem; box-shadow: var(--shadow); opacity: 0; visibility: hidden; transition: all 0.3s; transform: translateY(10px); z-index: 60; border: 1px solid var(--border-color); }
+    .dropdown-container:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown-menu a { display: block; padding: 0.75rem 1.2rem; color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; }
+    .dropdown-menu a:hover { background: rgba(42,157,143,0.1); color: var(--electric-blue); }
+    .nav-buttons { display: flex; align-items: center; gap: 0.75rem; }
+    .icon-btn { width: 40px; height: 40px; border-radius: 999px; background: rgba(42,157,143,0.2); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; color: var(--nav-text); border: none; }
+    .icon-btn:hover { background: var(--electric-blue); color: #0D2E24; }
+    .login-btn { background: var(--electric-blue); color: #FFFFFF; padding: 0.5rem 1.5rem; border-radius: 999px; font-weight: 600; text-decoration: none; font-size: 0.85rem; transition: 0.3s; white-space: nowrap; }
+    .login-btn:hover { background: var(--electric-blue-light); transform: scale(1.02); }
+    
+    .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 10px; z-index: 1001; }
+    .hamburger-icon, .close-icon { font-size: 1.8rem; color: var(--nav-text); transition: all 0.3s ease; }
+    .close-icon { display: none; }
+    .mobile-menu-btn.active .hamburger-icon { display: none; }
+    .mobile-menu-btn.active .close-icon { display: block; }
+    .mobile-menu-panel { position: fixed; top: 80px; left: 0; right: 0; background: var(--bg-nav); max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; z-index: 999; box-shadow: 0 20px 30px rgba(0,0,0,0.3); }
+    .mobile-menu-panel.show { max-height: calc(100vh - 80px); overflow-y: auto; }
+    .mobile-menu-inner { padding: 0.5rem 0; }
+    .mobile-nav-item { border-bottom: 1px solid rgba(42,157,143,0.15); }
+    .mobile-nav-link { color: var(--nav-text); text-decoration: none; display: block; padding: 1rem 1.5rem; font-weight: 500; }
+    .mobile-nav-link:hover, .mobile-nav-link.active { color: var(--electric-blue); background: rgba(42,157,143,0.1); }
+    .mobile-dropdown-item { border-bottom: 1px solid rgba(42,157,143,0.15); }
+    .mobile-dropdown-btn { width: 100%; background: none; border: none; color: var(--nav-text); display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; font-size: 1rem; text-align: left; cursor: pointer; font-weight: 500; }
+    .mobile-dropdown-btn:hover { color: var(--electric-blue); background: rgba(42,157,143,0.1); }
+    .mobile-dropdown-icon { transition: transform 0.3s ease; }
+    .mobile-dropdown-icon.rotated { transform: rotate(180deg); }
+    .mobile-submenu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: rgba(0,0,0,0.2); }
+    .mobile-submenu.show { max-height: 300px; }
+    .mobile-submenu a { display: block; padding: 0.75rem 1rem 0.75rem 2.5rem; color: var(--nav-text); text-decoration: none; opacity: 0.8; font-size: 0.9rem; }
+    .mobile-submenu a:hover { color: var(--electric-blue); opacity: 1; background: rgba(42,157,143,0.05); }
+    .mobile-login-btn { display: inline-block; margin: 1rem 1.5rem; background: var(--electric-blue); color: #FFFFFF; padding: 0.75rem 1.5rem; border-radius: 999px; text-decoration: none; font-weight: 600; text-align: center; }
+    .mobile-theme-rtl { display: flex; gap: 1rem; padding: 1rem 1.5rem; border-top: 1px solid rgba(42,157,143,0.15); flex-wrap: wrap; }
+    .mobile-icon-btn { background: rgba(42,157,143,0.2); border: none; padding: 0.6rem 1rem; border-radius: 999px; color: var(--nav-text); cursor: pointer; }
+    .mobile-icon-btn:hover { background: var(--electric-blue); color: #0D2E24; }
+
+    /* Page Header */
+    .page-header { background: var(--bg-secondary); padding: 160px 0 80px; text-align: center; border-bottom: 1px solid var(--border-color); }
+    .page-header h1 { font-size: 3.5rem; font-family: 'Merriweather', serif; margin-bottom: 1rem; }
+    .breadcrumb { color: var(--text-muted); font-size: 0.9rem; }
+    .breadcrumb a { color: var(--electric-blue); text-decoration: none; }
+    
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 80px 0; border-bottom: 1px solid var(--border-color); }
+    .section-title { font-size: 2.5rem; font-family: 'Merriweather', serif; margin-bottom: 1rem; color: var(--text-primary); }
+    .section-sub { color: var(--text-secondary); max-width: 700px; }
+    .blue-divider { width: 70px; height: 2px; background: var(--electric-blue); margin: 1rem 0 2rem; }
+    
+    /* FAQ Categories Tabs */
+    .faq-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1rem;
+    }
+    .faq-tab {
+      background: transparent;
+      border: none;
+      padding: 0.75rem 1.8rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      border-radius: 40px;
+      transition: all 0.3s;
+      font-family: inherit;
+    }
+    .faq-tab:hover { color: var(--electric-blue); background: rgba(42,157,143,0.1); }
+    .faq-tab.active {
+      background: var(--electric-blue);
+      color: white;
+    }
+    
+    /* FAQ Accordion Items */
+    .faq-category {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+    .faq-category.active-category {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .faq-item {
+      background: var(--bg-card);
+      margin-bottom: 1rem;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+    .faq-item:hover { border-color: var(--electric-blue); }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.3rem 1.8rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--text-primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-family: inherit;
+    }
+    .faq-question:hover { background: rgba(42,157,143,0.05); }
+    .faq-question i {
+      color: var(--electric-blue);
+      transition: transform 0.3s;
+      font-size: 1rem;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 0 1.8rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .faq-answer.open {
+      max-height: 500px;
+      padding: 0 1.8rem 1.5rem 1.8rem;
+    }
+    
+    /* Stats / Help Section */
+    .help-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+      margin-top: 3rem;
+      padding: 2rem;
+      background: var(--bg-secondary);
+      border-radius: 28px;
+    }
+    .help-stat i { font-size: 2rem; color: var(--electric-blue); margin-bottom: 0.5rem; display: inline-block; }
+    .help-stat h3 { font-size: 1.8rem; font-weight: 700; }
+    
+    /* Still Have Questions CTA */
+    .still-questions {
+      background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
+      text-align: center;
+      padding: 3rem;
+      border-radius: 32px;
+      border: 1px solid var(--electric-blue);
+      margin-top: 2rem;
+    }
+    
+    /* Footer */
+    footer { background: var(--footer-bg); padding-top: 80px; padding-bottom: 40px; border-top: 1px solid rgba(42,157,143,0.3); }
+    .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-bottom: 3rem; }
+    .footer-col h4 { font-size: 1.2rem; margin-bottom: 1.2rem; font-weight: 700; color: #FFFFFF; }
+    .footer-col a { display: block; color: #CCE3D4; text-decoration: none; margin-bottom: 0.6rem; transition: 0.2s; font-size: 0.85rem; }
+    .footer-col a:hover { color: var(--electric-blue); }
+    .footer-col p { color: #CCE3D4; line-height: 1.6; font-size: 0.85rem; }
+    .footer-logo { font-size: 1.8rem; font-weight: 700; color: #FFFFFF; text-decoration: none; letter-spacing: -0.5px; display: inline-block; margin-bottom: 1rem; }
+    .footer-logo span { color: var(--electric-blue); font-style: italic; font-family: 'Merriweather', serif; }
+    .social-icons a { display: inline-block; margin-right: 1rem; font-size: 1.2rem; color: #CCE3D4; transition: 0.2s; }
+    .social-icons a:hover { color: var(--electric-blue); }
+    .footer-contact-item { display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start; }
+    .footer-contact-item i { color: var(--electric-blue); margin-top: 2px; min-width: 18px; }
+    .footer-contact-item span, .footer-contact-item a { color: #CCE3D4; text-decoration: none; font-size: 0.85rem; }
+    .footer-copyright { border-top: 1px solid rgba(42,157,143,0.3); padding-top: 2rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; color: #AAC3B5; font-size: 0.8rem; }
+    .footer-copyright a { color: #CCE3D4; text-decoration: none; margin-left: 1rem; transition: 0.2s; }
+    .footer-copyright a:hover { color: var(--electric-blue); }
+    
+    @media (max-width: 1180px) { .nav-menu-container, .nav-buttons { display: none; } .mobile-menu-btn { display: block; } }
+    @media (max-width: 1024px) { .help-stats { grid-template-columns: repeat(2, 1fr); } .footer-grid { grid-template-columns: repeat(2, 1fr); } .section-title { font-size: 2rem; } }
+    @media (max-width: 768px) { .help-stats { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; } .page-header h1 { font-size: 2.5rem; } section { padding: 60px 0; } .faq-tab { padding: 0.5rem 1.2rem; font-size: 0.85rem; } }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="flex-nav">
+      <a href="index.html" class="nav-logo-text"><span>Bamboo Essence</span></a>
+      <div class="nav-menu-container">
+        <div class="nav-links-group">
+          <div class="dropdown-container"><button class="dropdown-btn">Home <i class="fas fa-chevron-down"></i></button><div class="dropdown-menu"><a href="index.html">Home 1</a><a href="home2.html">Home 2</a></div></div>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="service.html" class="nav-link">Service</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+         
+          <a href="faq.html" class="nav-link active">FAQ</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+          <div class="dropdown-container"><button class="dropdown-btn">Dashboard <i class="fas fa-chevron-down"></i></button><div class="dropdown-menu"><a href="#">Admin Dashboard</a><a href="#">Client Dashboard</a></div></div>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <a href="login.html" class="login-btn"> Sign In</a>
+        <a href="register.html" class="login-btn">Sign up</a>
+        <button id="rtl-toggle" class="icon-btn" title="RTL"><i class="fas fa-exchange-alt"></i></button>
+        <button id="theme-toggle" class="icon-btn" title="Theme"><i class="fas fa-moon"></i></button>
+      </div>
+      <button id="mobile-menu-btn" class="mobile-menu-btn"><i class="fas fa-bars hamburger-icon"></i><i class="fas fa-times close-icon"></i></button>
+    </div>
+  </div>
+  <div id="mobile-menu-panel" class="mobile-menu-panel">
+    <div class="mobile-menu-inner">
+      <div class="mobile-dropdown-item"><button class="mobile-dropdown-btn" data-dropdown="mobile-home">Home <i class="fas fa-chevron-down mobile-dropdown-icon"></i></button><div class="mobile-submenu"><a href="index.html">Home Classic</a><a href="#">Hero Modern</a></div></div>
+      <div class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></div>
+      <div class="mobile-nav-item"><a href="service.html" class="mobile-nav-link">Service</a></div>
+      <div class="mobile-nav-item"><a href="blog.html" class="mobile-nav-link">Blog</a></div>
+      
+      <div class="mobile-nav-item"><a href="faq.html" class="mobile-nav-link active">FAQ</a></div>
+      <div class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></div>
+      <div class="mobile-dropdown-item"><button class="mobile-dropdown-btn" data-dropdown="mobile-Dashboard">Dashboard <i class="fas fa-chevron-down mobile-dropdown-icon"></i></button><div class="mobile-submenu"><a href="#">Admin Dashboard</a><a href="#">Client Dashboard</a></div></div>
+      <div class="mobile-nav-item"><a href="login.html" class="mobile-login-btn"> Sign In</a></div>
+      <div class="mobile-nav-item"><a href="register.html" class="mobile-login-btn"><i class="fas fa-Serviceping-bag"></i> Sign up</a></div>
+      <div class="mobile-theme-rtl"><button id="mobile-theme-toggle" class="mobile-icon-btn"><i class="fas fa-moon"></i> Theme</button><button id="mobile-rtl-toggle" class="mobile-icon-btn"><i class="fas fa-exchange-alt"></i> RTL</button></div>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / FAQ</div>
+    <h1>Your Questions, <span class="blue-text">Answered.</span></h1>
+    <p class="section-sub" style="margin: 1rem auto 0;">Everything you need to know about bamboo clothing, sustainability, shipping, and caring for your garments.</p>
+  </div>
+</div>
+
+<!-- MAIN FAQ SECTION -->
+<section>
+  <div class="container">
+    <!-- Category Tabs -->
+    <div class="faq-tabs">
+      <button class="faq-tab active" data-category="general">🌱 General</button>
+      <button class="faq-tab" data-category="sustainability">🌍 Sustainability</button>
+      <button class="faq-tab" data-category="products">👕 Products & Sizing</button>
+      <button class="faq-tab" data-category="shipping">🚚 Shipping & Returns</button>
+      <button class="faq-tab" data-category="care">🧺 Care Instructions</button>
+    </div>
+
+    <!-- Category: General -->
+    <div id="category-general" class="faq-category active-category">
+      <div class="faq-item"><button class="faq-question">What is Bamboo Essence? <i class="fas fa-chevron-down"></i></button><div class="faq-answer">Bamboo Essence is a sustainable fashion brand dedicated to creating high-quality apparel and accessories from organic bamboo fibers. We focus on ethical production, eco-friendly packaging, and carbon-neutral operations.</div></div>
+      <div class="faq-item"><button class="faq-question">Where are your products made? <i class="fas fa-chevron-down"></i></button><div class="faq-answer">Our bamboo fabric is sourced from FSC-certified bamboo groves in Southeast Asia, and all garments are ethically manufactured in WRAP-certified facilities in Vietnam and China. We visit each factory regularly to ensure fair wages and safe conditions.</div></div>
+      <div class="faq-item"><button class="faq-question">Is Bamboo Essence a B Corp? <i class="fas fa-chevron-down"></i></button><div class="faq-answer">We are currently pursuing B Corp certification and expect to complete the process by 2026. Meanwhile, we follow B Corp standards for social and environmental performance.</div></div>
+      <div class="faq-item"><button class="faq-question">Do you have a physical store? <i class="fas fa-chevron-down"></i></button><div class="faq-answer">Yes! Our flagship Eco-Hub is located in Portland, Oregon at 245 Greenway Ave. We also have seasonal pop-ups in Seattle and San Francisco. Visit our Contact page for hours.</div></div>
+    </div>
+
+    <!-- Category: Sustainability -->
+    <div id="category-sustainability" class="faq-category">
+      <div class="faq-item"><button class="faq-question">Why is bamboo more sustainable than cotton? <i class="fas fa-chevron-down"></i></button><div class="faq-answer">Bamboo grows rapidly without pesticides, requires 70% less water than cotton, and absorbs 5x more CO2. It also regenerates from its own roots, eliminating the need for replanting.</div></div>
+      <div class="faq-item"><button class="faq-question">Is bamboo fabric biodegradable? <i class="fas fa-chevron-down"></i></button><div class="faq-answer">Yes! Our bamboo fabric is 100% biodegradable and will naturally decompose in soil conditions within 1-2 years, leaving no microplastics behind.</div></div>
+      <div class="faq-item"><button class="faq-question">What does carbon-neutral shipping mean? <i class="fas fa-chevron-down"></i></button><div class="faq-answer">We calculate the carbon footprint of every shipment and invest in verified reforestation and renewable energy projects to offset those emissions completely.</div></div>
+      <div class="faq-item"><button class="faq-question">Do you use recycled packaging? <i class="fas fa-chevron-down"></i></button><div class="faq-answer">Absolutely. All our mailers are made from 100% recycled materials and are home-compostable. Shipping boxes are FSC-certified and plastic-free.</div></div>
+    </div>
+
+    <!-- Category: Products & Sizing -->
+    <div id="category-products" class="faq-category">
+      <div class="faq-item"><button class="faq-question">How does bamboo fabric feel? <i class="fas fa-chevron-down"></i></button><div class="faq-answer">Bamboo fabric is incredibly soft — often compared to cashmere or silk. It's breathable, hypoallergenic, and naturally moisture-wicking, making it perfect for sensitive skin.</div></div>
+      <div class="faq-item"><button class="faq-question">What sizes do you offer? <i class="fas fa-chevron-down"></i></button><div class="faq-answer">We offer unisex sizing from XS to 3XL. Our bamboo fabric has a slight stretch, and we provide detailed size charts on each product page. If between sizes, we recommend sizing up for a relaxed fit.</div></div>
+      <div class="faq-item"><button class="faq-question">Do you offer organic bamboo only? <i class="fas fa-chevron-down"></i></button><div class="faq-answer">Yes, all our bamboo fiber is organically grown without synthetic pesticides or fertilizers. We also use OEKO-TEX certified dyes that are free from harmful chemicals.</div></div>
+      <div class="faq-item"><button class="faq-question">What accessories do you sell? <i class="fas fa-chevron-down"></i></button><div class="faq-answer">Our accessory line includes bamboo sunglasses, reusable straws, phone cases, eco-totes, and bamboo-fiber socks. Each item is designed to be plastic-free and functional.</div></div>
+    </div>
+
+    <!-- Category: Shipping & Returns -->
+    <div id="category-shipping" class="faq-category">
+      <div class="faq-item"><button class="faq-question">How long does shipping take? <i class="fas fa-chevron-down"></i></button><div class="faq-answer">US Admin Dashboard typically arrive within 3-7 business days. International shipping takes 7-14 business days. Expedited options are available at checkout.</div></div>
+      <div class="faq-item"><button class="faq-question">Do you ship internationally? <i class="fas fa-chevron-down"></i></button><div class="faq-answer">Yes! We ship to over 40 countries worldwide. Shipping costs and delivery times vary by destination — calculated at checkout.</div></div>
+      <div class="faq-item"><button class="faq-question">What is your return policy? <i class="fas fa-chevron-down"></i></button><div class="faq-answer">We offer free returns within 30 days of delivery. Items must be unworn, unwashed, with original tags. Start a return through your Dashboard or contact support.</div></div>
+      <div class="faq-item"><button class="faq-question">My order arrived damaged — what should I do? <i class="fas fa-chevron-down"></i></button><div class="faq-answer">We're sorry! Please email photos of the damage to support@bambooessence.com within 7 days, and we'll send a replacement or full refund immediately.</div></div>
+    </div>
+
+    <!-- Category: Care Instructions -->
+    <div id="category-care" class="faq-category">
+      <div class="faq-item"><button class="faq-question">How should I wash bamboo clothes? <i class="fas fa-chevron-down"></i></button><div class="faq-answer">Machine wash cold with like colors on a gentle cycle. Use mild, eco-friendly detergent. Avoid bleach and fabric softeners as they can break down bamboo fibers.</div></div>
+      <div class="faq-item"><button class="faq-question">Can I tumble dry bamboo garments? <i class="fas fa-chevron-down"></i></button><div class="faq-answer">We recommend line drying or tumble drying on low heat. High heat may cause shrinkage. Bamboo dries quickly due to its breathable nature.</div></div>
+      <div class="faq-item"><button class="faq-question">Does bamboo fabric pill? <i class="fas fa-chevron-down"></i></button><div class="faq-answer">Quality bamboo fabric resists pilling. Our garments are made with long-staple fibers that maintain smoothness. Following care instructions will keep them pill-free for years.</div></div>
+      <div class="faq-item"><button class="faq-question">How to remove stains from bamboo fabric? <i class="fas fa-chevron-down"></i></button><div class="faq-answer">Spot clean gently with mild soap. For tougher stains, soak in cold water with baking soda before washing. Avoid harsh stain removers.</div></div>
+    </div>
+
+    <!-- Help Stats Section -->
+    <div class="help-stats">
+      <div class="help-stat"><i class="fas fa-headset"></i><h3>24/7</h3><p>Live Chat Support</p></div>
+      <div class="help-stat"><i class="fas fa-truck-fast"></i><h3>3-7 Days</h3><p>Average Delivery</p></div>
+      <div class="help-stat"><i class="fas fa-undo-alt"></i><h3>30 Days</h3><p>Free Returns</p></div>
+      <div class="help-stat"><i class="fas fa-smile"></i><h3>98%</h3><p>Customer Satisfaction</p></div>
+    </div>
+
+    <!-- Still Have Questions CTA -->
+    <div class="still-questions">
+      <i class="fas fa-question-circle" style="font-size: 3rem; color: var(--electric-blue); margin-bottom: 1rem;"></i>
+      <h3 style="font-size: 1.8rem;">Still <span class="blue-text">Have Questions?</span></h3>
+      <p style="margin: 1rem 0; color: var(--text-secondary);">Our bamboo support team is here to help with any unanswered questions.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="contact.html" class="btn-blue"><i class="fas fa-envelope"></i> Contact Support</a>
+        <a href="#" class="btn-outline-blue"><i class="fas fa-comment-dots"></i> Live Chat</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col"><a href="index.html" class="footer-logo"><span>Bamboo Essence</span></a><p>Redefining sustainable fashion with bamboo-based apparel, accessories, and eco-home goods.</p><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-pinterest"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a></div></div>
+      <div class="footer-col"><h4>Service</h4><a href="#">Women's Bamboo</a><a href="#">Men's Collection</a><a href="#">Accessories</a><a href="#">Eco Home</a><a href="#">Gift Cards</a></div>
+      <div class="footer-col"><h4>Impact</h4><a href="#">Sustainability Report</a><a href="#">Carbon Offsetting</a><a href="#">Fair Trade Policy</a><a href="#">Bamboo Farming</a><a href="#">Circularity Program</a></div>
+      <div class="footer-col"><h4>Connect</h4><div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>Portland, OR — Eco Hub</span></div><div class="footer-contact-item"><i class="fas fa-phone-alt"></i><a href="tel:+18885551234">+1 (888) 555-1234</a></div><div class="footer-contact-item"><i class="fas fa-envelope"></i><a href="mailto:hello@bambooessence.com">hello@bambooessence.com</a></div><div class="footer-contact-item"><i class="fas fa-clock"></i><span>Mon-Fri 9am-6pm PST</span></div></div>
+    </div>
+    <div class="footer-copyright"><p>© 2026 Bamboo Essence — Ethical & Sustainable Apparel. All rights reserved.</p><div><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Returns</a></div></div>
+  </div>
+</footer>
+
+<script>
+  // Theme Toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+  const body = document.body;
+  function updateThemeIcon(isDark) { if(themeToggle) themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>'; if(mobileThemeToggle) mobileThemeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i> Theme' : '<i class="fas fa-moon"></i> Theme'; }
+  function toggleTheme() { if(body.classList.contains('dark')) { body.classList.remove('dark'); localStorage.setItem('theme', 'light'); updateThemeIcon(false); } else { body.classList.add('dark'); localStorage.setItem('theme', 'dark'); updateThemeIcon(true); } }
+  if(localStorage.getItem('theme') === 'dark') { body.classList.add('dark'); updateThemeIcon(true); } else updateThemeIcon(false);
+  if(themeToggle) themeToggle.addEventListener('click', toggleTheme);
+  if(mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+  
+  // RTL
+  const rtlToggle = document.getElementById('rtl-toggle');
+  const mobileRtlToggle = document.getElementById('mobile-rtl-toggle');
+  const htmlEl = document.documentElement;
+  function toggleRTL() { if(htmlEl.getAttribute('dir') === 'rtl') { htmlEl.removeAttribute('dir'); localStorage.setItem('direction', 'ltr'); } else { htmlEl.setAttribute('dir', 'rtl'); localStorage.setItem('direction', 'rtl'); } }
+  if(rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+  if(mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+  if(localStorage.getItem('direction') === 'rtl') htmlEl.setAttribute('dir', 'rtl');
+  
+  // Mobile Menu
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobilePanel = document.getElementById('mobile-menu-panel');
+  function toggleMobile() { mobilePanel.classList.toggle('show'); mobileBtn.classList.toggle('active'); document.body.style.overflow = mobilePanel.classList.contains('show') ? 'hidden' : ''; }
+  if(mobileBtn) mobileBtn.addEventListener('click', toggleMobile);
+  document.querySelectorAll('.mobile-nav-link, .mobile-login-btn').forEach(link => { link.addEventListener('click', () => { if(mobilePanel.classList.contains('show')) toggleMobile(); }); });
+  document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => { btn.addEventListener('click', function(e) { e.stopPropagation(); const submenu = this.nextElementSibling; const icon = this.querySelector('.mobile-dropdown-icon'); document.querySelectorAll('.mobile-submenu').forEach(menu => { if(menu !== submenu) menu.classList.remove('show'); }); document.querySelectorAll('.mobile-dropdown-icon').forEach(i => { if(i !== icon) i.classList.remove('rotated'); }); submenu.classList.toggle('show'); icon.classList.toggle('rotated'); }); });
+  window.addEventListener('resize', () => { if(window.innerWidth > 1180 && mobilePanel?.classList.contains('show')) toggleMobile(); });
+  
+  // FAQ Category Tabs
+  const tabs = document.querySelectorAll('.faq-tab');
+  const categories = document.querySelectorAll('.faq-category');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const category = tab.dataset.category;
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      categories.forEach(cat => cat.classList.remove('active-category'));
+      document.getElementById(`category-${category}`).classList.add('active-category');
+    });
+  });
+  
+  // FAQ Accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer = btn.nextElementSibling;
+      const icon = btn.querySelector('.fa-chevron-down');
+      answer.classList.toggle('open');
+      if(icon) icon.style.transform = answer.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+    });
+  });
+</script>
+</body>
+</html>

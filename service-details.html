@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Service Details | Bamboo Essence</title>
+  <meta name="description" content="Dynamic service details page - learn more about our sustainable bamboo services">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F5F7F0;
+      --bg-card: #FFFFFF;
+      --text-primary: #1A2E24;
+      --text-secondary: #3A5E4C;
+      --text-muted: #6B8E7A;
+      --border-color: #DCE8D5;
+      --electric-blue: #2A9D8F;
+      --electric-blue-light: #52B4A6;
+      --electric-blue-dark: #1E7A6E;
+      --shadow: 0 20px 40px rgba(0,0,0,0.08);
+      --shadow-hover: 0 25px 45px rgba(0,0,0,0.12);
+    }
+
+    body.dark {
+      --bg-primary: #121E18;
+      --bg-secondary: #0A1812;
+      --bg-card: #1B2E26;
+      --text-primary: #E6F0EA;
+      --text-secondary: #BED9CE;
+      --text-muted: #8EAD9E;
+      --border-color: #2D463A;
+      --electric-blue: #3AAFA0;
+      --electric-blue-dark: #2C8E82;
+      --shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+      color: var(--text-primary);
+      line-height: 1.5;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      min-height: 100vh;
+    }
+
+    .font-serif {
+      font-family: 'Merriweather', serif;
+    }
+
+    .blue-text { color: var(--electric-blue); }
+    
+    /* Container */
+    .detail-container {
+      max-width: 1200px;
+      margin: 100px auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Main Card */
+    .detail-card {
+      background: var(--bg-card);
+      border-radius: 48px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .detail-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Hero Image Section */
+    .detail-image-wrapper {
+      width: 100%;
+      height: 450px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .detail-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .detail-card:hover .detail-image {
+      transform: scale(1.02);
+    }
+
+    .image-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+      padding: 2rem;
+    }
+
+    .service-badge {
+      display: inline-block;
+      background: var(--electric-blue);
+      color: white;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    /* Content Area */
+    .detail-content {
+      padding: 2.5rem 3rem;
+    }
+
+    .service-title {
+      font-size: 3rem;
+      font-family: 'Merriweather', serif;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .service-description {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      border-left: 3px solid var(--electric-blue);
+      padding-left: 1.5rem;
+    }
+
+    /* Info Grid */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .info-section {
+      background: var(--bg-secondary);
+      border-radius: 24px;
+      padding: 1.5rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .info-section h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--electric-blue);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-section h3 i {
+      font-size: 1.4rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-list li i {
+      color: var(--electric-blue);
+      font-size: 1rem;
+      width: 24px;
+    }
+
+    /* Stats Section */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--bg-primary);
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--electric-blue);
+      font-family: 'Merriweather', serif;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 2px solid var(--border-color);
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--electric-blue);
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      border: 1px solid var(--electric-blue);
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--electric-blue);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--electric-blue);
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      border: 1px solid var(--electric-blue);
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      background: var(--electric-blue);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Navigation Bar for Detail Page */
+    .nav-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg-nav);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(42,157,143,0.2);
+    }
+
+    :root {
+      --bg-nav: #0D2E24;
+    }
+    body.dark {
+      --bg-nav: #071610;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--electric-blue);
+      font-style: italic;
+    }
+
+    .nav-controls {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .icon-btn-small {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-btn-small:hover {
+      background: var(--electric-blue);
+    }
+
+    /* Loading State */
+    .loading {
+      text-align: center;
+      padding: 4rem;
+      font-size: 1.2rem;
+      color: var(--electric-blue);
+    }
+
+    /* Error State */
+    .error-message {
+      text-align: center;
+      padding: 4rem;
+      background: var(--bg-card);
+      border-radius: 32px;
+      margin: 100px auto;
+      max-width: 600px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .detail-content {
+        padding: 1.5rem;
+      }
+      .service-title {
+        font-size: 2rem;
+      }
+      .info-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .detail-image-wrapper {
+        height: 250px;
+      }
+      .cta-section {
+        flex-direction: column;
+      }
+      .btn-primary, .btn-secondary {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .detail-container {
+        margin: 80px auto;
+      }
+      .service-title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Fixed Navigation Bar for Detail Page -->
+<div class="nav-bar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" id="homeLink"><span>Bamboo</span> Essence</a>
+    <div class="nav-controls">
+      <button id="detail-theme-toggle" class="icon-btn-small" title="Dark/Light Mode"><i class="fas fa-moon"></i></button>
+      <button id="detail-close-btn" class="icon-btn-small" title="Close Window"><i class="fas fa-times"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- Dynamic Content Container -->
+<div id="detail-container" class="detail-container">
+  <div class="loading">
+    <i class="fas fa-spinner fa-spin fa-2x"></i>
+    <p style="margin-top: 1rem;">Loading service details...</p>
+  </div>
+</div>
+
+<script>
+  // Get service data from URL parameters
+  function getServiceFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const serviceData = urlParams.get('data');
+    if (serviceData) {
+      try {
+        return JSON.parse(decodeURIComponent(serviceData));
+      } catch(e) {
+        console.error('Failed to parse service data', e);
+        return null;
+      }
+    }
+    return null;
+  }
+
+  // Default fallback data in case URL parameter is missing (for direct access)
+  const defaultServiceData = {
+    id: "service1",
+    name: "Organic Fabric Supply",
+    description: "Premium OEKO-TEX certified bamboo fabrics for designers and brands. Soft, breathable, and fully biodegradable.",
+    features: ["100% Organic Bamboo", "Bulk & Wholesale Pricing", "Custom Dye Options", "OEKO-TEX Certified", "Low MOQ Available"],
+    longDescription: "Our Organic Fabric Supply service provides the highest quality bamboo fabrics sourced from sustainable forests. We work directly with ethical mills that use closed-loop processing, ensuring minimal environmental impact. The fabric is naturally antibacterial, moisture-wicking, and incredibly soft — perfect for apparel, bedding, and home textiles. We offer over 30 natural colors and custom dye services using low-impact, non-toxic dyes. Whether you're an independent designer or a large brand, we provide flexible wholesale options and worldwide shipping.",
+    stats: [
+      { number: "10,000+", label: "Yards Sold" },
+      { number: "98%", label: "Water Recycled" },
+      { number: "50+", label: "Global Partners" }
+    ],
+    benefits: [
+      "Hypoallergenic & gentle on sensitive skin",
+      "Naturally UV resistant",
+      "Biodegradable & compostable",
+      "Carbon negative production"
+    ],
+    image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=2070&auto=format"
+  };
+
+  // Service-specific enhanced content mapping
+  const serviceDetailsMap = {
+    "Organic Fabric Supply": {
+      longDescription: "Our Organic Fabric Supply service provides the highest quality bamboo fabrics sourced from sustainable forests. We work directly with ethical mills that use closed-loop processing, ensuring minimal environmental impact. The fabric is naturally antibacterial, moisture-wicking, and incredibly soft — perfect for apparel, bedding, and home textiles. We offer over 30 natural colors and custom dye services using low-impact, non-toxic dyes. Whether you're an independent designer or a large brand, we provide flexible wholesale options and worldwide shipping.",
+      stats: [
+        { number: "10,000+", label: "Yards Sold" },
+        { number: "98%", label: "Water Recycled" },
+        { number: "50+", label: "Global Partners" }
+      ],
+      benefits: [
+        "Hypoallergenic & gentle on sensitive skin",
+        "Naturally UV resistant",
+        "Biodegradable & compostable",
+        "Carbon negative production"
+      ]
+    },
+    "Custom Manufacturing": {
+      longDescription: "Turn your sustainable vision into reality with our custom manufacturing service. We specialize in producing bespoke bamboo apparel, accessories, and home goods with strict ethical labor standards. From initial design consultation to prototyping and bulk production, our team ensures every piece meets the highest quality and sustainability benchmarks. We use eco-friendly dyes, zero-waste cutting techniques, and recyclable packaging. Small batch Admin Dashboard welcome — no minimums for startups!",
+      stats: [
+        { number: "500+", label: "Products Made" },
+        { number: "100%", label: "Ethical Labor" },
+        { number: "4-6", label: "Weeks Lead Time" }
+      ],
+      benefits: [
+        "Custom labeling & branding",
+        "Eco-friendly printing options",
+        "Size inclusive patterns",
+        "Recycled material blending available"
+      ]
+    },
+    "Sustainability Consulting": {
+      longDescription: "Expert guidance for brands transitioning to circular economy models. Our sustainability consultants provide comprehensive carbon audits, supply chain mapping, and green certification assistance. We've helped over 200 businesses reduce their environmental footprint by an average of 45% within 12 months. Services include carbon footprint analysis, sustainable material sourcing strategies, waste reduction planning, and B Corp preparation. Let us help you build a credible, impactful sustainability roadmap.",
+      stats: [
+        { number: "200+", label: "Businesses Helped" },
+        { number: "45%", label: "Avg. Reduction" },
+        { number: "15+", label: "Countries Served" }
+      ],
+      benefits: [
+        "B Corp & Climate Neutral certified guidance",
+        "Supply chain transparency reports",
+        "Employee sustainability training",
+        "Annual impact measurement"
+      ]
+    },
+    "Zero-Waste Packaging": {
+      longDescription: "Revolutionize your packaging with our 100% plastic-free, home-compostable solutions. Our zero-waste packaging includes mushroom-based mailers, seaweed film, bamboo fiber boxes, and plant-based void fill. All materials break down within 90 days in home compost conditions. We offer custom sizing, branded printing with soy-based inks, and bulk ordering for e-commerce businesses of any size. Join the movement to eliminate single-use plastics from supply chains.",
+      stats: [
+        { number: "1M+", label: "Packages Saved" },
+        { number: "100%", label: "Biodegradable" },
+        { number: "90", label: "Days to Decompose" }
+      ],
+      benefits: [
+        "Custom branding available",
+        "Bulk & subscription pricing",
+        "Fully plastic-free certification",
+        "Carbon neutral shipping of packaging"
+      ]
+    },
+    "Carbon Offset Programs": {
+      longDescription: "Take meaningful climate action with our verified carbon offset programs. We partner with Gold Standard and Verra certified projects including bamboo reforestation in Southeast Asia, wind energy in India, and improved cookstoves in Africa. Our subscription model makes it easy for businesses and individuals to offset their unavoidable emissions. Every offset is third-party verified, and you receive quarterly impact reports with GPS-tracked reforestation photos.",
+      stats: [
+        { number: "25,000+", label: "Tons Offset" },
+        { number: "150,000+", label: "Trees Planted" },
+        { number: "500+", label: "Active Members" }
+      ],
+      benefits: [
+        "Monthly subscription plans",
+        "Personalized offset calculators",
+        "Blockchain-verified credits",
+        "Corporate packages available"
+      ]
+    },
+    "Ethical Workshops": {
+      longDescription: "Engage your team or community with our interactive sustainability workshops. From hands-on bamboo craft sessions to zero-waste living masterclasses, our workshops are designed to inspire and educate. We offer both virtual and in-person formats, ranging from 2-hour sessions to full-day intensive programs. Topics include: bamboo farming basics, DIY eco-products, sustainable fashion design, and corporate circular economy strategies. All materials provided are 100% sustainable.",
+      stats: [
+        { number: "150+", label: "Workshops Held" },
+        { number: "5,000+", label: "Participants" },
+        { number: "98%", label: "Satisfaction Rate" }
+      ],
+      benefits: [
+        "Customized curriculum",
+        "Take-home sustainable kits",
+        "CEU certification available",
+        "Team building focus"
+      ]
+    }
+  };
+
+  // Render the service detail page
+  function renderServiceDetails(service) {
+    if (!service) {
+      showError();
+      return;
+    }
+
+    const enhanced = serviceDetailsMap[service.name] || {};
+    const longDesc = enhanced.longDescription || service.longDescription || `${service.description} Our team is dedicated to providing exceptional sustainable solutions tailored to your needs. With years of expertise in bamboo-based products and eco-friendly practices, we ensure every project meets the highest standards of quality and environmental responsibility. Contact us today to start your sustainable journey.`;
+    const stats = enhanced.stats || [
+      { number: "500+", label: "Projects Completed" },
+      { number: "100%", label: "Eco-Certified" },
+      { number: "24/7", label: "Support Available" }
+    ];
+    const benefits = enhanced.benefits || service.features || [
+      "Expert team with 10+ years experience",
+      "Custom solutions tailored to your needs",
+      "Global shipping & support",
+      "100% satisfaction guaranteed"
+    ];
+    
+    const imageUrl = service.image || "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1974&auto=format";
+
+    const html = `
+      <div class="detail-card">
+        <div class="detail-image-wrapper">
+          <img class="detail-image" src="${imageUrl}" alt="${service.name}" onerror="this.src='https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1974&auto=format'">
+          <div class="image-overlay">
+            <span class="service-badge"><i class="fas fa-seedling"></i> Premium Service</span>
+          </div>
+        </div>
+        <div class="detail-content">
+          <h1 class="service-title">${escapeHtml(service.name)}</h1>
+          <p class="service-description">${escapeHtml(longDesc)}</p>
+          
+          <div class="info-grid">
+            <div class="info-section">
+              <h3><i class="fas fa-check-circle"></i> Key Features</h3>
+              <ul class="feature-list">
+                ${service.features && service.features.length ? service.features.map(f => `<li><i class="fas fa-leaf"></i> ${escapeHtml(f)}</li>`).join('') : ''}
+                ${benefits.map(b => `<li><i class="fas fa-bamboo"></i> ${escapeHtml(b)}</li>`).join('')}
+              </ul>
+            </div>
+            <div class="info-section">
+              <h3><i class="fas fa-chart-line"></i> Why Choose Us</h3>
+              <ul class="feature-list">
+                <li><i class="fas fa-certificate"></i> Certified sustainable practices</li>
+                <li><i class="fas fa-trophy"></i> Award-winning eco-innovation</li>
+                <li><i class="fas fa-globe"></i> Carbon-neutral operations</li>
+                <li><i class="fas fa-heart"></i> Fair trade & ethical guarantee</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            ${stats.map(stat => `
+              <div class="stat-item">
+                <div class="stat-number">${escapeHtml(stat.number)}</div>
+                <div class="stat-label">${escapeHtml(stat.label)}</div>
+              </div>
+            `).join('')}
+          </div>
+
+          <div class="cta-section">
+            <button class="btn-primary" id="contactBtn"><i class="fas fa-envelope"></i> Request a Quote</button>
+            <button class="btn-secondary" id="closeWindowBtn"><i class="fas fa-arrow-left"></i> Back to Services</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    const container = document.getElementById('detail-container');
+    if (container) {
+      container.innerHTML = html;
+      
+      // Attach event listeners to buttons
+      const contactBtn = document.getElementById('contactBtn');
+      if (contactBtn) {
+        contactBtn.addEventListener('click', () => {
+          alert(`Thank you for your interest in ${service.name}!\n\nOur team will contact you within 24 hours with a customized quote.`);
+        });
+      }
+      
+      const closeBtn = document.getElementById('closeWindowBtn');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          window.close();
+          // Fallback if window.close() doesn't work (some browsers block)
+          setTimeout(() => {
+            window.history.back();
+          }, 100);
+        });
+      }
+    }
+  }
+
+  function showError() {
+    const container = document.getElementById('detail-container');
+    if (container) {
+      container.innerHTML = `
+        <div class="error-message">
+          <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--electric-blue); margin-bottom: 1rem; display: block;"></i>
+          <h2>Service Not Found</h2>
+          <p style="margin: 1rem 0; color: var(--text-secondary);">We couldn't find the service details you're looking for.</p>
+          <button class="btn-primary" onclick="window.close()" style="margin-top: 1rem;"><i class="fas fa-arrow-left"></i> Close Window</button>
+        </div>
+      `;
+    }
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  // Dark Mode for detail page
+  function initDetailPageTheme() {
+    const body = document.body;
+    const themeBtn = document.getElementById('detail-theme-toggle');
+    
+    function updateThemeIcon(isDark) {
+      if (themeBtn) {
+        themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+      }
+    }
+    
+    if (localStorage.getItem('detailTheme') === 'dark') {
+      body.classList.add('dark');
+      updateThemeIcon(true);
+    } else {
+      updateThemeIcon(false);
+    }
+    
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        if (body.classList.contains('dark')) {
+          body.classList.remove('dark');
+          localStorage.setItem('detailTheme', 'light');
+          updateThemeIcon(false);
+        } else {
+          body.classList.add('dark');
+          localStorage.setItem('detailTheme', 'dark');
+          updateThemeIcon(true);
+        }
+      });
+    }
+  }
+
+  // Close button handler
+  function initCloseButton() {
+    const closeBtn = document.getElementById('detail-close-btn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        window.close();
+        setTimeout(() => {
+          window.history.back();
+        }, 100);
+      });
+    }
+    
+    const homeLink = document.getElementById('homeLink');
+    if (homeLink) {
+      homeLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.close();
+      });
+    }
+  }
+
+  // Initialize page
+  function init() {
+    initDetailPageTheme();
+    initCloseButton();
+    
+    const serviceData = getServiceFromURL();
+    
+    if (serviceData) {
+      renderServiceDetails(serviceData);
+    } else {
+      // Fallback: try to use default or show error
+      renderServiceDetails(defaultServiceData);
+    }
+  }
+  
+  // Run init when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+</script>
+</body>
+</html>

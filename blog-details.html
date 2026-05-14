@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Blog Details | Bamboo Essence - Sustainable Stories</title>
+  <meta name="description" content="Read full articles about sustainable bamboo fashion, eco-living tips, and our journey toward a greener planet.">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F5F7F0;
+      --bg-card: #FFFFFF;
+      --bg-nav: #0D2E24;
+      --text-primary: #1A2E24;
+      --text-secondary: #3A5E4C;
+      --text-muted: #6B8E7A;
+      --border-color: #DCE8D5;
+      --electric-blue: #2A9D8F;
+      --electric-blue-light: #52B4A6;
+      --electric-blue-dark: #1E7A6E;
+      --shadow: 0 20px 40px rgba(0,0,0,0.08);
+      --shadow-lg: 0 25px 50px rgba(0,0,0,0.12);
+    }
+
+    body.dark {
+      --bg-primary: #121E18;
+      --bg-secondary: #0A1812;
+      --bg-card: #1B2E26;
+      --bg-nav: #071610;
+      --text-primary: #E6F0EA;
+      --text-secondary: #BED9CE;
+      --text-muted: #8EAD9E;
+      --border-color: #2D463A;
+      --electric-blue: #3AAFA0;
+      --electric-blue-dark: #2C8E82;
+      --shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      min-height: 100vh;
+    }
+
+    .font-serif {
+      font-family: 'Merriweather', serif;
+    }
+
+    .blue-text { color: var(--electric-blue); }
+    
+    /* Navigation Bar */
+    .nav-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg-nav);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(42,157,143,0.2);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+    .nav-logo span {
+      color: var(--electric-blue);
+      font-style: italic;
+      font-family: 'Merriweather', serif;
+    }
+    .nav-controls {
+      display: flex;
+      gap: 0.8rem;
+    }
+    .icon-btn-small {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .icon-btn-small:hover {
+      background: var(--electric-blue);
+    }
+
+    /* Main Content Container */
+    .post-container {
+      max-width: 1000px;
+      margin: 100px auto;
+      padding: 0 1.5rem;
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Blog Card */
+    .blog-detail-card {
+      background: var(--bg-card);
+      border-radius: 48px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .blog-detail-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Hero Image */
+    .hero-image-wrapper {
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .blog-detail-card:hover .hero-image {
+      transform: scale(1.02);
+    }
+    .image-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+      padding: 2rem;
+    }
+    .category-badge {
+      display: inline-block;
+      background: var(--electric-blue);
+      color: white;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    /* Content Area */
+    .post-content {
+      padding: 2.5rem 3rem;
+    }
+    .post-title {
+      font-size: 2.8rem;
+      font-family: 'Merriweather', serif;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      color: var(--text-primary);
+    }
+    .post-meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .post-meta i {
+      color: var(--electric-blue);
+      margin-right: 6px;
+    }
+    .post-body {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin: 2rem 0;
+    }
+    .post-body p {
+      margin-bottom: 1.5rem;
+    }
+    .post-body h2 {
+      font-size: 1.8rem;
+      margin: 2rem 0 1rem;
+      color: var(--text-primary);
+      font-family: 'Merriweather', serif;
+    }
+    .post-body h3 {
+      font-size: 1.4rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--electric-blue);
+    }
+    .post-body ul, .post-body ol {
+      margin: 1rem 0 1.5rem 2rem;
+    }
+    .post-body li {
+      margin-bottom: 0.5rem;
+    }
+    .post-body blockquote {
+      border-left: 4px solid var(--electric-blue);
+      padding: 1rem 2rem;
+      margin: 1.5rem 0;
+      background: var(--bg-secondary);
+      border-radius: 16px;
+      font-style: italic;
+      color: var(--text-primary);
+    }
+    .post-body img {
+      width: 100%;
+      border-radius: 24px;
+      margin: 1.5rem 0;
+    }
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(42,157,143,0.1), rgba(42,157,143,0.05));
+      border-radius: 24px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 3px solid var(--electric-blue);
+    }
+
+    /* Author Section */
+    .author-section {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      padding: 1.5rem;
+      background: var(--bg-secondary);
+      border-radius: 24px;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    .author-avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: var(--electric-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+    }
+    .author-info h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+    .author-info p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Share Section */
+    .share-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--border-color);
+      margin-top: 1rem;
+    }
+    .share-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+    .share-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--electric-blue);
+      text-decoration: none;
+      transition: 0.3s;
+      border: 1px solid var(--border-color);
+    }
+    .share-btn:hover {
+      background: var(--electric-blue);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--electric-blue);
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      border: 1px solid var(--electric-blue);
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--electric-blue);
+      transform: translateY(-2px);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--electric-blue);
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      border: 1px solid var(--electric-blue);
+      cursor: pointer;
+    }
+    .btn-secondary:hover {
+      background: var(--electric-blue);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Related Posts */
+    .related-section {
+      margin-top: 3rem;
+    }
+    .related-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      font-family: 'Merriweather', serif;
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .related-card {
+      background: var(--bg-card);
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .related-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--electric-blue);
+    }
+    .related-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .related-content {
+      padding: 1rem;
+    }
+    .related-content h4 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Loading & Error States */
+    .loading-state {
+      text-align: center;
+      padding: 4rem;
+    }
+    .error-state {
+      text-align: center;
+      padding: 4rem;
+      background: var(--bg-card);
+      border-radius: 32px;
+      margin: 100px auto;
+      max-width: 600px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-image-wrapper {
+        height: 280px;
+      }
+      .post-content {
+        padding: 1.5rem;
+      }
+      .post-title {
+        font-size: 1.8rem;
+      }
+      .post-meta {
+        gap: 1rem;
+        font-size: 0.8rem;
+      }
+      .post-body {
+        font-size: 1rem;
+      }
+      .action-buttons {
+        flex-direction: column;
+      }
+      .author-section {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Fixed Navigation Bar -->
+<div class="nav-bar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" id="homeLink"><span>Bamboo</span> Essence</a>
+    <div class="nav-controls">
+      <button id="detail-theme-toggle" class="icon-btn-small" title="Dark/Light Mode"><i class="fas fa-moon"></i></button>
+      <button id="detail-close-btn" class="icon-btn-small" title="Close Window"><i class="fas fa-times"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- Dynamic Content Container -->
+<div id="post-container" class="post-container">
+  <div class="loading-state">
+    <i class="fas fa-spinner fa-spin fa-3x" style="color: var(--electric-blue);"></i>
+    <p style="margin-top: 1rem;">Loading article...</p>
+  </div>
+</div>
+
+<script>
+  // Comprehensive blog posts database with full content for each article
+  const blogDatabase = {
+    "Why Bamboo Fabric Outperforms Cotton": {
+      title: "Why Bamboo Fabric Outperforms Cotton",
+      category: "Sustainable Materials",
+      date: "May 12, 2026",
+      readTime: "6 min read",
+      image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=2070&auto=format",
+      author: "Emma Green",
+      authorBio: "Sustainable fashion expert and material scientist",
+      content: `
+        <p>When it comes to eco-friendly fabrics, bamboo is revolutionizing the textile industry. Unlike conventional cotton that requires massive amounts of water and pesticides, bamboo grows naturally with 70% less water and zero chemical fertilizers. But the benefits don't stop at cultivation.</p>
+        
+        <h2>The Incredible Benefits of Bamboo Fabric</h2>
+        <p>Bamboo fabric is naturally hypoallergenic, moisture-wicking, and thermo-regulating. This means it keeps you cool in summer and warm in winter — a property that synthetic blends simply cannot match. The fibers have micro-gaps that allow better breathability and moisture absorption, making it perfect for activewear and everyday comfort.</p>
+        
+        <div class="highlight-box">
+          <i class="fas fa-leaf" style="color: var(--electric-blue); font-size: 1.5rem; margin-bottom: 0.5rem; display: inline-block;"></i>
+          <p><strong>Did You Know?</strong> Bamboo grows up to 3 feet per day, making it one of the fastest-growing plants on Earth. It also produces 35% more oxygen than equivalent trees!</p>
+        </div>
+        
+        <h3>Water Usage Comparison</h3>
+        <p>Cotton requires approximately 2,700 liters of water to produce a single t-shirt. Bamboo, on the other hand, needs only 300 liters for the same garment. That's a 89% reduction in water footprint. Additionally, bamboo plantations actually replenish groundwater and prevent soil erosion.</p>
+        
+        <h3>Chemical-Free Processing</h3>
+        <p>At Bamboo Essence, we use a mechanical (closed-loop) process that recycles 98% of water and solvents. This ensures no toxic chemicals are released into ecosystems. Many conventional fabrics — including non-organic cotton — rely on harsh pesticides that harm farmers and wildlife.</p>
+        
+        <h2>Softness That Lasts</h2>
+        <p>Bamboo fibers are naturally round and smooth, without the sharp spurs found in cotton fibers. This creates a fabric that feels like silk but is more durable and easier to care for. Our customers consistently rate bamboo as softer than organic cotton after 50+ washes.</p>
+        
+        <blockquote>
+          "I switched my entire wardrobe to bamboo three years ago and haven't looked back. The fabric feels incredible, and knowing my clothes don't harm the planet gives me peace of mind." — Sarah M., Verified Customer
+        </blockquote>
+        
+        <h2>Biodegradability & Circular Fashion</h2>
+        <p>Unlike polyester which takes 200+ years to decompose (releasing microplastics), bamboo fabric biodegrades naturally within 4-6 months in compost conditions. This makes it a true circular material. We encourage our customers to return old bamboo garments for upcycling into new products.</p>
+        
+        <p>The future of fashion is regenerative. By choosing bamboo over conventional cotton, you're voting for cleaner water, healthier soil, and a more ethical supply chain. Join the bamboo revolution today.</p>
+      `
+    },
+    "5 Must-Have Bamboo Pieces for Your Capsule Wardrobe": {
+      title: "5 Must-Have Bamboo Pieces for Your Capsule Wardrobe",
+      category: "Fashion Trends",
+      date: "April 28, 2026",
+      readTime: "8 min read",
+      image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format",
+      author: "Olivia Chen",
+      authorBio: "Minimalist fashion consultant and capsule wardrobe expert",
+      content: `
+        <p>Building a sustainable capsule wardrobe starts with versatile, high-quality basics. Bamboo pieces offer the perfect foundation — they're comfortable, durable, and timeless. Here are our top 5 must-have bamboo essentials for any minimalist wardrobe.</p>
+        
+        <h2>1. The Classic Bamboo Crewneck Tee</h2>
+        <p>A white or black bamboo t-shirt is the ultimate wardrobe workhorse. It pairs with jeans, skirts, blazers, or layered under sweaters. Our bamboo tees feature reinforced stitching and maintain their shape wear after wear.</p>
+        
+        <h2>2. Bamboo Lounge Joggers</h2>
+        <p>Work-from-home or weekend relaxation — bamboo joggers offer unmatched comfort. The moisture-wicking properties keep you dry, while the soft drape looks polished enough for coffee runs.</p>
+        
+        <h2>3. Hooded Bamboo Cardigan</h2>
+        <p>This transitional piece works across seasons. Wear it open over a dress, buttoned as a light jacket, or wrapped as a cozy layer. The bamboo-cashmere blend is lightweight yet insulating.</p>
+        
+        <h2>4. Everyday Bamboo Socks (5-Pack)</h2>
+        <p>Say goodbye to smelly feet! Bamboo socks are naturally antibacterial and moisture-wicking. They're the number one product our customers repurchase. Available in neutral and seasonal colors.</p>
+        
+        <h2>5. Bamboo Infinity Scarf & Mask Set</h2>
+        <p>This multi-functional accessory works as a scarf, headband, or reusable face covering. It's the perfect travel companion and reduces single-use mask waste.</p>
+        
+        <div class="highlight-box">
+          <i class="fas fa-shopping-bag" style="color: var(--electric-blue); font-size: 1.5rem; margin-bottom: 0.5rem; display: inline-block;"></i>
+          <p><strong>Pro Tip:</strong> Start with 2-3 bamboo basics and gradually replace worn-out cotton items. Many of our customers report saving money long-term because bamboo lasts 2-3x longer than conventional fast fashion.</p>
+        </div>
+        
+        <p>Building a capsule wardrobe isn't about deprivation — it's about intentionality. Choose pieces that spark joy, serve multiple purposes, and align with your values. Bamboo makes that choice easy and stylish.</p>
+      `
+    },
+    "How Bamboo Farming Restores Degraded Lands": {
+      title: "How Bamboo Farming Restores Degraded Lands",
+      category: "Regeneration",
+      date: "April 10, 2026",
+      readTime: "7 min read",
+      image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2070&auto=format",
+      author: "Dr. Marcus Wei",
+      authorBio: "Agroecology researcher and bamboo cultivation specialist",
+      content: `
+        <p>Bamboo is more than just a sustainable fabric source — it's a powerful tool for ecological restoration. Across the globe, bamboo farming is transforming degraded agricultural lands into thriving ecosystems.</p>
+        
+        <h2>Carbon Sequestration Superpower</h2>
+        <p>Bamboo absorbs carbon at a rate 4x higher than hardwood trees. A hectare of bamboo plantation can sequester up to 400 tons of CO2 over its lifetime. This makes bamboo one of the most effective nature-based solutions for climate change.</p>
+        
+        <h3>Soil Regeneration</h3>
+        <p>The extensive root system of bamboo — which can spread up to 30 feet underground — prevents soil erosion, improves water retention, and restores nutrient cycles. Farmers in Southeast Asia have reported yield increases of 40% on neighboring crops after planting bamboo buffer zones.</p>
+        
+        <div class="highlight-box">
+          <i class="fas fa-tree" style="color: var(--electric-blue); font-size: 1.5rem; margin-bottom: 0.5rem; display: inline-block;"></i>
+          <p><strong>Impact Spotlight:</strong> Our partner farms in Vietnam have restored over 5,000 acres of previously barren hillsides, creating wildlife corridors and sustainable livelihoods for 200+ families.</p>
+        </div>
+        
+        <h2>Water Cycle Regulation</h2>
+        <p>Bamboo's dense root mat acts like a sponge, reducing flood risks during monsoon seasons and releasing stored water during dry periods. This natural water management is invaluable in climate-vulnerable regions.</p>
+        
+        <p>By choosing bamboo products, you directly support these restoration efforts. Every purchase helps fund our 1-for-1 tree planting program, where one bamboo sapling is planted for every garment sold.</p>
+      `
+    },
+    "Beyond Apparel: Bamboo Accessories You'll Love": {
+      title: "Beyond Apparel: Bamboo Accessories You'll Love",
+      category: "Eco Accessories",
+      date: "March 22, 2026",
+      readTime: "5 min read",
+      image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=2070&auto=format",
+      author: "Sophia Liu",
+      authorBio: "Eco product designer and zero-waste advocate",
+      content: `
+        <p>Bamboo's versatility extends far beyond clothing. From kitchenware to tech accessories, bamboo is replacing plastic in every corner of our lives. Here are our favorite bamboo accessories that combine functionality with sustainability.</p>
+        
+        <h2>Bamboo Sunglasses</h2>
+        <p>Lightweight, durable, and naturally water-resistant — bamboo frames offer a stylish alternative to petroleum-based plastics. Our sunglasses feature UV400 protection and polarized lenses.</p>
+        
+        <h2>Compostable Phone Cases</h2>
+        <p>Traditional phone cases take 500+ years to decompose. Our bamboo fiber cases break down in 6 months in industrial compost facilities while providing excellent drop protection.</p>
+        
+        <h2>Reusable Bamboo Straws & Cutlery Set</h2>
+        <p>Single-use plastic straws are a thing of the past. Our travel cutlery set includes a knife, fork, spoon, chopsticks, and cleaning brush — all packaged in a organic cotton pouch.</p>
+        
+        <div class="highlight-box">
+          <i class="fas fa-recycle" style="color: var(--electric-blue); font-size: 1.5rem; margin-bottom: 0.5rem; display: inline-block;"></i>
+          <p><strong>Zero-Waste Tip:</strong> Keep a bamboo straw and cutlery set in your bag or car. You'll never need disposable plastic again — and many cafes offer discounts for bringing your own utensils!</p>
+        </div>
+        
+        <p>Small swaps add up. If every person replaced just 10 plastic items with bamboo alternatives, we'd eliminate over 700 billion pieces of plastic waste annually. Start with one accessory today.</p>
+      `
+    },
+    "Our Carbon-Neutral Shipping: Behind the Scenes": {
+      title: "Our Carbon-Neutral Shipping: Behind the Scenes",
+      category: "Sustainability",
+      date: "March 5, 2026",
+      readTime: "6 min read",
+      image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=2070&auto=format",
+      author: "James Carter",
+      authorBio: "Logistics & sustainability operations manager",
+      content: `
+        <p>At Bamboo Essence, we believe sustainability shouldn't stop at the product. Every order shipped from our warehouse is 100% carbon-neutral. Here's what that actually means — and how we achieve it.</p>
+        
+        <h2>Verified Carbon Offsets</h2>
+        <p>We partner with Gold Standard-certified reforestation projects in the Amazon and Indonesia. For every shipment, we calculate the exact emissions from transportation and purchase triple the offsets. This results in net-negative shipping.</p>
+        
+        <h3>100% Recycled & Compostable Packaging</h3>
+        <p>Our mailers are made from 100% post-consumer recycled plastic and are themselves recyclable. Tissue paper is acid-free and compostable. Even our shipping labels use eco-adhesives. No plastic bubble wrap — we use mushroom-based padding that decomposes in your home compost.</p>\n
+        <div class="highlight-box">
+          <i class="fas fa-truck" style="color: var(--electric-blue); font-size: 1.5rem; margin-bottom: 0.5rem; display: inline-block;"></i>
+          <p><strong>By the Numbers:</strong> In 2025, we offset 1,200 metric tons of CO2, planted 15,000 trees through our shipping program, and eliminated 50,000 lbs of plastic packaging waste.</p>
+        </div>
+        \n<h2>Regional Fulfillment Centers</h2>\n<p>We've opened fulfillment centers in North America, Europe, and Asia to reduce air miles. Most orders now travel under 500 miles to reach customers, slashing our logistics emissions by 60% since 2024.</p>\n\n<p>When you shop with us, you can trust that your delivery is climate-conscious. We publish annual impact reports so you can see exactly where every offset dollar goes.</p>`
+    },
+    "Meet the Artisans Behind Our Bamboo Collection": {
+      title: "Meet the Artisans Behind Our Bamboo Collection",
+      category: "Community",
+      date: "February 18, 2026",
+      readTime: "9 min read",
+      image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1974&auto=format",
+      author: "Maria Santos",
+      authorBio: "Ethical trade coordinator",
+      content: `\n        <p>Behind every bamboo garment is a community of skilled artisans. We're proud to work directly with women-led cooperatives in rural Vietnam and India, ensuring fair wages, safe conditions, and skills training.</p>\n        \n        <h2>Preserving Traditional Craftsmanship</h2>\n        <p>Our bamboo weaving techniques draw on generations of knowledge. Artisans hand-finish each garment — checking seams, attaching buttons, and ensuring quality. This attention to detail can't be replicated by machines.</p>\n        \n        <div class="highlight-box">\n          <i class="fas fa-hands" style="color: var(--electric-blue); font-size: 1.5rem; margin-bottom: 0.5rem; display: inline-block;"></i>\n          <p><strong>Fair Trade Certified:</strong> All our production partners meet strict fair trade standards, including living wages, healthcare access, and democratic workplace decision-making.</p>\n        </div>\n        \n        <h3>Meet Mai — Master Weaver</h3>\n        <p>Mai has been working with bamboo textiles for 22 years. She now trains younger women in her village, passing on techniques that her grandmother taught her. "Bamboo is part of our heritage," she says. "I'm proud that our traditional knowledge is valued around the world."</p>\n        \n        <p>When you buy from Bamboo Essence, you're not just getting a product — you're supporting a global community of artisans. Every purchase provides 3 days of fair wages for one artisan.</p>\n      `
+    }
+  };
+
+  // Default fallback content
+  const defaultBlog = {
+    title: "The Beauty of Sustainable Bamboo",
+    category: "Sustainability",
+    date: "March 2026",
+    readTime: "5 min read",
+    image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1974&auto=format",
+    author: "Bamboo Essence Team",
+    authorBio: "Our team is dedicated to sharing eco-conscious stories",
+    content: `<p>Thank you for reading our blog. This article is filled with insights about sustainable bamboo fashion and how you can make a positive impact through your clothing choices. Stay tuned for more stories on circular economy, ethical production, and regenerative materials.</p>`
+  };
+
+  // Get blog data from URL parameters
+  function getBlogFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const title = urlParams.get('title');
+    if (title) {
+      const decodedTitle = decodeURIComponent(title);
+      return blogDatabase[decodedTitle] || null;
+    }
+    return null;
+  }
+
+  // Render blog details
+  function renderBlogDetails(blog) {
+    if (!blog) {
+      renderError();
+      return;
+    }
+
+    const html = `
+      <div class="blog-detail-card">
+        <div class="hero-image-wrapper">
+          <img class="hero-image" src="${blog.image}" alt="${blog.title}" onerror="this.src='https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1974&auto=format'">
+          <div class="image-overlay">
+            <span class="category-badge"><i class="fas fa-leaf"></i> ${blog.category}</span>
+          </div>
+        </div>
+        <div class="post-content">
+          <h1 class="post-title">${escapeHtml(blog.title)}</h1>
+          <div class="post-meta">
+            <span><i class="fas fa-calendar-alt"></i> ${blog.date}</span>
+            <span><i class="fas fa-clock"></i> ${blog.readTime}</span>
+            <span><i class="fas fa-tag"></i> ${blog.category}</span>
+          </div>
+          <div class="post-body">
+            ${blog.content}
+          </div>
+          
+          <div class="author-section">
+            <div class="author-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>${escapeHtml(blog.author)}</h4>
+              <p>${escapeHtml(blog.authorBio)}</p>
+            </div>
+          </div>
+          
+          <div class="share-section">
+            <span><i class="fas fa-share-alt"></i> Share this article:</span>
+            <div class="share-buttons">
+              <a href="#" class="share-btn" onclick="shareArticle('twitter')"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="share-btn" onclick="shareArticle('facebook')"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="share-btn" onclick="shareArticle('linkedin')"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="share-btn" onclick="shareArticle('email')"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+          
+          <div class="action-buttons">
+            <button class="btn-primary" id="backToBlogBtn"><i class="fas fa-arrow-left"></i> Back to Blog</button>
+            <button class="btn-secondary" id="subscribeBtn"><i class="fas fa-envelope"></i> Subscribe for Updates</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('post-container').innerHTML = html;
+    
+    // Attach event listeners
+    document.getElementById('backToBlogBtn')?.addEventListener('click', () => window.close());
+    document.getElementById('subscribeBtn')?.addEventListener('click', () => {
+      alert("📧 Thanks for subscribing! You'll receive our weekly bamboo newsletter.");
+    });
+  }
+
+  function renderError() {
+    document.getElementById('post-container').innerHTML = `
+      <div class="error-state">
+        <i class="fas fa-leaf" style="font-size: 3rem; color: var(--electric-blue); margin-bottom: 1rem; display: block;"></i>
+        <h2>Article Not Found</h2>
+        <p style="margin: 1rem 0;">The blog post you're looking for might have been moved or doesn't exist.</p>
+        <button class="btn-primary" onclick="window.close()"><i class="fas fa-arrow-left"></i> Back to Blog</button>
+      </div>
+    `;
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+      return c;
+    });
+  }
+
+  // Share functionality
+  window.shareArticle = function(platform) {
+    const title = document.querySelector('.post-title')?.innerText || 'Bamboo Essence Article';
+    const url = window.location.href;
+    let shareUrl = '';
+    if (platform === 'twitter') shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`;
+    else if (platform === 'facebook') shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+    else if (platform === 'linkedin') shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
+    else if (platform === 'email') shareUrl = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(`Check out this article: ${url}`)}`;
+    if (shareUrl) window.open(shareUrl, '_blank', 'width=600,height=400');
+  };
+
+  // Theme for detail page
+  function initTheme() {
+    const body = document.body;
+    const themeBtn = document.getElementById('detail-theme-toggle');
+    function updateIcon(isDark) {
+      if (themeBtn) themeBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    }
+    if (localStorage.getItem('blogDetailTheme') === 'dark') {
+      body.classList.add('dark');
+      updateIcon(true);
+    } else updateIcon(false);
+    themeBtn?.addEventListener('click', () => {
+      if (body.classList.contains('dark')) {
+        body.classList.remove('dark');
+        localStorage.setItem('blogDetailTheme', 'light');
+        updateIcon(false);
+      } else {
+        body.classList.add('dark');
+        localStorage.setItem('blogDetailTheme', 'dark');
+        updateIcon(true);
+      }
+    });
+  }
+
+  // Close button
+  function initCloseButton() {
+    document.getElementById('detail-close-btn')?.addEventListener('click', () => window.close());
+    document.getElementById('homeLink')?.addEventListener('click', (e) => { e.preventDefault(); window.close(); });
+  }
+
+  // Initialize page
+  function init() {
+    initTheme();
+    initCloseButton();
+    const blogData = getBlogFromURL();
+    if (blogData) renderBlogDetails(blogData);
+    else renderError();
+  }
+
+  init();
+</script>
+</body>
+</html>

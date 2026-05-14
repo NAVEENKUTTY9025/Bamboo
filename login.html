@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Login | Bamboo Essence — Sustainable Bamboo Apparel</title>
+  <meta name="description" content="Sign in to your Bamboo Essence Dashboard. Access Admin Dashboard, Client Dashboard, and sustainable bamboo shopping.">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Light mode (default) */
+    :root {
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F5F7F0;
+      --bg-card: #FFFFFF;
+      --text-primary: #1A2E24;
+      --text-secondary: #3A5E4C;
+      --text-muted: #6B8E7A;
+      --border-color: #DCE8D5;
+      --electric-blue: #2A9D8F;
+      --electric-blue-light: #52B4A6;
+      --electric-blue-dark: #1E7A6E;
+      --shadow: 0 10px 30px rgba(0,0,0,0.06);
+      --input-bg: #FFFFFF;
+      --top-bar-bg: transparent;
+    }
+
+    /* Dark mode */
+    body.dark {
+      --bg-primary: #121E18;
+      --bg-secondary: #0A1812;
+      --bg-card: #1B2E26;
+      --text-primary: #E6F0EA;
+      --text-secondary: #BED9CE;
+      --text-muted: #8EAD9E;
+      --border-color: #2D463A;
+      --electric-blue: #3AAFA0;
+      --electric-blue-dark: #2C8E82;
+      --shadow: 0 10px 30px rgba(0,0,0,0.4);
+      --input-bg: #1B2E26;
+      --top-bar-bg: transparent;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.5;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      position: fixed;
+    }
+
+    .font-serif { font-family: 'Merriweather', serif; }
+    .blue-text { color: var(--electric-blue); }
+    
+    .btn-blue {
+      background: var(--electric-blue);
+      color: #FFFFFF;
+      font-weight: 600;
+      padding: 0.85rem 2rem;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--electric-blue);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: none;
+      width: 100%;
+      justify-content: center;
+    }
+    .btn-blue:hover {
+      background: transparent;
+      color: var(--electric-blue);
+    }
+
+    /* Top Bar - Clean, Transparent, Logo Left, Controls Right */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--top-bar-bg);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      transition: color 0.3s;
+    }
+    .logo span {
+      color: var(--electric-blue);
+      font-style: italic;
+      font-family: 'Merriweather', serif;
+    }
+    .logo:hover {
+      color: var(--electric-blue);
+    }
+    .controls {
+      display: flex;
+      gap: 0.75rem;
+    }
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: rgba(42,157,143,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      font-size: 1.1rem;
+    }
+    .icon-btn:hover {
+      background: var(--electric-blue);
+      color: #FFFFFF;
+      border-color: var(--electric-blue);
+    }
+
+    /* Main Container - Perfect Centering No Scroll */
+    .login-container {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1.5rem;
+    }
+    
+    .login-card {
+      max-width: 460px;
+      width: 100%;
+      background: var(--bg-card);
+      border-radius: 32px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+      animation: fadeInUp 0.5s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .login-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .login-header h1 {
+      font-size: 1.8rem;
+      font-family: 'Merriweather', serif;
+      margin-bottom: 0.5rem;
+    }
+    .login-header p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    .input-wrapper {
+      position: relative;
+    }
+    .input-wrapper i {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 0.9rem 1rem 0.9rem 2.8rem;
+      background: var(--input-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 60px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: all 0.3s;
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--electric-blue);
+      box-shadow: 0 0 0 3px rgba(42,157,143,0.2);
+    }
+    
+    .options-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.8rem;
+      font-size: 0.85rem;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      color: var(--text-secondary);
+    }
+    .checkbox-label input {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      accent-color: var(--electric-blue);
+    }
+    .forgot-link {
+      color: var(--electric-blue);
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .forgot-link:hover {
+      text-decoration: underline;
+    }
+    
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 1.5rem 0;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .divider span {
+      margin: 0 1rem;
+    }
+    
+    .social-login {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .social-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem;
+      border-radius: 60px;
+      border: 1px solid var(--border-color);
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+    .social-btn:hover {
+      background: rgba(42,157,143,0.1);
+      border-color: var(--electric-blue);
+      color: var(--electric-blue);
+    }
+    
+    .signup-prompt {
+      text-align: center;
+      margin-top: 1.8rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    .signup-prompt a {
+      color: var(--electric-blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .signup-prompt a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Demo credentials hint */
+    .demo-hint {
+      background: rgba(42,157,143,0.08);
+      border-radius: 12px;
+      padding: 0.75rem;
+      margin-top: 1.2rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      border-left: 2px solid var(--electric-blue);
+    }
+    .demo-hint i {
+      color: var(--electric-blue);
+      margin-right: 0.3rem;
+    }
+    
+    /* No scroll - lock body */
+    body {
+      overflow: hidden;
+    }
+    
+    @media (max-width: 520px) {
+      .login-card {
+        padding: 1.8rem;
+      }
+      .top-bar {
+        padding: 1rem 1.2rem;
+      }
+      .logo {
+        font-size: 1.4rem;
+      }
+      .social-btn span {
+        display: none;
+      }
+      .social-btn i {
+        font-size: 1.2rem;
+        margin: 0;
+      }
+      .social-btn {
+        padding: 0.75rem;
+      }
+      .icon-btn {
+        width: 38px;
+        height: 38px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top Bar: Logo Left, Controls Right - Clean, No Navbar Background -->
+<div class="top-bar">
+  <a href="home2.html" class="logo"><span>Bamboo Essence</span></a>
+  <div class="controls">
+    <button id="rtl-toggle" class="icon-btn" title="RTL"><i class="fas fa-exchange-alt"></i></button>
+    <button id="theme-toggle" class="icon-btn" title="Theme"><i class="fas fa-moon"></i></button>
+  </div>
+</div>
+
+<!-- Login Form Container - Perfectly Centered, No Scroll -->
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h1>Welcome <span class="blue-text">Back</span></h1>
+      <p>Sign in to your Bamboo Essence Dashboard</p>
+    </div>
+    
+    <form id="loginForm">
+      <div class="form-group">
+        <label>Email Address</label>
+        <div class="input-wrapper">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="email" placeholder="hello@bambooessence.com" >
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Password</label>
+        <div class="input-wrapper">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="password" placeholder="••••••••" >
+        </div>
+      </div>
+      
+      <div class="options-row">
+        <label class="checkbox-label">
+          <input type="checkbox" id="remember"> Remember me
+        </label>
+        <a href="#" class="forgot-link">Forgot password?</a>
+      </div>
+      
+      <button type="submit" class="btn-blue"><i class="fas fa-leaf"></i> Sign In</button>
+      
+      <div class="divider">
+        <span>or continue with</span>
+      </div>
+      
+      <div class="social-login">
+        <a href="#" class="social-btn"><i class="fab fa-google"></i><span>Google</span></a>
+        <a href="#" class="social-btn"><i class="fab fa-apple"></i><span>Apple</span></a>
+        <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+      </div>
+      
+      <div class="signup-prompt">
+        Don't have an Dashboard? <a href="register.html">Create Dashboard</a>
+      </div>
+      
+     
+    </form>
+  </div>
+</div>
+
+<script>
+  // THEME TOGGLE
+  const themeToggle = document.getElementById('theme-toggle');
+  const body = document.body;
+  
+  function updateThemeIcon(isDark) {
+    if(themeToggle) {
+      themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    }
+  }
+  
+  function toggleTheme() {
+    if(body.classList.contains('dark')) {
+      body.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      updateThemeIcon(false);
+    } else {
+      body.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      updateThemeIcon(true);
+    }
+  }
+  
+  if(localStorage.getItem('theme') === 'dark') {
+    body.classList.add('dark');
+    updateThemeIcon(true);
+  } else {
+    updateThemeIcon(false);
+  }
+  
+  if(themeToggle) themeToggle.addEventListener('click', toggleTheme);
+  
+  // RTL TOGGLE
+  const rtlToggle = document.getElementById('rtl-toggle');
+  const htmlEl = document.documentElement;
+  
+  function toggleRTL() {
+    if(htmlEl.getAttribute('dir') === 'rtl') {
+      htmlEl.removeAttribute('dir');
+      localStorage.setItem('direction', 'ltr');
+    } else {
+      htmlEl.setAttribute('dir', 'rtl');
+      localStorage.setItem('direction', 'rtl');
+    }
+  }
+  
+  if(rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+  if(localStorage.getItem('direction') === 'rtl') htmlEl.setAttribute('dir', 'rtl');
+  
+  // LOGIN FORM HANDLER
+  const loginForm = document.getElementById('loginForm');
+  
+  loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const remember = document.getElementById('remember').checked;
+    
+    // Simple validation
+    if(email && password) {
+      // Store demo auth flag
+      if(remember) {
+        localStorage.setItem('bamboo_auth', 'true');
+        localStorage.setItem('bamboo_email', email);
+      } else {
+        sessionStorage.setItem('bamboo_auth', 'true');
+      }
+      
+      // Show success message and redirect
+      alert('Login successful! Redirecting to home page...');
+      window.location.href = 'home2.html';
+    } else {
+      alert('Please enter both email and password.');
+    }
+  });
+  
+  // Pre-fill demo credentials on load if needed
+  const savedEmail = localStorage.getItem('bamboo_email');
+  if(savedEmail && document.getElementById('email')) {
+    document.getElementById('email').value = savedEmail;
+    document.getElementById('remember').checked = true;
+  }
+</script>
+</body>
+</html>

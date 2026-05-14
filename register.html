@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Register | Bamboo Essence — Create Dashboard</title>
+  <meta name="description" content="Join Bamboo Essence community. Create your Dashboard for sustainable bamboo apparel and eco-friendly shopping.">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Light mode */
+    :root {
+      --bg-primary: #FFFFFF;
+      --bg-card: #FFFFFF;
+      --text-primary: #1A2E24;
+      --text-secondary: #3A5E4C;
+      --text-muted: #6B8E7A;
+      --border-color: #DCE8D5;
+      --electric-blue: #2A9D8F;
+      --shadow: 0 20px 35px rgba(0,0,0,0.06);
+      --input-bg: #FFFFFF;
+    }
+
+    /* Dark mode */
+    body.dark {
+      --bg-primary: #121E18;
+      --bg-card: #1B2E26;
+      --text-primary: #E6F0EA;
+      --text-secondary: #BED9CE;
+      --text-muted: #8EAD9E;
+      --border-color: #2D463A;
+      --electric-blue: #3AAFA0;
+      --shadow: 0 20px 35px rgba(0,0,0,0.35);
+      --input-bg: #1B2E26;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.4;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      position: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .blue-text { color: var(--electric-blue); }
+    
+    .btn-blue {
+      background: var(--electric-blue);
+      color: #FFFFFF;
+      font-weight: 600;
+      padding: 0.6rem 1.5rem;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--electric-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      text-decoration: none;
+      width: 100%;
+      justify-content: center;
+    }
+    .btn-blue:hover {
+      background: transparent;
+      color: var(--electric-blue);
+    }
+
+    /* Top Bar - Minimal */
+   .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--top-bar-bg);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      transition: color 0.3s;
+    }
+    .logo span {
+      color: var(--electric-blue);
+      font-style: italic;
+      font-family: 'Merriweather', serif;
+    }
+    .logo:hover {
+      color: var(--electric-blue);
+    }
+    .controls {
+      display: flex;
+      gap: 0.6rem;
+    }
+    .icon-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: rgba(42,157,143,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      font-size: 0.85rem;
+    }
+    .icon-btn:hover {
+      background: var(--electric-blue);
+      color: #FFFFFF;
+      border-color: var(--electric-blue);
+    }
+
+    /* Main Container - Ultra Tight */
+    .register-wrapper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 3.5rem;
+    }
+    
+    .register-card {
+      max-width: 360px;
+      width: 100%;
+      background: var(--bg-card);
+      border-radius: 24px;
+      padding: 1.4rem 1.6rem 1.6rem 1.6rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+    }
+    
+    .register-header {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .register-header h1 {
+      font-size: 1.4rem;
+      font-family: 'Merriweather', serif;
+      margin-bottom: 0.2rem;
+    }
+    .register-header p {
+      color: var(--text-muted);
+      font-size: 0.7rem;
+    }
+    
+    .form-group {
+      margin-bottom: 0.85rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+    }
+    .input-wrapper {
+      position: relative;
+    }
+    .input-wrapper i {
+      position: absolute;
+      left: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 0.55rem 0.8rem 0.55rem 2rem;
+      background: var(--input-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 40px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.8rem;
+      transition: all 0.2s;
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--electric-blue);
+      box-shadow: 0 0 0 2px rgba(42,157,143,0.1);
+    }
+    
+    /* Stacked fields */
+    .terms-row {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-bottom: 1rem;
+      font-size: 0.65rem;
+      color: var(--text-secondary);
+    }
+    .terms-row input {
+      width: 12px;
+      height: 12px;
+      cursor: pointer;
+      accent-color: var(--electric-blue);
+      flex-shrink: 0;
+    }
+    .terms-row a {
+      color: var(--electric-blue);
+      text-decoration: none;
+    }
+    .terms-row a:hover {
+      text-decoration: underline;
+    }
+    
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 0.9rem 0;
+      color: var(--text-muted);
+      font-size: 0.65rem;
+    }
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .divider span {
+      margin: 0 0.6rem;
+    }
+    
+    .social-login {
+      display: flex;
+      gap: 0.6rem;
+      justify-content: center;
+    }
+    .social-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+      padding: 0.45rem;
+      border-radius: 40px;
+      border: 1px solid var(--border-color);
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 0.7rem;
+      text-decoration: none;
+    }
+    .social-btn i {
+      font-size: 0.8rem;
+    }
+    .social-btn:hover {
+      background: rgba(42,157,143,0.08);
+      border-color: var(--electric-blue);
+      color: var(--electric-blue);
+    }
+    
+    .login-prompt {
+      text-align: center;
+      margin-top: 1rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+    .login-prompt a {
+      color: var(--electric-blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .login-prompt a:hover {
+      text-decoration: underline;
+    }
+    
+    .password-hint {
+      font-size: 0.55rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+      margin-left: 0.4rem;
+    }
+    
+    /* Ultra Compact - No Scroll Guarantee */
+    @media (max-height: 650px) {
+      .register-card {
+        padding: 1rem 1.4rem 1.2rem 1.4rem;
+      }
+      .form-group {
+        margin-bottom: 0.7rem;
+      }
+      .register-header {
+        margin-bottom: 0.7rem;
+      }
+    }
+    
+    @media (max-width: 420px) {
+      .register-card {
+        padding: 1.2rem 1.2rem 1.3rem 1.2rem;
+        margin: 0 1rem;
+      }
+      .top-bar {
+        padding: 0.8rem 1.2rem;
+      }
+      .logo {
+        font-size: 1.2rem;
+      }
+      .social-btn span {
+        display: none;
+      }
+      .social-btn {
+        padding: 0.45rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top Bar: Logo Left, Controls Right -->
+<div class="top-bar">
+  <a href="index.html" class="logo"><span>Bamboo Essence</span></a>
+  <div class="controls">
+    <button id="rtl-toggle" class="icon-btn" title="RTL"><i class="fas fa-exchange-alt"></i></button>
+    <button id="theme-toggle" class="icon-btn" title="Theme"><i class="fas fa-moon"></i></button>
+  </div>
+</div>
+
+<!-- Register Form - Ultra Tight, Centered, No Scroll -->
+<div class="register-wrapper">
+  <div class="register-card">
+    <div class="register-header">
+      <h1>Create <span class="blue-text">Dashboard</span></h1>
+      <p>Join the bamboo community</p>
+    </div>
+    
+    <form id="registerForm">
+      <!-- First Name -->
+      <div class="form-group">
+        <label>First Name</label>
+        <div class="input-wrapper">
+          <i class="fas fa-user"></i>
+          <input type="text" id="firstName" placeholder="John" required>
+        </div>
+      </div>
+      
+      <!-- Last Name -->
+      <div class="form-group">
+        <label>Last Name</label>
+        <div class="input-wrapper">
+          <i class="fas fa-user"></i>
+          <input type="text" id="lastName" placeholder="Doe" required>
+        </div>
+      </div>
+      
+   
+      
+      <!-- Password -->
+      <div class="form-group">
+        <label>Password</label>
+        <div class="input-wrapper">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="password" placeholder="Create password" required>
+        </div>
+        <div class="password-hint">
+          <i class="fas fa-info-circle"></i> Min. 6 characters
+        </div>
+      </div>
+      
+      <!-- Confirm Password -->
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <div class="input-wrapper">
+          <i class="fas fa-check-circle"></i>
+          <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+        </div>
+      </div>
+      
+      <!-- Terms -->
+      <div class="terms-row">
+        <input type="checkbox" id="terms" required>
+        <label for="terms">I agree to <a href="#">Terms</a> & <a href="#">Privacy</a></label>
+      </div>
+      
+      <!-- Submit Button -->
+      <button type="submit" class="btn-blue"><i class="fas fa-leaf"></i> Sign Up</button>
+      
+      <!-- Divider -->
+      <div class="divider">
+        <span>or</span>
+      </div>
+      
+      <!-- Social Login -->
+      <div class="social-login">
+        <a href="#" class="social-btn"><i class="fab fa-google"></i><span>Google</span></a>
+        <a href="#" class="social-btn"><i class="fab fa-apple"></i><span>Apple</span></a>
+        <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i><span>FB</span></a>
+      </div>
+      
+      <!-- Login Link -->
+      <div class="login-prompt">
+        Already have an Dashboard? <a href="login.html">Sign in</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  // THEME TOGGLE
+  const themeToggle = document.getElementById('theme-toggle');
+  const body = document.body;
+  
+  function updateThemeIcon(isDark) {
+    if(themeToggle) {
+      themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    }
+  }
+  
+  function toggleTheme() {
+    if(body.classList.contains('dark')) {
+      body.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      updateThemeIcon(false);
+    } else {
+      body.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      updateThemeIcon(true);
+    }
+  }
+  
+  if(localStorage.getItem('theme') === 'dark') {
+    body.classList.add('dark');
+    updateThemeIcon(true);
+  } else {
+    updateThemeIcon(false);
+  }
+  
+  if(themeToggle) themeToggle.addEventListener('click', toggleTheme);
+  
+  // RTL TOGGLE
+  const rtlToggle = document.getElementById('rtl-toggle');
+  const htmlEl = document.documentElement;
+  
+  function toggleRTL() {
+    if(htmlEl.getAttribute('dir') === 'rtl') {
+      htmlEl.removeAttribute('dir');
+      localStorage.setItem('direction', 'ltr');
+    } else {
+      htmlEl.setAttribute('dir', 'rtl');
+      localStorage.setItem('direction', 'rtl');
+    }
+  }
+  
+  if(rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+  if(localStorage.getItem('direction') === 'rtl') htmlEl.setAttribute('dir', 'rtl');
+  
+  // REGISTER FORM HANDLER
+  const registerForm = document.getElementById('registerForm');
+  
+  registerForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const terms = document.getElementById('terms').checked;
+    
+    if(!firstName || !lastName || !email || !password) {
+      alert('Please fill in all fields.');
+      return;
+    }
+    
+    if(password.length < 6) {
+      alert('Password must be at least 6 characters.');
+      return;
+    }
+    
+    if(password !== confirmPassword) {
+      alert('Passwords do not match.');
+      return;
+    }
+    
+    if(!terms) {
+      alert('Please agree to the Terms of Service.');
+      return;
+    }
+    
+    // Store user data
+    const userData = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      registeredAt: new Date().toISOString()
+    };
+    
+    localStorage.setItem('bamboo_user', JSON.stringify(userData));
+    localStorage.setItem('bamboo_auth', 'true');
+    localStorage.setItem('bamboo_email', email);
+    
+    alert('Registration successful! Welcome to Bamboo Essence.');
+    window.location.href = 'login.html';
+  });
+  
+  // Pre-fill demo data for visual convenience
+  if(document.getElementById('firstName') && !document.getElementById('firstName').value) {
+    document.getElementById('firstName').value = 'Eco';
+    document.getElementById('lastName').value = 'Warrior';
+    document.getElementById('email').value = 'eco@bambooessence.com';
+    document.getElementById('password').value = 'demo123';
+    document.getElementById('confirmPassword').value = 'demo123';
+  }
+</script>
+</body>
+</html>

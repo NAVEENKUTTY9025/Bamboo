@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Bamboo Essence | Sustainable Bamboo Apparel & Accessories — Natural Comfort</title>
+  <meta name="description" content="Discover premium bamboo clothing and eco-accessories. Ultra-soft, sustainable, and ethically made. Shop the new bamboo collection for men and women.">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F5F7F0;
+      --bg-card: #FFFFFF;
+      --bg-nav: #0D2E24;
+      --text-primary: #1A2E24;
+      --text-secondary: #3A5E4C;
+      --text-muted: #6B8E7A;
+      --border-color: #DCE8D5;
+      --electric-blue: #2A9D8F;
+      --electric-blue-light: #52B4A6;
+      --electric-blue-dark: #1E7A6E;
+      --shadow: 0 10px 30px rgba(0,0,0,0.06);
+      --nav-text: #F0F7E6;
+      --footer-text: #F0F7E6;
+      --footer-text-muted: #C2D9C2;
+      --footer-bg: #0D2E24;
+    }
+
+    body.dark {
+      --bg-primary: #121E18;
+      --bg-secondary: #0A1812;
+      --bg-card: #1B2E26;
+      --bg-nav: #071610;
+      --text-primary: #E6F0EA;
+      --text-secondary: #BED9CE;
+      --text-muted: #8EAD9E;
+      --border-color: #2D463A;
+      --electric-blue: #3AAFA0;
+      --electric-blue-dark: #2C8E82;
+      --shadow: 0 10px 30px rgba(0,0,0,0.4);
+      --nav-text: #E6F0EA;
+      --footer-text: #E6F0EA;
+      --footer-text-muted: #BED9CE;
+      --footer-bg: #071610;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      scroll-behavior: smooth;
+      line-height: 1.5;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .font-serif { font-family: 'Merriweather', serif; }
+    .blue-text { color: var(--electric-blue); }
+    
+    .btn-blue {
+      background: var(--electric-blue);
+      color: #FFFFFF;
+      font-weight: 600;
+      padding: 0.85rem 2rem;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--electric-blue);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-blue:hover { background: transparent; color: var(--electric-blue); }
+    .btn-outline-blue {
+      background: transparent;
+      border: 1px solid var(--electric-blue);
+      color: var(--electric-blue);
+      padding: 0.75rem 1.8rem;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-outline-blue:hover { background: var(--electric-blue); color: #FFFFFF; }
+
+    /* NAVBAR */
+    .navbar {
+      background: var(--bg-nav);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
+    .flex-nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+    .nav-logo-text { font-size: 1.8rem; font-weight: 700; color: var(--nav-text); text-decoration: none; letter-spacing: -0.5px; display: inline-block; line-height: 1; }
+    .nav-logo-text span { color: var(--electric-blue); font-style: italic; font-family: 'Merriweather', serif; }
+    .nav-menu-container { display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 2rem; }
+    .nav-links-group { display: flex; align-items: center; gap: 0.25rem; flex-wrap: wrap; }
+    .nav-link { color: var(--nav-text); font-weight: 500; transition: color 0.3s; padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.9rem; text-decoration: none; white-space: nowrap; }
+    .nav-link:hover, .nav-link.active { color: var(--electric-blue); background: rgba(42,157,143,0.2); }
+    .dropdown-container { position: relative; display: inline-block; }
+    .dropdown-btn { background: none; border: none; color: var(--nav-text); font-weight: 500; display: flex; align-items: center; gap: 6px; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer; font-size: 0.9rem; transition: all 0.3s; white-space: nowrap; }
+    .dropdown-btn:hover { color: var(--electric-blue); background: rgba(42,157,143,0.2); }
+    .dropdown-menu { position: absolute; left: 0; margin-top: 0.5rem; width: 220px; background: var(--bg-card); border-radius: 0.75rem; box-shadow: var(--shadow); opacity: 0; visibility: hidden; transition: all 0.3s; transform: translateY(10px); z-index: 60; border: 1px solid var(--border-color); }
+    .dropdown-container:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown-menu a { display: block; padding: 0.75rem 1.2rem; color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; }
+    .dropdown-menu a:hover { background: rgba(42,157,143,0.1); color: var(--electric-blue); }
+    .nav-buttons { display: flex; align-items: center; gap: 0.75rem; }
+    .icon-btn { width: 40px; height: 40px; border-radius: 999px; background: rgba(42,157,143,0.2); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; color: var(--nav-text); border: none; }
+    .icon-btn:hover { background: var(--electric-blue); color: #0D2E24; }
+    .login-btn { background: var(--electric-blue); color: #FFFFFF; padding: 0.5rem 1.5rem; border-radius: 999px; font-weight: 600; text-decoration: none; font-size: 0.85rem; transition: 0.3s; white-space: nowrap; }
+    .login-btn:hover { background: var(--electric-blue-light); transform: scale(1.02); }
+    
+    .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 10px; z-index: 1001; }
+    .hamburger-icon, .close-icon { font-size: 1.8rem; color: var(--nav-text); transition: all 0.3s ease; }
+    .close-icon { display: none; }
+    .mobile-menu-btn.active .hamburger-icon { display: none; }
+    .mobile-menu-btn.active .close-icon { display: block; }
+    .mobile-menu-panel { position: fixed; top: 80px; left: 0; right: 0; background: var(--bg-nav); max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; z-index: 999; box-shadow: 0 20px 30px rgba(0,0,0,0.3); }
+    .mobile-menu-panel.show { max-height: calc(100vh - 80px); overflow-y: auto; }
+    .mobile-menu-inner { padding: 0.5rem 0; }
+    .mobile-nav-item { border-bottom: 1px solid rgba(42,157,143,0.15); }
+    .mobile-nav-link { color: var(--nav-text); text-decoration: none; display: block; padding: 1rem 1.5rem; font-weight: 500; }
+    .mobile-nav-link:hover, .mobile-nav-link.active { color: var(--electric-blue); background: rgba(42,157,143,0.1); }
+    .mobile-dropdown-item { border-bottom: 1px solid rgba(42,157,143,0.15); }
+    .mobile-dropdown-btn { width: 100%; background: none; border: none; color: var(--nav-text); display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; font-size: 1rem; text-align: left; cursor: pointer; font-weight: 500; }
+    .mobile-dropdown-btn:hover { color: var(--electric-blue); background: rgba(42,157,143,0.1); }
+    .mobile-dropdown-icon { transition: transform 0.3s ease; }
+    .mobile-dropdown-icon.rotated { transform: rotate(180deg); }
+    .mobile-submenu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: rgba(0,0,0,0.2); }
+    .mobile-submenu.show { max-height: 300px; }
+    .mobile-submenu a { display: block; padding: 0.75rem 1rem 0.75rem 2.5rem; color: var(--nav-text); text-decoration: none; opacity: 0.8; font-size: 0.9rem; }
+    .mobile-submenu a:hover { color: var(--electric-blue); opacity: 1; background: rgba(42,157,143,0.05); }
+    .mobile-login-btn { display: inline-block; margin: 1rem 1.5rem; background: var(--electric-blue); color: #FFFFFF; padding: 0.75rem 1.5rem; border-radius: 999px; text-decoration: none; font-weight: 600; text-align: center; }
+    .mobile-theme-rtl { display: flex; gap: 1rem; padding: 1rem 1.5rem; border-top: 1px solid rgba(42,157,143,0.15); flex-wrap: wrap; }
+    .mobile-icon-btn { background: rgba(42,157,143,0.2); border: none; padding: 0.6rem 1rem; border-radius: 999px; color: var(--nav-text); cursor: pointer; }
+    .mobile-icon-btn:hover { background: var(--electric-blue); color: #0D2E24; }
+
+    /* Hero Section - Split Layout */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--bg-primary);
+      padding-top: 80px;
+    }
+    .hero-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .hero-content h1 { font-size: 3.8rem; margin-bottom: 1.5rem; line-height: 1.2; }
+    .hero-image img { width: 100%; height: auto; border-radius: 28px; box-shadow: var(--shadow); }
+    @media (max-width: 992px) { .hero-container { grid-template-columns: 1fr; text-align: center; } .hero-image { max-width: 500px; margin: 0 auto; } }
+    
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 100px 0; border-bottom: 1px solid var(--border-color); }
+    .section-title { font-size: 2.8rem; font-family: 'Merriweather', serif; text-align: center; margin-bottom: 1rem; }
+    .blue-divider { width: 80px; height: 3px; background: var(--electric-blue); margin: 1rem auto 2rem; }
+    .section-sub { text-align: center; color: var(--text-secondary); max-width: 700px; margin: 0 auto 3rem; }
+    
+    /* Feature Grid */
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .feature-card { background: var(--bg-card); border-radius: 24px; overflow: hidden; border: 1px solid var(--border-color); transition: all 0.3s; }
+    .feature-card:hover { transform: translateY(-8px); border-color: var(--electric-blue); }
+    .feature-card img { width: 100%; height: 260px; object-fit: cover; }
+    .feature-card-content { padding: 1.8rem; }
+    .feature-card h3 { margin-bottom: 0.5rem; }
+    
+    /* Benefits Section with Icons */
+    .benefits-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+    .benefit-item { text-align: center; padding: 2rem; background: var(--bg-card); border-radius: 20px; border: 1px solid var(--border-color); }
+    .benefit-icon { font-size: 2.5rem; color: var(--electric-blue); margin-bottom: 1rem; }
+    
+    /* Collection Showcase */
+    .collection-showcase { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; align-items: center; }
+    .collection-text { padding: 2rem; }
+    .collection-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .collection-gallery img { width: 100%; height: 200px; object-fit: cover; border-radius: 20px; }
+    
+    /* Testimonials Carousel Style */
+    .testimonial-slider { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .testimonial-card { background: var(--bg-card); padding: 2rem; border-radius: 20px; border-left: 4px solid var(--electric-blue); }
+    
+    /* Sustainability Stats */
+    .stats-container { background: var(--bg-secondary); border-radius: 32px; padding: 3rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
+    .stat-number { font-size: 3rem; font-weight: 800; color: var(--electric-blue); font-family: 'Merriweather', serif; }
+    
+    /* Newsletter + CTA */
+    .newsletter-section { background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card)); border-radius: 32px; padding: 3rem; text-align: center; border: 1px solid var(--electric-blue); }
+    .newsletter-form { display: flex; max-width: 500px; margin: 1.5rem auto 0; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .newsletter-form input { flex: 1; padding: 0.9rem 1.2rem; border: 1px solid var(--border-color); border-radius: 60px; background: var(--bg-primary); color: var(--text-primary); }
+    
+    /* Footer */
+    footer { background: var(--footer-bg); padding-top: 80px; padding-bottom: 40px; border-top: 1px solid rgba(42,157,143,0.3); }
+    .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-bottom: 3rem; }
+    .footer-col h4 { font-size: 1.2rem; margin-bottom: 1.2rem; font-weight: 700; color: #FFFFFF; }
+    .footer-col a { display: block; color: var(--footer-text-muted); text-decoration: none; margin-bottom: 0.6rem; transition: 0.2s; font-size: 0.85rem; }
+    .footer-col a:hover { color: var(--electric-blue); }
+    /* Fixed footer logo to match navbar exactly - same size and style */
+    .footer-logo {
+      font-size: 1.8rem !important;
+      font-weight: 700 !important;
+      color: #FFFFFF !important;
+      text-decoration: none !important;
+      letter-spacing: -0.5px !important;
+      margin-bottom: 1rem !important;
+      display: inline-block;
+    }
+    .footer-logo span { color: var(--electric-blue) !important; font-style: italic !important; font-family: 'Merriweather', serif !important; }
+    .social-icons a {
+      display: inline-block;
+      margin-right: 1rem;
+      font-size: 1.2rem;
+      color: #CCE3D4;
+      transition: 0.2s;
+    }
+    
+    /* Ensure footer description text is visible in both modes */
+    .footer-description {
+      color: var(--footer-text-muted);
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin-top: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .social-icons a { display: inline-block; margin-right: 1rem; font-size: 1.2rem; color: var(--footer-text-muted); transition: 0.2s; }
+    .social-icons a:hover { color: var(--electric-blue); }
+    .footer-contact-item { display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start; }
+    .footer-contact-item i { color: var(--electric-blue); min-width: 18px; margin-top: 2px; }
+    .footer-contact-item span, .footer-contact-item a { color: var(--footer-text-muted); font-size: 0.85rem; margin-bottom: 0; }
+    .footer-contact-item a:hover { color: var(--electric-blue); }
+    .footer-copyright { border-top: 1px solid rgba(42,157,143,0.3); padding-top: 2rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; color: var(--footer-text-muted); font-size: 0.8rem; }
+    .footer-copyright a { color: var(--footer-text-muted); text-decoration: none; margin-left: 1rem; }
+    .footer-copyright a:hover { color: var(--electric-blue); }
+    
+    @media (max-width: 1180px) { .nav-menu-container, .nav-buttons { display: none; } .mobile-menu-btn { display: block; } }
+    @media (max-width: 1024px) { .feature-grid, .benefits-grid, .testimonial-slider, .stats-container { grid-template-columns: repeat(2, 1fr); } .collection-showcase { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: repeat(2, 1fr); } .section-title { font-size: 2rem; } }
+    @media (max-width: 768px) { .feature-grid, .benefits-grid, .testimonial-slider, .stats-container { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; } .hero-content h1 { font-size: 2.5rem; } section { padding: 60px 0; } }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="flex-nav">
+      <a href="index.html" class="nav-logo-text"><span>Bamboo Essence</span></a>
+      <div class="nav-menu-container">
+        <div class="nav-links-group">
+          <div class="dropdown-container"><button class="dropdown-btn">Home <i class="fas fa-chevron-down"></i></button><div class="dropdown-menu"><a href="index.html">Home 1</a><a href="home2.html">Home 2</a></div></div>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="service.html" class="nav-link">Service</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+          <a href="faq.html" class="nav-link">FAQ</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+          <div class="dropdown-container"><button class="dropdown-btn">Dashboard <i class="fas fa-chevron-down"></i></button><div class="dropdown-menu"><a href="admin.html">Admin Dashboard</a><a href="client.html">Client Dashboard</a></div></div>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <a href="login.html" class="login-btn"> Sign In</a>
+        <a href="register.html" class="login-btn">Sign up</a>
+        <button id="rtl-toggle" class="icon-btn"><i class="fas fa-exchange-alt"></i></button>
+        <button id="theme-toggle" class="icon-btn"><i class="fas fa-moon"></i></button>
+      </div>
+      <button id="mobile-menu-btn" class="mobile-menu-btn"><i class="fas fa-bars hamburger-icon"></i><i class="fas fa-times close-icon"></i></button>
+    </div>
+  </div>
+  <div id="mobile-menu-panel" class="mobile-menu-panel">
+    <div class="mobile-menu-inner">
+      <div class="mobile-dropdown-item"><button class="mobile-dropdown-btn" data-dropdown="mobile-home">Home <i class="fas fa-chevron-down mobile-dropdown-icon"></i></button><div class="mobile-submenu"><a href="index.html">Home 1</a><a href="home2.html">Home 2</a></div></div>
+      <div class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></div>
+      <div class="mobile-nav-item"><a href="service.html" class="mobile-nav-link">Service</a></div>
+      <div class="mobile-nav-item"><a href="blog.html" class="mobile-nav-link">Blog</a></div>
+      
+      <div class="mobile-nav-item"><a href="faq.html" class="mobile-nav-link">FAQ</a></div>
+      <div class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></div>
+      <div class="mobile-dropdown-item"><button class="mobile-dropdown-btn" data-dropdown="mobile-Dashboard">Dashboard <i class="fas fa-chevron-down mobile-dropdown-icon"></i></button><div class="mobile-submenu"><a href="admin.html">Admin Dashboard</a><a href="client.html">Client Dashboard</a></div></div>
+      <div class="mobile-nav-item"><a href="login.html" class="mobile-login-btn"> Sign In</a></div>
+      <div class="mobile-nav-item"><a href="register.html" class="mobile-login-btn"> Sign up</a></div>
+      <div class="mobile-theme-rtl"><button id="mobile-theme-toggle" class="mobile-icon-btn"><i class="fas fa-moon"></i> Theme</button><button id="mobile-rtl-toggle" class="mobile-icon-btn"><i class="fas fa-exchange-alt"></i> RTL</button></div>
+    </div>
+  </div>
+</nav>
+
+<!-- SECTION 1: HERO -->
+<section class="hero">
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1 class="font-serif">Wear the <span class="blue-text">Change.</span><br>Naturally <span class="blue-text">Bamboo.</span></h1>
+      <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem;">Ultra-soft, eco-friendly bamboo apparel that feels good on your skin and the planet. Certified organic, carbon-neutral shipping.</p>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="#" class="btn-blue"><i class="fas fa-leaf"></i> Shop Now</a>
+        <a href="#collections" class="btn-outline-blue">Explore Collection <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div style="margin-top: 2rem; display: flex; gap: 2rem;">
+        <span><i class="fas fa-tint blue-text"></i> 70% Less Water</span>
+        <span><i class="fas fa-recycle blue-text"></i> 100% Biodegradable</span>
+        <span><i class="fas fa-certificate blue-text"></i> OEKO-TEX Certified</span>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=2070&auto=format" alt="Sustainable bamboo clothing model">
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: FEATURED COLLECTIONS (3 cards with images) -->
+<section id="collections">
+  <div class="container">
+    <h2 class="section-title">Featured <span class="blue-text">Bamboo Collections</span></h2>
+    <div class="blue-divider"></div>
+    <p class="section-sub">Discover our most-loved sustainable pieces — crafted for comfort and durability.</p>
+    <div class="feature-grid">
+      <div class="feature-card"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=2070&auto=format" alt="Bamboo t-shirt"><div class="feature-card-content"><h3>Everyday Tees</h3><p>Classic crewneck bamboo tees — breathable, moisture-wicking, and perfectly soft.</p><a href="#" class="blue-text" style="text-decoration:none;">Shop Now →</a></div></div>
+      <div class="feature-card"><img src="https://images.unsplash.com/photo-1564257631407-4deb1f99d992?q=80&w=1974&auto=format" alt="Bamboo lounge wear"><div class="feature-card-content"><h3>Lounge & Sleepwear</h3><p>Relax in sustainable bamboo loungewear. Naturally hypoallergenic and thermoregulating.</p><a href="#" class="blue-text" style="text-decoration:none;">Shop Now →</a></div></div>
+      <div class="feature-card"><img src="https://images.unsplash.com/photo-1595475884562-073c30d45670?q=80&w=1974&auto=format" alt="Bamboo accessories"><div class="feature-card-content"><h3>Eco Accessories</h3><p>Bamboo sunglasses, reusable straws, socks, and totes — zero waste essentials.</p><a href="#" class="blue-text" style="text-decoration:none;">Shop Now →</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: BENEFITS / WHY BAMBOO -->
+<section style="background: var(--bg-secondary);">
+  <div class="container">
+    <h2 class="section-title">Why <span class="blue-text">Bamboo Wins</span></h2>
+    <div class="blue-divider"></div>
+    <p class="section-sub">Superior to cotton in every sustainability metric — and incredibly soft.</p>
+    <div class="benefits-grid">
+      <div class="benefit-item"><div class="benefit-icon"><i class="fas fa-tint"></i></div><h3>70% Less Water</h3><p>Bamboo thrives naturally with minimal irrigation.</p></div>
+      <div class="benefit-item"><div class="benefit-icon"><i class="fas fa-wind"></i></div><h3>Carbon Negative</h3><p>Absorbs 5x more CO2 than hardwood trees.</p></div>
+      <div class="benefit-item"><div class="benefit-icon"><i class="fas fa-allergies"></i></div><h3>Hypoallergenic</h3><p>Ideal for sensitive skin, naturally antibacterial.</p></div>
+      <div class="benefit-item"><div class="benefit-icon"><i class="fas fa-temperature-low"></i></div><h3>Breathable</h3><p>Keeps you cool in summer, warm in winter.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: SUSTAINABILITY SHOWCASE (Split layout with images) -->
+<section>
+  <div class="container">
+    <div class="collection-showcase">
+      <div class="collection-text">
+        <span class="blue-text" style="letter-spacing: 2px;">OUR PROCESS</span>
+        <h2 class="section-title" style="text-align: left; margin-top: 0.5rem;">From <span class="blue-text">Farm to Fabric</span></h2>
+        <div class="blue-divider" style="margin-left: 0;"></div>
+        <p style="margin-bottom: 1rem;">Our bamboo is harvested from FSC-certified forests, processed using closed-loop technology that recycles 98% of water, and dyed with OEKO-TEX certified pigments. No toxic chemicals, no greenwashing.</p>
+        <ul style="list-style: none; margin-top: 1rem;">
+          <li><i class="fas fa-check-circle blue-text"></i> Ethical wages & safe factories</li>
+          <li><i class="fas fa-check-circle blue-text"></i> Plastic-free, compostable packaging</li>
+          <li><i class="fas fa-check-circle blue-text"></i> Carbon-neutral shipping globally</li>
+        </ul>
+        <a href="#" class="btn-outline-blue" style="margin-top: 1.5rem;">Learn More →</a>
+      </div>
+      <div class="collection-gallery">
+        <img src="https://images.unsplash.com/photo-1611744415133-0136ec39c3ba?q=80&w=2070&auto=format" alt="Bamboo forest">
+        <img src="https://images.unsplash.com/photo-1589182373726-e4f658ab54ec?q=80&w=1974&auto=format" alt="Bamboo fabric texture">
+        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2070&auto=format" alt="Sustainable factory">
+        <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=2070&auto=format" alt="Finished bamboo clothing">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: TESTIMONIALS + IMPACT STATS -->
+<section style="background: var(--bg-secondary);">
+  <div class="container">
+    <h2 class="section-title">Trusted by <span class="blue-text">Eco-Lovers</span></h2>
+    <div class="blue-divider"></div>
+    <div class="testimonial-slider">
+      <div class="testimonial-card"><i class="fas fa-quote-left blue-text" style="font-size: 1.5rem;"></i><p style="margin: 1rem 0;">"Softest shirt I've ever worn. I've washed it 20+ times and it still feels brand new."</p><h4>— Sarah M.</h4><div>★★★★★</div></div>
+      <div class="testimonial-card"><i class="fas fa-quote-left blue-text" style="font-size: 1.5rem;"></i><p style="margin: 1rem 0;">"Finally found sustainable socks that don't stink. Bamboo is a game changer."</p><h4>— James K.</h4><div>★★★★★</div></div>
+      <div class="testimonial-card"><i class="fas fa-quote-left blue-text" style="font-size: 1.5rem;"></i><p style="margin: 1rem 0;">"The quality is amazing and their carbon-neutral shipping gives me peace of mind."</p><h4>— Priya L.</h4><div>★★★★★</div></div>
+    </div>
+    
+    <div class="stats-container" style="margin-top: 3rem;">
+      <div><div class="stat-number">28K+</div><p>Trees Protected</p></div>
+      <div><div class="stat-number">2.1M</div><p>Gallons Water Saved</p></div>
+      <div><div class="stat-number">15K+</div><p>Plastic Bottles Diverted</p></div>
+      <div><div class="stat-number">100%</div><p>Renewable Energy</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: NEWSLETTER + FINAL CTA -->
+<section>
+  <div class="container">
+    <div class="newsletter-section">
+      <i class="fas fa-seedling" style="font-size: 3rem; color: var(--electric-blue); margin-bottom: 1rem;"></i>
+      <h2 style="font-size: 2rem;">Join the <span class="blue-text">Bamboo Movement</span></h2>
+      <p style="margin-top: 0.5rem;">Get 15% off your first order + exclusive access to new drops and sustainability tips.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Your email address">
+        <button class="btn-blue">Subscribe <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <p style="font-size: 0.8rem; margin-top: 1rem;"><i class="fas fa-lock"></i> No spam, unsubscribe anytime.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER - Fixed logo size to match navbar and improved text visibility -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo"><span>Bamboo Essence</span></a>
+        <div class="footer-description">Ethical bamboo apparel & accessories. Soft on you, gentle on Earth.</div>
+        <div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-pinterest"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a></div>
+      </div>
+      <div class="footer-col"><h4>Shop</h4><a href="#">Women's Bamboo</a><a href="#">Men's Collection</a><a href="#">Accessories</a><a href="#">Eco Home</a><a href="#">Gift Cards</a></div>
+      <div class="footer-col"><h4>Impact</h4><a href="#">Sustainability Report</a><a href="#">Carbon Offsetting</a><a href="#">Fair Trade Policy</a><a href="#">Bamboo Farming</a></div>
+      <div class="footer-col"><h4>Connect</h4>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>Portland, OR — Eco Hub</span></div>
+        <div class="footer-contact-item"><i class="fas fa-phone-alt"></i><a href="tel:+18885551234">+1 (888) 555-1234</a></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><a href="mailto:hello@bambooessence.com">hello@bambooessence.com</a></div>
+      </div>
+    </div>
+    <div class="footer-copyright"><p>© 2026 Bamboo Essence — Sustainable Bamboo Apparel. All rights reserved.</p><div><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Returns</a></div></div>
+  </div>
+</footer>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+  const body = document.body;
+  function updateThemeIcon(isDark) { if(themeToggle) themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>'; if(mobileThemeToggle) mobileThemeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i> Theme' : '<i class="fas fa-moon"></i> Theme'; }
+  function toggleTheme() { if(body.classList.contains('dark')) { body.classList.remove('dark'); localStorage.setItem('theme', 'light'); updateThemeIcon(false); } else { body.classList.add('dark'); localStorage.setItem('theme', 'dark'); updateThemeIcon(true); } }
+  if(localStorage.getItem('theme') === 'dark') { body.classList.add('dark'); updateThemeIcon(true); } else updateThemeIcon(false);
+  if(themeToggle) themeToggle.addEventListener('click', toggleTheme);
+  if(mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+  
+  const rtlToggle = document.getElementById('rtl-toggle');
+  const mobileRtlToggle = document.getElementById('mobile-rtl-toggle');
+  const htmlEl = document.documentElement;
+  function toggleRTL() { if(htmlEl.getAttribute('dir') === 'rtl') { htmlEl.removeAttribute('dir'); localStorage.setItem('direction', 'ltr'); } else { htmlEl.setAttribute('dir', 'rtl'); localStorage.setItem('direction', 'rtl'); } }
+  if(rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+  if(mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+  if(localStorage.getItem('direction') === 'rtl') htmlEl.setAttribute('dir', 'rtl');
+  
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobilePanel = document.getElementById('mobile-menu-panel');
+  function toggleMobile() { mobilePanel.classList.toggle('show'); mobileBtn.classList.toggle('active'); document.body.style.overflow = mobilePanel.classList.contains('show') ? 'hidden' : ''; }
+  if(mobileBtn) mobileBtn.addEventListener('click', toggleMobile);
+  document.querySelectorAll('.mobile-nav-link, .mobile-login-btn').forEach(link => { link.addEventListener('click', () => { if(mobilePanel.classList.contains('show')) toggleMobile(); }); });
+  document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => { btn.addEventListener('click', function(e) { e.stopPropagation(); const submenu = this.nextElementSibling; const icon = this.querySelector('.mobile-dropdown-icon'); document.querySelectorAll('.mobile-submenu').forEach(menu => { if(menu !== submenu) menu.classList.remove('show'); }); document.querySelectorAll('.mobile-dropdown-icon').forEach(i => { if(i !== icon) i.classList.remove('rotated'); }); submenu.classList.toggle('show'); icon.classList.toggle('rotated'); }); });
+  window.addEventListener('resize', () => { if(window.innerWidth > 1180 && mobilePanel?.classList.contains('show')) toggleMobile(); });
+</script>
+</body>
+</html>
