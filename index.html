@@ -205,7 +205,7 @@
       transition: all 0.3s;
       white-space: nowrap;
     }
-    .dropdown-btn:hover { color: var(--electric-blue); background: rgba(42,157,143,0.2); }
+    .dropdown-btn:hover, .dropdown-btn.active { color: var(--electric-blue); background: rgba(42,157,143,0.2); }
     .dropdown-menu {
       position: absolute;
       left: 0;
@@ -233,7 +233,7 @@
       text-decoration: none;
       font-size: 0.85rem;
     }
-    .dropdown-menu a:hover { background: rgba(42,157,143,0.1); color: var(--electric-blue); }
+    .dropdown-menu a:hover, .dropdown-menu a.active { background: rgba(42,157,143,0.1); color: var(--electric-blue); }
     .nav-buttons {
       display: flex;
       align-items: center;
@@ -308,7 +308,7 @@
       padding: 1rem 1.5rem;
       font-weight: 500;
     }
-    .mobile-nav-link:hover { color: var(--electric-blue); background: rgba(42,157,143,0.1); }
+    .mobile-nav-link:hover, .mobile-nav-link.active { color: var(--electric-blue); background: rgba(42,157,143,0.1); }
     
     /* Mobile Dropdown */
     .mobile-dropdown-item {
@@ -328,7 +328,7 @@
       cursor: pointer;
       font-weight: 500;
     }
-    .mobile-dropdown-btn:hover { color: var(--electric-blue); background: rgba(42,157,143,0.1); }
+    .mobile-dropdown-btn:hover, .mobile-dropdown-btn.active { color: var(--electric-blue); background: rgba(42,157,143,0.1); }
     .mobile-dropdown-icon {
       transition: transform 0.3s ease;
     }
@@ -352,7 +352,7 @@
       opacity: 0.8;
       font-size: 0.9rem;
     }
-    .mobile-submenu a:hover {
+    .mobile-submenu a:hover, .mobile-submenu a.active {
       color: var(--electric-blue);
       opacity: 1;
       background: rgba(42,157,143,0.05);
@@ -608,9 +608,9 @@
       <div class="nav-menu-container">
         <div class="nav-links-group">
           <div class="dropdown-container">
-            <button class="dropdown-btn">Home <i class="fas fa-chevron-down"></i></button>
+            <button class="dropdown-btn active">Home <i class="fas fa-chevron-down"></i></button>
             <div class="dropdown-menu">
-              <a href="index.html">Home 1</a>
+              <a href="index.html" class="active">Home 1</a>
               <a href="home2.html">Home 2</a>
             </div>
           </div>
@@ -645,8 +645,8 @@
   <div id="mobile-menu-panel" class="mobile-menu-panel">
     <div class="mobile-menu-inner">
       <div class="mobile-dropdown-item">
-        <button class="mobile-dropdown-btn" data-dropdown="mobile-home">Home <i class="fas fa-chevron-down mobile-dropdown-icon"></i></button>
-        <div class="mobile-submenu" id="mobile-home-submenu"><a href="index.html">Home 1</a><a href="home2.html">Home 2</a></div>
+        <button class="mobile-dropdown-btn active" data-dropdown="mobile-home">Home <i class="fas fa-chevron-down mobile-dropdown-icon rotated"></i></button>
+        <div class="mobile-submenu show" id="mobile-home-submenu"><a href="index.html" class="active">Home 1</a><a href="home2.html">Home 2</a></div>
       </div>
       <div class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About </a></div>
       <div class="mobile-nav-item"><a href="service.html" class="mobile-nav-link">Service</a></div>

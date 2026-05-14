@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Contact | Bamboo Essence — Get in Touch with Our Sustainable Team</title>
+  <link rel="icon" href="/images/fav.png" type="image/jpeg">
   <meta name="description" content="Connect with Bamboo Essence. Customer support, wholesale inquiries, Blog partnerships, and eco-consultation. We'd love to hear from you.">
   
   <!-- Font Awesome -->
@@ -211,8 +212,22 @@
     .footer-col a { display: block; color: #CCE3D4; text-decoration: none; margin-bottom: 0.6rem; transition: 0.2s; font-size: 0.85rem; }
     .footer-col a:hover { color: var(--electric-blue); }
     .footer-col p { color: #CCE3D4; line-height: 1.6; font-size: 0.85rem; }
-    .footer-logo { font-size: 1.8rem; font-weight: 700; color: #FFFFFF; text-decoration: none; letter-spacing: -0.5px; display: inline-block; margin-bottom: 1rem; }
-    .footer-logo span { color: var(--electric-blue); font-style: italic; font-family: 'Merriweather', serif; }
+    .footer-logo {
+      font-size: 1.8rem !important;
+      font-weight: 700 !important;
+      color: #FFFFFF !important;
+      text-decoration: none !important;
+      letter-spacing: -0.5px !important;
+      margin-bottom: 1rem !important;
+      display: inline-block;
+    }
+    .footer-logo span { color: var(--electric-blue) !important; font-style: italic !important; font-family: 'Merriweather', serif !important; }
+    .social-icons a {
+      display: inline-block;
+      margin-right: 1rem;
+      font-size: 1.2rem;
+      color: #CCE3D4;
+      transition: 0.2s;}
     .social-icons a { display: inline-block; margin-right: 1rem; font-size: 1.2rem; color: #CCE3D4; transition: 0.2s; }
     .social-icons a:hover { color: var(--electric-blue); }
     .footer-contact-item { display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start; }
@@ -296,13 +311,55 @@
           <button type="submit" class="btn-blue"><i class="fas fa-paper-plane"></i> Send Message</button>
         </form>
       </div>
-      <div class="contact-info-card">
-        <h3><i class="fas fa-map-pin blue-text"></i> Our Eco-Hub</h3>
-        <div class="contact-detail"><i class="fas fa-location-dot"></i><div><strong>Bamboo Essence Headquarters</strong><br>245 Greenway Ave, Suite 200<br>Portland, OR 97204</div></div>
-        <div class="contact-detail"><i class="fas fa-phone-alt"></i><div><strong>Support Hotline</strong><br><a href="tel:+18885551234" style="color:var(--electric-blue);">+1 (888) 555-1234</a><br>Mon-Fri 9am-6pm PST</div></div>
-        <div class="contact-detail"><i class="fas fa-envelope"></i><div><strong>Email Us</strong><br><a href="mailto:hello@bambooessence.com" style="color:var(--electric-blue);">hello@bambooessence.com</a><br><a href="mailto:wholesale@bambooessence.com" style="color:var(--electric-blue);">wholesale@bambooessence.com</a></div></div>
-        <div class="contact-detail"><i class="fas fa-clock"></i><div><strong>Showroom Hours</strong><br>Tuesday – Saturday: 10am – 6pm<br>Sunday & Monday: Closed (Online only)</div></div>
-      </div>
+      <div class="contact-info-card" style="display:flex; flex-direction:column; gap:24px;">
+
+  <h3 style="margin-bottom:10px;">
+    <i class="fas fa-map-pin blue-text"></i> Our Eco-Hub
+  </h3>
+
+  <div class="contact-detail" style="display:flex; align-items:flex-start; gap:15px; padding-bottom:18px; border-bottom:1px solid rgba(255,255,255,0.08);">
+    <i class="fas fa-location-dot" style="margin-top:4px;"></i>
+    <div>
+      <strong>Bamboo Essence Headquarters</strong><br>
+      245 Greenway Ave, Suite 200<br>
+      Portland, OR 97204
+    </div>
+  </div>
+
+  <div class="contact-detail" style="display:flex; align-items:flex-start; gap:15px; padding-bottom:18px; border-bottom:1px solid rgba(255,255,255,0.08);">
+    <i class="fas fa-phone-alt" style="margin-top:4px;"></i>
+    <div>
+      <strong>Support Hotline</strong><br>
+      <a href="tel:+18885551234" style="color:var(--electric-blue); text-decoration:none;">
+        +1 (888) 555-1234
+      </a><br>
+      Mon-Fri 9am-6pm PST
+    </div>
+  </div>
+
+  <div class="contact-detail" style="display:flex; align-items:flex-start; gap:15px; padding-bottom:18px; border-bottom:1px solid rgba(255,255,255,0.08);">
+    <i class="fas fa-envelope" style="margin-top:4px;"></i>
+    <div>
+      <strong>Email Us</strong><br>
+      <a href="mailto:hello@bambooessence.com" style="color:var(--electric-blue); text-decoration:none;">
+        hello@bambooessence.com
+      </a><br>
+      <a href="mailto:wholesale@bambooessence.com" style="color:var(--electric-blue); text-decoration:none;">
+        wholesale@bambooessence.com
+      </a>
+    </div>
+  </div>
+
+  <div class="contact-detail" style="display:flex; align-items:flex-start; gap:15px;">
+    <i class="fas fa-clock" style="margin-top:4px;"></i>
+    <div>
+      <strong>Showroom Hours</strong><br>
+      Tuesday – Saturday: 10am – 6pm<br>
+      Sunday & Monday: Closed (Online only)
+    </div>
+  </div>
+
+</div>
     </div>
   </div>
 </section>

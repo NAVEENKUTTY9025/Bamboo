@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Bamboo Essence | Sustainable Bamboo Apparel & Accessories — Natural Comfort</title>
+  <link rel="icon" href="/images/fav.png" type="image/jpeg">
   <meta name="description" content="Discover premium bamboo clothing and eco-accessories. Ultra-soft, sustainable, and ethically made. Shop the new bamboo collection for men and women.">
   
   <!-- Font Awesome -->
@@ -121,11 +122,11 @@
     .nav-link:hover, .nav-link.active { color: var(--electric-blue); background: rgba(42,157,143,0.2); }
     .dropdown-container { position: relative; display: inline-block; }
     .dropdown-btn { background: none; border: none; color: var(--nav-text); font-weight: 500; display: flex; align-items: center; gap: 6px; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer; font-size: 0.9rem; transition: all 0.3s; white-space: nowrap; }
-    .dropdown-btn:hover { color: var(--electric-blue); background: rgba(42,157,143,0.2); }
+    .dropdown-btn:hover, .dropdown-btn.active { color: var(--electric-blue); background: rgba(42,157,143,0.2); }
     .dropdown-menu { position: absolute; left: 0; margin-top: 0.5rem; width: 220px; background: var(--bg-card); border-radius: 0.75rem; box-shadow: var(--shadow); opacity: 0; visibility: hidden; transition: all 0.3s; transform: translateY(10px); z-index: 60; border: 1px solid var(--border-color); }
     .dropdown-container:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
     .dropdown-menu a { display: block; padding: 0.75rem 1.2rem; color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; }
-    .dropdown-menu a:hover { background: rgba(42,157,143,0.1); color: var(--electric-blue); }
+    .dropdown-menu a:hover, .dropdown-menu a.active { background: rgba(42,157,143,0.1); color: var(--electric-blue); }
     .nav-buttons { display: flex; align-items: center; gap: 0.75rem; }
     .icon-btn { width: 40px; height: 40px; border-radius: 999px; background: rgba(42,157,143,0.2); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; color: var(--nav-text); border: none; }
     .icon-btn:hover { background: var(--electric-blue); color: #0D2E24; }
@@ -145,13 +146,13 @@
     .mobile-nav-link:hover, .mobile-nav-link.active { color: var(--electric-blue); background: rgba(42,157,143,0.1); }
     .mobile-dropdown-item { border-bottom: 1px solid rgba(42,157,143,0.15); }
     .mobile-dropdown-btn { width: 100%; background: none; border: none; color: var(--nav-text); display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; font-size: 1rem; text-align: left; cursor: pointer; font-weight: 500; }
-    .mobile-dropdown-btn:hover { color: var(--electric-blue); background: rgba(42,157,143,0.1); }
+    .mobile-dropdown-btn:hover, .mobile-dropdown-btn.active { color: var(--electric-blue); background: rgba(42,157,143,0.1); }
     .mobile-dropdown-icon { transition: transform 0.3s ease; }
     .mobile-dropdown-icon.rotated { transform: rotate(180deg); }
     .mobile-submenu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: rgba(0,0,0,0.2); }
     .mobile-submenu.show { max-height: 300px; }
     .mobile-submenu a { display: block; padding: 0.75rem 1rem 0.75rem 2.5rem; color: var(--nav-text); text-decoration: none; opacity: 0.8; font-size: 0.9rem; }
-    .mobile-submenu a:hover { color: var(--electric-blue); opacity: 1; background: rgba(42,157,143,0.05); }
+    .mobile-submenu a:hover, .mobile-submenu a.active { color: var(--electric-blue); opacity: 1; background: rgba(42,157,143,0.05); }
     .mobile-login-btn { display: inline-block; margin: 1rem 1.5rem; background: var(--electric-blue); color: #FFFFFF; padding: 0.75rem 1.5rem; border-radius: 999px; text-decoration: none; font-weight: 600; text-align: center; }
     .mobile-theme-rtl { display: flex; gap: 1rem; padding: 1rem 1.5rem; border-top: 1px solid rgba(42,157,143,0.15); flex-wrap: wrap; }
     .mobile-icon-btn { background: rgba(42,157,143,0.2); border: none; padding: 0.6rem 1rem; border-radius: 999px; color: var(--nav-text); cursor: pointer; }
@@ -273,7 +274,7 @@
       <a href="index.html" class="nav-logo-text"><span>Bamboo Essence</span></a>
       <div class="nav-menu-container">
         <div class="nav-links-group">
-          <div class="dropdown-container"><button class="dropdown-btn">Home <i class="fas fa-chevron-down"></i></button><div class="dropdown-menu"><a href="index.html">Home 1</a><a href="home2.html">Home 2</a></div></div>
+          <div class="dropdown-container"><button class="dropdown-btn active">Home <i class="fas fa-chevron-down"></i></button><div class="dropdown-menu"><a href="index.html">Home 1</a><a href="home2.html" class="active">Home 2</a></div></div>
           <a href="about.html" class="nav-link">About</a>
           <a href="service.html" class="nav-link">Service</a>
           <a href="blog.html" class="nav-link">Blog</a>
@@ -293,7 +294,7 @@
   </div>
   <div id="mobile-menu-panel" class="mobile-menu-panel">
     <div class="mobile-menu-inner">
-      <div class="mobile-dropdown-item"><button class="mobile-dropdown-btn" data-dropdown="mobile-home">Home <i class="fas fa-chevron-down mobile-dropdown-icon"></i></button><div class="mobile-submenu"><a href="index.html">Home 1</a><a href="home2.html">Home 2</a></div></div>
+      <div class="mobile-dropdown-item"><button class="mobile-dropdown-btn active" data-dropdown="mobile-home">Home <i class="fas fa-chevron-down mobile-dropdown-icon rotated"></i></button><div class="mobile-submenu show"><a href="index.html">Home 1</a><a href="home2.html" class="active">Home 2</a></div></div>
       <div class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></div>
       <div class="mobile-nav-item"><a href="service.html" class="mobile-nav-link">Service</a></div>
       <div class="mobile-nav-item"><a href="blog.html" class="mobile-nav-link">Blog</a></div>

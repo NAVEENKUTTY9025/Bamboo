@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Bamboo Essence Blog | Sustainable Fashion, Eco-Living & Bamboo Stories</title>
+  <link rel="icon" href="/images/fav.png" type="image/jpeg">
   <meta name="description" content="Discover the latest stories on sustainable bamboo apparel, eco-friendly living tips, ethical fashion news, and behind-the-scenes at Bamboo Essence.">
   
   <!-- Font Awesome -->
@@ -287,7 +288,7 @@
       padding: 1rem 1.5rem;
       font-weight: 500;
     }
-    .mobile-nav-link:hover { color: var(--electric-blue); background: rgba(42,157,143,0.1); }
+    .mobile-nav-link:hover, .mobile-nav-link.active { color: var(--electric-blue); background: rgba(42,157,143,0.1); }
     .mobile-dropdown-item { border-bottom: 1px solid rgba(42,157,143,0.15); }
     .mobile-dropdown-btn {
       width: 100%;
@@ -516,6 +517,11 @@
       transition: 0.2s;
       font-size: 0.85rem;
     }
+    .footer-col p {
+      color: #CCE3D4;
+      line-height: 1.6;
+      font-size: 0.85rem;
+    }
   .footer-logo {
       font-size: 1.8rem !important;
       font-weight: 700 !important;
@@ -603,7 +609,7 @@
       <div class="mobile-dropdown-item"><button class="mobile-dropdown-btn">Home <i class="fas fa-chevron-down mobile-dropdown-icon"></i></button><div class="mobile-submenu"><a href="index.html">Home 1</a><a href="home2.html">Home 2</a></div></div>
       <div class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About Us</a></div>
       <div class="mobile-nav-item"><a href="service.html" class="mobile-nav-link">Service</a></div>
-      <div class="mobile-nav-item"><a href="blog.html" class="mobile-nav-link">Blog</a></div>
+      <div class="mobile-nav-item"><a href="blog.html" class="mobile-nav-link active">Blog</a></div>
       <div class="mobile-nav-item"><a href="faq.html" class="mobile-nav-link">Faq</a></div>
       <div class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></div>
       <div class="mobile-dropdown-item"><button class="mobile-dropdown-btn">Dashboard <i class="fas fa-chevron-down mobile-dropdown-icon"></i></button><div class="mobile-submenu"><a href="#">Admin Dashboard</a><a href="#">Client Dashboard</a></div></div>
@@ -784,10 +790,10 @@
     const excerpt = card.querySelector('.blog-excerpt').innerText;
     const imgSrc = card.querySelector('.blog-img').src;
     
-    const detailHTML = `<!DOCTYPE html>
-    <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${title} | Bamboo Essence Blog</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet"><style>
-      *{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Inter',sans-serif;background:#F5F7F0;color:#1A2E24;}.post-container{max-width:1000px;margin:100px auto;padding:2rem;background:white;border-radius:40px;box-shadow:0 20px 40px rgba(0,0,0,0.08);}.post-img{width:100%;max-height:500px;object-fit:cover;border-radius:28px;margin-bottom:2rem;}.post-title{font-size:2.8rem;font-family:'Merriweather',serif;margin-bottom:1rem;}.post-meta{color:#6B8E7A;margin-bottom:1.5rem;display:flex;gap:1.5rem;}.post-content{font-size:1.1rem;line-height:1.8;color:#3A5E4C;margin:2rem 0;}.back-btn{display:inline-flex;align-items:center;gap:10px;background:#2A9D8F;color:white;padding:0.8rem 2rem;border-radius:40px;text-decoration:none;margin-top:1rem;}.back-btn:hover{background:#1E7A6E;}@media (max-width:768px){.post-title{font-size:1.8rem;}.post-container{margin:80px 1rem;padding:1.5rem;}}</style></head>
-    <body><div class="post-container"><img src="${imgSrc}" alt="${title}" class="post-img"><h1 class="post-title">${title}</h1><div class="post-meta"><span><i class="fas fa-calendar"></i> ${date}</span><span><i class="fas fa-tag"></i> ${category}</span></div><div class="post-content"><p>${excerpt}</p><br><p>This is a full detailed article about "${title}". At Bamboo Essence, we believe in sharing knowledge that empowers our community to make sustainable choices. Bamboo is one of the fastest-growing plants on Earth, requiring no pesticides and minimal water. Our commitment extends beyond products — we're building a movement toward regenerative fashion.</p><br><p>Thank you for being part of our journey. Stay tuned for more stories on ethical style, circular economy, and the beauty of bamboo.</p></div><button onclick="window.close()" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Blog</button></div></body></html>`;
+    const detailHTML = "<!DOCTYPE html>\n" +
+    "<html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>" + title + " | Bamboo Essence Blog<\\/title><link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css\"><link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap\" rel=\"stylesheet\"><style>\n" +
+    "  *{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Inter',sans-serif;background:#F5F7F0;color:#1A2E24;}.post-container{max-width:1000px;margin:100px auto;padding:2rem;background:white;border-radius:40px;box-shadow:0 20px 40px rgba(0,0,0,0.08);}.post-img{width:100%;max-height:500px;object-fit:cover;border-radius:28px;margin-bottom:2rem;}.post-title{font-size:2.8rem;font-family:'Merriweather',serif;margin-bottom:1rem;}.post-meta{color:#6B8E7A;margin-bottom:1.5rem;display:flex;gap:1.5rem;}.post-content{font-size:1.1rem;line-height:1.8;color:#3A5E4C;margin:2rem 0;}.back-btn{display:inline-flex;align-items:center;gap:10px;background:#2A9D8F;color:white;padding:0.8rem 2rem;border-radius:40px;text-decoration:none;margin-top:1rem;}.back-btn:hover{background:#1E7A6E;}@media (max-width:768px){.post-title{font-size:1.8rem;}.post-container{margin:80px 1rem;padding:1.5rem;}}<\\/style><\\/head>\n" +
+    "<body><div class=\"post-container\"><img src=\"" + imgSrc + "\" alt=\"" + title + "\" class=\"post-img\"><h1 class=\"post-title\">" + title + "<\\/h1><div class=\"post-meta\"><span><i class=\"fas fa-calendar\"><\\/i> " + date + "<\\/span><span><i class=\"fas fa-tag\"><\\/i> " + category + "<\\/span><\\/div><div class=\"post-content\"><p>" + excerpt + "<\\/p><br><p>This is a full detailed article about \"" + title + "\". At Bamboo Essence, we believe in sharing knowledge that empowers our community to make sustainable choices. Bamboo is one of the fastest-growing plants on Earth, requiring no pesticides and minimal water. Our commitment extends beyond products — we're building a movement toward regenerative fashion.<\\/p><br><p>Thank you for being part of our journey. Stay tuned for more stories on ethical style, circular economy, and the beauty of bamboo.<\\/p><\\/div><button onclick=\"window.close()\" class=\"back-btn\"><i class=\"fas fa-arrow-left\"><\\/i> Back to Blog<\\/button><\\/div><\\/body><\\/html>";
     const blob = new Blob([detailHTML], { type: 'text/html' });
     const url = URL.createObjectURL(blob);
     window.open(url, '_blank');
