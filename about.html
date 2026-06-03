@@ -269,6 +269,24 @@
       white-space: nowrap;
     }
     .login-btn:hover { background: var(--electric-blue-light); transform: scale(1.02); }
+    .login-btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--electric-blue);
+      color: var(--nav-text);
+      padding: calc(0.5rem - 1.5px) 1.5rem;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: 0.3s;
+      white-space: nowrap;
+      display: inline-block;
+    }
+    .login-btn-outline:hover {
+      background: var(--electric-blue);
+      color: #FFFFFF;
+      transform: scale(1.02);
+    }
     
     /* Mobile Menu */
     .mobile-menu-btn {
@@ -356,6 +374,17 @@
       font-weight: 600;
       text-align: center;
     }
+    .mobile-login-btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--electric-blue);
+      color: var(--nav-text);
+      padding: calc(0.75rem - 1.5px) 1.5rem;
+      transition: all 0.3s ease;
+    }
+    .mobile-login-btn-outline:hover {
+      background: var(--electric-blue);
+      color: #FFFFFF;
+    }
     .mobile-theme-rtl {
       display: flex;
       gap: 1rem;
@@ -375,18 +404,24 @@
 
     /* Page Header */
     .page-header {
-      background: var(--bg-secondary);
+      background: linear-gradient(rgba(13, 46, 36, 0.75), rgba(13, 46, 36, 0.85)), url('https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1920&auto=format') no-repeat center center;
+      background-size: cover;
       padding: 160px 0 80px;
       text-align: center;
       border-bottom: 1px solid var(--border-color);
+      color: #FFFFFF;
     }
     .page-header h1 {
       font-size: 3.5rem;
       font-family: 'Merriweather', serif;
       margin-bottom: 1rem;
+      color: #FFFFFF;
+    }
+    .page-header p {
+      color: #CCE3D4 !important;
     }
     .breadcrumb {
-      color: var(--text-muted);
+      color: #CCE3D4;
       font-size: 0.9rem;
     }
     .breadcrumb a {
@@ -546,8 +581,32 @@
     @media (max-width: 768px) {
       .values-grid, .team-grid, .stats-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
-      .page-header h1 { font-size: 2.5rem; }
+      .page-header h1 { font-size: 2.2rem; }
       section { padding: 60px 0; }
+    }
+    @media (max-width: 480px) {
+      .nav-container { padding: 0 1rem; }
+      .nav-logo-text { font-size: 1.4rem !important; }
+      .page-header h1 { font-size: 1.8rem !important; }
+      .mobile-login-btn { display: block; margin: 0.5rem 1.5rem; }
+    }
+
+    /* Cart Badge */
+    .cart-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: #E76F51;
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
     }
   </style>
 </head>
@@ -577,7 +636,8 @@
       </div>
       <div class="nav-buttons">
         <a href="login.html" class="login-btn">Sign In</a>
-        <a href="register.html" class="login-btn"> Sign up</a>
+        <a href="register.html" class="login-btn-outline"> Sign up</a>
+        <button id="cart-btn" class="icon-btn" title="Cart" style="position: relative;"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cart-count">0</span></button>
         <button id="rtl-toggle" class="icon-btn" title="RTL"><i class="fas fa-exchange-alt"></i></button>
         <button id="theme-toggle" class="icon-btn" title="Theme"><i class="fas fa-moon"></i></button>
       </div>
@@ -603,8 +663,14 @@
         <button class="mobile-dropdown-btn" data-dropdown="mobile-Dashboard">Dashboard <i class="fas fa-chevron-down mobile-dropdown-icon"></i></button>
         <div class="mobile-submenu"><a href="admin.html">Admin Dashboard</a><a href="client.html">Client Dashboard</a></div>
       </div>
+      <div class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link" id="mobile-cart-link">
+          <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i> Cart 
+          <span class="mobile-cart-count" id="mobile-cart-count" style="background: #E76F51; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem; margin-left: 5px; font-weight: 600;">0</span>
+        </a>
+      </div>
       <div class="mobile-nav-item"><a href="login.html" class="mobile-login-btn"> Sign In</a></div>
-      <div class="mobile-nav-item"><a href="register.html" class="mobile-login-btn"><i class="fas fa-Serviceping-bag"></i> Sign up</a></div>
+      <div class="mobile-nav-item"><a href="register.html" class="mobile-login-btn mobile-login-btn-outline"><i class="fas fa-Serviceping-bag"></i> Sign up</a></div>
       <div class="mobile-theme-rtl">
         <button id="mobile-theme-toggle" class="mobile-icon-btn"><i class="fas fa-moon"></i> Theme</button>
         <button id="mobile-rtl-toggle" class="mobile-icon-btn"><i class="fas fa-exchange-alt"></i> RTL</button>
@@ -762,6 +828,19 @@
   });
   
   window.addEventListener('resize', () => { if(window.innerWidth > 1180 && mobilePanel?.classList.contains('show')) toggleMobile(); });
+
+  // CART UI SYNC LOGIC
+  const cartBadge = document.getElementById('cart-count');
+  const mobileCartBadge = document.getElementById('mobile-cart-count');
+  
+  function updateCartUI() {
+    const cartCount = localStorage.getItem('cartCount') || '0';
+    if (cartBadge) cartBadge.innerText = cartCount;
+    if (mobileCartBadge) mobileCartBadge.innerText = cartCount;
+  }
+  updateCartUI();
+  window.addEventListener('storage', updateCartUI);
+  window.addEventListener('focus', updateCartUI);
 </script>
 </body>
 </html>

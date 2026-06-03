@@ -265,6 +265,24 @@
       white-space: nowrap;
     }
     .login-btn:hover { background: var(--electric-blue-light); transform: scale(1.02); }
+    .login-btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--electric-blue);
+      color: var(--nav-text);
+      padding: calc(0.5rem - 1.5px) 1.5rem;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: 0.3s;
+      white-space: nowrap;
+      display: inline-block;
+    }
+    .login-btn-outline:hover {
+      background: var(--electric-blue);
+      color: #FFFFFF;
+      transform: scale(1.02);
+    }
     
     /* Mobile Menu */
     .mobile-menu-btn {
@@ -368,6 +386,17 @@
       font-weight: 600;
       text-align: center;
     }
+    .mobile-login-btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--electric-blue);
+      color: var(--nav-text);
+      padding: calc(0.75rem - 1.5px) 1.5rem;
+      transition: all 0.3s ease;
+    }
+    .mobile-login-btn-outline:hover {
+      background: var(--electric-blue);
+      color: #FFFFFF;
+    }
     .mobile-theme-rtl {
       display: flex;
       gap: 1rem;
@@ -390,8 +419,13 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      background: var(--bg-primary);
+      background: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.95)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1920&auto=format') no-repeat center center;
+      background-size: cover;
       padding-top: 80px;
+    }
+    body.dark .hero {
+      background: linear-gradient(rgba(18, 30, 24, 0.92), rgba(18, 30, 24, 0.95)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1920&auto=format') no-repeat center center;
+      background-size: cover;
     }
     .hero-container {
       max-width: 1400px;
@@ -403,6 +437,11 @@
       align-items: center;
     }
     .hero-content { animation: fadeInLeft 0.8s ease-out; }
+    .hero-title {
+      font-size: 3.8rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
     .hero-image {
       animation: fadeInRight 0.8s ease-out;
       border-radius: 32px;
@@ -418,6 +457,16 @@
     @media (max-width: 992px) {
       .hero-container { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
       .hero-image { max-width: 500px; margin: 0 auto; }
+      .hero-title { font-size: 2.8rem; }
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero-content div[style*="display: flex"] {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
     }
     
     .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
@@ -595,6 +644,228 @@
       .footer-grid { grid-template-columns: 1fr; }
       .section-title { font-size: 2rem; }
       section { padding: 60px 0; }
+      .hero-title { font-size: 2.2rem; }
+    }
+    @media (max-width: 480px) {
+      .nav-container { padding: 0 1rem; }
+      .nav-logo-text { font-size: 1.4rem !important; }
+      .hero-title { font-size: 1.8rem !important; }
+      .mobile-login-btn { display: block; margin: 0.5rem 1.5rem; }
+    }
+
+    /* Cart Badge */
+    .cart-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: #E76F51;
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    /* Toast Notifications */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1005;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 350px;
+      width: calc(100% - 48px);
+    }
+    .toast {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border-left: 4px solid var(--electric-blue);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transform: translateX(120%);
+      transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    .toast.show {
+      transform: translateX(0);
+    }
+    .toast-content {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .toast-icon {
+      color: var(--electric-blue);
+      font-size: 1.2rem;
+    }
+    .toast-message {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .toast-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+    .toast-close:hover {
+      color: var(--text-primary);
+    }
+
+    /* Shop Styling */
+    .shop-filters {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      padding: 0.6rem 1.5rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--electric-blue);
+      color: #FFFFFF;
+      border-color: var(--electric-blue);
+      box-shadow: 0 4px 15px rgba(42, 157, 143, 0.2);
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--electric-blue);
+      box-shadow: var(--shadow);
+    }
+    .product-img-container {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      background-color: var(--bg-secondary);
+    }
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .product-card:hover .product-image {
+      transform: scale(1.08);
+    }
+    .product-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--electric-blue);
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .product-info {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 0.5rem;
+      font-size: 0.8rem;
+    }
+    .product-rating i {
+      color: #FFB020;
+    }
+    .product-rating span {
+      color: var(--text-muted);
+      margin-left: 4px;
+    }
+    .product-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--text-primary);
+    }
+    .product-description {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+    .product-price {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+    .btn-add-to-cart {
+      background: var(--electric-blue);
+      color: #FFFFFF;
+      border: none;
+      padding: 0.6rem 1.25rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+    .btn-add-to-cart:hover {
+      background: var(--electric-blue-dark);
+      transform: scale(1.03);
+    }
+    .btn-add-to-cart:active {
+      transform: scale(0.97);
     }
   </style>
 </head>
@@ -630,7 +901,8 @@
       </div>
       <div class="nav-buttons">
         <a href="login.html" class="login-btn"> Sign In</a>
-        <a href="register.html" class="login-btn"> Sign up</a>
+        <a href="register.html" class="login-btn-outline"> Sign up</a>
+        <button id="cart-btn" class="icon-btn" title="Cart" style="position: relative;"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cart-count">0</span></button>
         <button id="rtl-toggle" class="icon-btn" title="RTL"><i class="fas fa-exchange-alt"></i></button>
         <button id="theme-toggle" class="icon-btn" title="Theme"><i class="fas fa-moon"></i></button>
       </div>
@@ -657,8 +929,14 @@
         <button class="mobile-dropdown-btn" data-dropdown="mobile-Dashboard">Dashboard <i class="fas fa-chevron-down mobile-dropdown-icon"></i></button>
         <div class="mobile-submenu" id="mobile-Dashboard-submenu"><a href="admin.html">Admin Dashboard</a><a href="client.html">Client Dashboard</a></div>
       </div>
+      <div class="mobile-nav-item">
+        <a href="#" class="mobile-nav-link" id="mobile-cart-link">
+          <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i> Cart 
+          <span class="mobile-cart-count" id="mobile-cart-count" style="background: #E76F51; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem; margin-left: 5px; font-weight: 600;">0</span>
+        </a>
+      </div>
       <div class="mobile-nav-item"><a href="login.html" class="mobile-login-btn"> Sign In</a></div>
-      <div class="mobile-nav-item"><a href="register.html" class="mobile-login-btn"> Sign up</a></div>
+      <div class="mobile-nav-item"><a href="register.html" class="mobile-login-btn mobile-login-btn-outline"> Sign up</a></div>
       <div class="mobile-theme-rtl">
         <button id="mobile-theme-toggle" class="mobile-icon-btn"><i class="fas fa-moon"></i> Theme</button>
         <button id="mobile-rtl-toggle" class="mobile-icon-btn"><i class="fas fa-exchange-alt"></i> RTL</button>
@@ -671,7 +949,7 @@
 <section class="hero">
   <div class="hero-container">
     <div class="hero-content">
-      <h1 class="font-serif" style="font-size: 3.8rem; margin-bottom:1.5rem; line-height:1.2;">Naturally <span class="blue-text">Soft.</span> <br>Sustainably <span class="blue-text">Bamboo.</span></h1>
+      <h1 class="font-serif hero-title">Naturally <span class="blue-text">Soft.</span> <br>Sustainably <span class="blue-text">Bamboo.</span></h1>
       <p style="color: var(--text-secondary); font-size:1.1rem; margin-bottom:2rem;">Organic bamboo apparel & accessories — breathable, biodegradable, and gentle on the planet. Ethically crafted, carbon-neutral shipping.</p>
       <div style="display:flex; gap:1rem; flex-wrap:wrap;">
         <a href="#" class="btn-blue"><i class="fas fa-seedling"></i> Service Collection</a>
@@ -692,13 +970,207 @@
 <!-- Core Collections / Products -->
 <section id="collections">
   <div class="container">
-    <h2 class="section-title">Our <span class="blue-text">Bamboo Signature</span> Collection</h2>
+    <h2 class="section-title">Shop Our <span class="blue-text">Top-Selling</span> Products</h2>
     <div class="blue-divider"></div>
-    <p class="section-sub">Luxuriously soft, naturally anti-microbial, and made for everyday comfort.</p>
-    <div class="grid-3">
-      <div class="card"><div class="card-icon"><i class="fas fa-tshirt"></i></div><h3>Bamboo Tees & Tops</h3><p>Breathable bamboo-cotton blend, moisture-wicking, perfect all-season wear. Available in earth tones.</p><div class="blue-text" style="margin-top:1rem;">Service Men's & Women's</div></div>
-      <div class="card"><div class="card-icon"><i class="fas fa-socks"></i></div><h3>Eco Socks & Undergarments</h3><p>Ultra-soft, hypoallergenic bamboo socks — odor resistant. Sustainable comfort for daily life.</p><div class="blue-text" style="margin-top:1rem;">Service Essentials</div></div>
-      <div class="card"><div class="card-icon"><i class="fas fa-glasses"></i></div><h3>Accessories</h3><p>Bamboo sunglasses, reusable straws, phone cases & eco totes. Ethical yet stylish.</p><div class="blue-text" style="margin-top:1rem;">New arrivals</div></div>
+    <p class="section-sub">Premium, sustainable bamboo products. Designed for comfort, styled for the planet.</p>
+    
+    <!-- Filter Tabs -->
+    <div class="shop-filters">
+      <button class="filter-btn active" data-category="all">All Products</button>
+      <button class="filter-btn" data-category="clothing">Clothing</button>
+      <button class="filter-btn" data-category="accessories">Accessories</button>
+      <button class="filter-btn" data-category="furniture">Furniture</button>
+      <button class="filter-btn" data-category="lifestyle">Lifestyle</button>
+    </div>
+    
+    <!-- Products Grid -->
+    <div class="products-grid">
+      <!-- Product 1 -->
+      <div class="product-card" data-category="clothing">
+        <div class="product-img-container">
+          <img class="product-image" src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=600&auto=format" alt="Bamboo Signature Tee">
+          <span class="product-badge">Best Seller</span>
+        </div>
+        <div class="product-info">
+          <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>(124)</span>
+          </div>
+          <h3 class="product-title">Bamboo Signature Tee</h3>
+          <p class="product-description">Breathable, moisture-wicking organic bamboo fabric.</p>
+          <div class="product-footer">
+            <span class="product-price">$29.00</span>
+            <button class="btn-add-to-cart" data-name="Bamboo Signature Tee"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Product 2 -->
+      <div class="product-card" data-category="clothing">
+        <div class="product-img-container">
+          <img class="product-image" src="https://images.unsplash.com/photo-1564257631407-4deb1f99d992?q=80&w=600&auto=format" alt="Organic Bamboo Lounge Set">
+        </div>
+        <div class="product-info">
+          <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <span>(89)</span>
+          </div>
+          <h3 class="product-title">Organic Bamboo Lounge Set</h3>
+          <p class="product-description">Hypoallergenic & ultra-soft loungewear for ultimate comfort.</p>
+          <div class="product-footer">
+            <span class="product-price">$89.00</span>
+            <button class="btn-add-to-cart" data-name="Organic Bamboo Lounge Set"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Product 3 -->
+      <div class="product-card" data-category="accessories">
+        <div class="product-img-container">
+          <img class="product-image" src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=600&auto=format" alt="Bamboo Polarized Sunglasses">
+        </div>
+        <div class="product-info">
+          <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>(45)</span>
+          </div>
+          <h3 class="product-title">Bamboo Polarized Sunglasses</h3>
+          <p class="product-description">Handcrafted polarized lenses with sustainable bamboo temples.</p>
+          <div class="product-footer">
+            <span class="product-price">$45.00</span>
+            <button class="btn-add-to-cart" data-name="Bamboo Polarized Sunglasses"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Product 4 -->
+      <div class="product-card" data-category="accessories">
+        <div class="product-img-container">
+          <img class="product-image" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format" alt="Premium Bamboo Watch">
+          <span class="product-badge">New</span>
+        </div>
+        <div class="product-info">
+          <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+            <span>(28)</span>
+          </div>
+          <h3 class="product-title">Premium Bamboo Watch</h3>
+          <p class="product-description">Eco-conscious quartz watch made from 100% natural bamboo wood.</p>
+          <div class="product-footer">
+            <span class="product-price">$95.00</span>
+            <button class="btn-add-to-cart" data-name="Premium Bamboo Watch"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Product 5 -->
+      <div class="product-card" data-category="furniture">
+        <div class="product-img-container">
+          <img class="product-image" src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=600&auto=format" alt="Minimalist Bamboo Coffee Table">
+        </div>
+        <div class="product-info">
+          <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <span>(62)</span>
+          </div>
+          <h3 class="product-title">Minimalist Bamboo Coffee Table</h3>
+          <p class="product-description">Sturdy, elegant, and sustainably sourced bamboo living table.</p>
+          <div class="product-footer">
+            <span class="product-price">$180.00</span>
+            <button class="btn-add-to-cart" data-name="Minimalist Bamboo Coffee Table"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Product 6 -->
+      <div class="product-card" data-category="furniture">
+        <div class="product-img-container">
+          <img class="product-image" src="https://images.unsplash.com/photo-1505797149-43b0069ec26b?q=80&w=600&auto=format" alt="Ergonomic Bamboo Desk Chair">
+        </div>
+        <div class="product-info">
+          <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>(77)</span>
+          </div>
+          <h3 class="product-title">Ergonomic Bamboo Desk Chair</h3>
+          <p class="product-description">Adjustable height with curved bamboo support for home offices.</p>
+          <div class="product-footer">
+            <span class="product-price">$150.00</span>
+            <button class="btn-add-to-cart" data-name="Ergonomic Bamboo Desk Chair"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Product 7 -->
+      <div class="product-card" data-category="lifestyle">
+        <div class="product-img-container">
+          <img class="product-image" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=600&auto=format" alt="Eco-Friendly Bamboo Sheet Set">
+          <span class="product-badge">Top Rated</span>
+        </div>
+        <div class="product-info">
+          <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>(210)</span>
+          </div>
+          <h3 class="product-title">Eco-Friendly Bamboo Sheet Set</h3>
+          <p class="product-description">Silky-smooth sheets, hypoallergenic, breathable, and cool to the touch.</p>
+          <div class="product-footer">
+            <span class="product-price">$120.00</span>
+            <button class="btn-add-to-cart" data-name="Eco-Friendly Bamboo Sheet Set"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Product 8 -->
+      <div class="product-card" data-category="lifestyle">
+        <div class="product-img-container">
+          <img class="product-image" src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=600&auto=format" alt="Zero-Waste Cutlery Set">
+        </div>
+        <div class="product-info">
+          <div class="product-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+            <span>(95)</span>
+          </div>
+          <h3 class="product-title">Zero-Waste Cutlery Set</h3>
+          <p class="product-description">Portable, durable bamboo cutlery with cotton storage pouch.</p>
+          <div class="product-footer">
+            <span class="product-price">$18.00</span>
+            <button class="btn-add-to-cart" data-name="Zero-Waste Cutlery Set"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -874,6 +1346,101 @@
     });
   });
   window.addEventListener('resize', () => { if(window.innerWidth > 1180 && mobilePanel?.classList.contains('show')) toggleMobile(); });
+
+  // PRODUCT FILTERING & SHOP LOGIC
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const productCards = document.querySelectorAll('.product-card');
+  
+  if (filterBtns.length > 0 && productCards.length > 0) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const category = btn.getAttribute('data-category');
+        
+        productCards.forEach(card => {
+          if (category === 'all' || card.getAttribute('data-category') === category) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  // CART LOGIC
+  const cartBadge = document.getElementById('cart-count');
+  const mobileCartBadge = document.getElementById('mobile-cart-count');
+  
+  let cartCount = parseInt(localStorage.getItem('cartCount')) || 0;
+  
+  function updateCartUI() {
+    if (cartBadge) cartBadge.innerText = cartCount;
+    if (mobileCartBadge) mobileCartBadge.innerText = cartCount;
+    localStorage.setItem('cartCount', cartCount);
+  }
+  
+  // Initialize UI
+  updateCartUI();
+  
+  // Add to cart click event
+  const addToCartBtns = document.querySelectorAll('.btn-add-to-cart');
+  addToCartBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      cartCount++;
+      updateCartUI();
+      
+      const productName = btn.getAttribute('data-name') || 'Item';
+      showToast(`${productName} added to cart!`);
+    });
+  });
+  
+  // Toast notifications function
+  function showToast(message) {
+    let toastContainer = document.getElementById('toast-container');
+    if (!toastContainer) {
+      toastContainer = document.createElement('div');
+      toastContainer.id = 'toast-container';
+      toastContainer.className = 'toast-container';
+      document.body.appendChild(toastContainer);
+    }
+    
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `
+      <div class="toast-content">
+        <i class="fas fa-check-circle toast-icon"></i>
+        <span class="toast-message">${message}</span>
+      </div>
+      <button class="toast-close"><i class="fas fa-times"></i></button>
+    `;
+    
+    toastContainer.appendChild(toast);
+    
+    // Trigger animation
+    setTimeout(() => {
+      toast.classList.add('show');
+    }, 50);
+    
+    // Auto remove toast after 3 seconds
+    const autoClose = setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => {
+        toast.remove();
+      }, 400);
+    }, 3000);
+    
+    // Close button click event
+    toast.querySelector('.toast-close').addEventListener('click', () => {
+      clearTimeout(autoClose);
+      toast.classList.remove('show');
+      setTimeout(() => {
+        toast.remove();
+      }, 400);
+    });
+  }
 </script>
 </body>
 </html>
